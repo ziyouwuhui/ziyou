@@ -1,0 +1,10 @@
+diff a/wen/new_file.html b/wen/new_file.html	(rejected hunks)
+@@ -0,6 +0,7 @@
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+ </head>
++<body>
+     
+ </body>
+ </html>
+\ No newline at end of file
