@@ -1,7 +1,15 @@
 <template>
 <div class="wrap">
   <div class="nav">
-    <div class="nav_t"><span>登陆</span>|<span>注册</span></div>
+    <router-link to="/sousuo" class="link_search">
+      <i class="el-icon-search"></i>
+    </router-link>
+    <router-link to="/home" class="msite_title">
+      <span>xzxz</span>
+    </router-link>
+    <router-link class="nav_t" to="/login">
+      <span>登陆</span>|<span>注册</span>
+    </router-link>
   </div>
      <div class="top">
        <el-carousel :interval="5000" type="" height="2.3rem">
@@ -78,7 +86,11 @@
                 prevEl: ".swiper-button-prev",
               }
             },
-            text2:''
+            text2:'',
+            latitude:"",
+            longitude:"",
+            geohash:this.$route.query.geohash,
+            address:""
           }
         },
       methods:{
@@ -87,11 +99,21 @@
         }
       },
       created(){
-        let api = "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762";
+        /*获取路径中的经纬度*/ 
+        console.log(this.$route.query.geohash);
+        let str = this.$route.query.geohash;
+        let arr = str.split(",");
+        this.latitude = arr[1];
+        this.longitude = arr[0];
+        console.log(this.latitude,this.longitude);
+
+        let api = "https://elm.cangdu.org/shopping/restaurants?latitude="+this.latitude+"&longitude="+this.longitude;
         this.$http.get(api).then((data)=>{
           this.data = data.data;
           this.value5 = data.rating;
           })
+        
+
         let api_1 = "https://elm.cangdu.org/v2/index_entry";
          this.$http.get(api_1).then((data)=>{
             this.swiperData = data.data;
@@ -130,25 +152,33 @@
     width:100%;
     box-shadow: 0 -0.02667rem 0.05333rem rgba(0,0,0,.1);
   }
-.nav .nav_t{
-  font-size: .26rem;
-  color: white;
-  margin: .15rem;
-  float: right;
-}
-  .buttom{
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 0.5rem;
-    width:100%;
-    box-shadow: 0 -0.02667rem 0.05333rem rgba(0,0,0,.1);
-    font-size: .24rem;
-    padding: 10px 0;
-    background-color: #f9fafc;
+  .nav .msite_title{
+    position: absolute;
+    top: .2rem;
+    left: 35%;
+    text-align: center;
   }
+  .nav .msite_title span{
+    color: white;
+    font-size: .22rem;
+    text-overflow:ellipsis;
+  }
+  .nav .link_search{
+    position: absolute;
+    top: .1rem;
+    left: .1rem;
+  }
+  .nav .el-icon-search{
+    font-size: .35rem;
+    color: white;
+  }
+.nav .nav_t{
+  font-size: .22rem;
+  color: white;
+  position: absolute;
+  top: .2rem;
+  right: .1rem;
+}
   .infor_r_h{
     float: right;
     color: #3190e8;

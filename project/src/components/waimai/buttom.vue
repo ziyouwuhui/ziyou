@@ -1,28 +1,21 @@
 <template>
   <div class="buttom">
-    <el-row type="flex" class="row-bg" justify="space-around">
-      <el-col :span="3">
-        <div class="grid-content bg-purple" style="text-align: center">
-          <router-link to="/">外卖</router-link>
-
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="grid-content bg-purple-light" style="text-align: center">
-          <router-link to="/sousuo">搜索</router-link>
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="grid-content bg-purple" style="text-align: center">
-          <router-link to="/##">订单</router-link>
-        </div>
-      </el-col>
-      <el-col :span="3">
-        <div class="grid-content bg-purple" style="text-align: center">
-          <router-link to="/##">我的</router-link>
-        </div>
-      </el-col>
-    </el-row>
+        <router-link to="/mstie" tag="div" :span="6" class="col">
+          <div class="el-icon-goods btn"></div>
+          <p>外卖</p>
+        </router-link>
+        <router-link to="/sousuo" tag="div" :span="6" class="col">
+          <div class="el-icon-goods btn"></div>
+          <p>搜索</p>
+        </router-link>
+        <router-link to="" tag="div" :span="6" class="col">
+          <div class="el-icon-goods btn"></div>
+          <p>订单</p>
+        </router-link>
+        <router-link to="" tag="div" :span="6" class="col">
+          <div class="el-icon-goods btn"></div>
+          <p>我的</p>
+        </router-link>
     <router-view></router-view>
   </div>
 
@@ -36,16 +29,30 @@
 
 <style scoped>
   .buttom{
+    background-color: #fff;
     position: fixed;
     z-index: 100;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 0.5rem;
-    width:100%;
+    width: 100%;
+    height: .5rem;
+    display: -ms-flexbox;
+    display: flex;
     box-shadow: 0 -0.02667rem 0.05333rem rgba(0,0,0,.1);
-    font-size: .24rem;
-    padding: 10px 0;
-    background-color: #f9fafc;
+  }
+  .buttom .col{
+    flex: 1;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .buttom .col .btn{
+    margin-top: .1rem;
+  }
+  .buttom .col p{
+    color: #666;
+    font-size: .14rem;
   }
 </style>
