@@ -96,11 +96,13 @@
   .head_logo{
     position: absolute;
     left: 0.1rem;
+    font-size: .16rem;
   }
   .head_login{
     position: absolute;
     right: 0.1rem;
     color: #fff;
+    font-size: .16rem;
   }
   .city_nav{
     padding-top: 0.55rem;

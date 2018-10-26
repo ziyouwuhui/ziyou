@@ -23,7 +23,7 @@
         <div class="input_container">
           <input type="text" placeholder="验证码" maxlength="4" v-model="codeNumer">
           <div class="img_change_img">
-            <div>
+            <div class="img_code">
               <img @click="getCode()" :src="code&&code" alt="">
             </div>
             <div class="change_img" @click="getCode()">
@@ -131,7 +131,7 @@
   }
   .title_head{
     position: absolute;
-    top: 3.5%;
+    top: .25rem;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 50%;
@@ -159,6 +159,9 @@
   .loginForm .input_container input{
     font-size: .16rem;
     color: #666;
+  }
+  .img_code img{
+    width: .6rem;
   }
   .login_tips{
     color: red;

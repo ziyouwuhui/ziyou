@@ -105,7 +105,7 @@
   }
   .title_head{
     position: absolute;
-    top: 3.5%;
+    top: .25rem;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 50%;
@@ -121,7 +121,7 @@
     font-size: .14rem;
     color: white;
     position: absolute;
-    top: 3.5%;
+    top: .25rem;
     transform: translateY(-50%);
   }
   .head_goback .icon_left{
