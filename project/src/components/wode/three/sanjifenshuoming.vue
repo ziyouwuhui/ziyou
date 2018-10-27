@@ -32,9 +32,9 @@ article {
     background-color: white;
 }
 h3{
-    padding: 2rem 0 1rem 2rem;
+    padding: 0.2rem 0 0.2rem 0rem;
 }
 section{
-    padding:  0 1rem;
+   margin: 0.1rem;
 }
 </style>

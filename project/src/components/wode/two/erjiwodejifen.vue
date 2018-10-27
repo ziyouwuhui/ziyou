@@ -78,13 +78,13 @@ article {
 
 section {
     background-color: #3190e8;
-    padding: 1rem;
+    padding: 0.1rem;
 }
 
 .wrap {
     border: 1px solid #3190e8;
     background-color: white;
-    border-radius: 0.7rem;
+    border-radius: 0.1rem;
 }
 
 .wrap_top {
@@ -93,13 +93,13 @@ section {
 }
 
 .img01 {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 0.2rem;
+    height: 0.2rem;
 }
 
 .wrap_top>p {
-    padding: 1rem;
-    font-size: 1.25rem;
+    padding: 0.1rem;
+    font-size: 0.2rem;
 }
 
 .routerp {
@@ -107,31 +107,29 @@ section {
 }
 
 .wrap_content>span:nth-child(1) {
-    padding: 1rem 0rem 1rem 1rem;
+    padding: 0rem 0rem 0.1rem 0.1rem;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 0.4rem;
 }
 
 .wrap_bottom>p {
     background-color: red;
-    height: 20px;
     text-align: center;
-    margin: 2rem;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
+    margin: 0.1rem;
+    padding: 0.15rem 0.2rem;
+    border-radius: 0.1rem;
     color: white;
-    font-size: 1.6rem;
+    font-size: 0.3rem;
 }
 
 footer>p {
-    font-size: 1.2rem;
-    padding: 1rem;
+    font-size: 0.2rem;
+    padding: 0.1rem;
     color: rgb(164, 153, 176)
 }
 
 .img02 {
-    width: 15rem;
-    height: 10rem;
+    width: 2rem;
 }
 
 footer>div {
@@ -139,29 +137,26 @@ footer>div {
 }
 
 footer>div>p {
-    padding: 1rem;
+    padding: 0.1rem;
 }
 
 footer>div>p:nth-child(3) {
-    font-size: 1.2rem;
-    padding: 1rem;
+    font-size: 0.2rem;
     color: rgb(164, 153, 176)
 }
 
 .tanchuang {
-    width: 20rem;
     text-align: center;
     background-color: white;
     position: absolute;
     top: 22%;
     left: 50%;
     transform: translateX(-50%);
-    border-radius: 0 0 1rem 1rem;
+    border-radius: 0.1rem;
 }
 
 .img03 {
-    width: 10rem;
-    height: 10rem;
+    width: 3rem;
 }
 
 .tanchuang1 {
@@ -170,14 +165,14 @@ footer>div>p:nth-child(3) {
 
 .p4,
 .p5 {
-    padding: 1rem 0;
+    padding: 0.1rem 0;
 
 }
 
 .p5 {
     background-color: rgb(76, 217, 100);
     color: white;
-    font-size: 2rem;
-    border-radius: 0 0 1rem 1rem;
+    font-size: 0.3rem;
+    border-radius: 0 0 0.1rem 0.1rem;
 }
 </style>

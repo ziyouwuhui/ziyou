@@ -13,8 +13,8 @@
 import Header from '../header'
 export default {
     name: "erjifenn",
-    components:{
-Header
+    components: {
+        Header
     },
     data() {
         return {
@@ -26,7 +26,7 @@ Header
 
 <style scoped>
 article {
-   
+
     position: absolute;
     left: 0;
     right: 0;
@@ -34,20 +34,22 @@ article {
     bottom: 0;
     background-color: rgb(240, 240, 240);
 }
-div{
- display: flex;
+
+div {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 8rem;
+    margin-top: 1rem;
 }
+
 img {
-    width: 15rem;
+    width: 2rem;
     border-radius: 50%;
 }
 
 h1,
 p {
-    padding: 1rem 0;
+    padding: 0.1rem 0;
 }
 
 h1 {
@@ -56,6 +58,6 @@ h1 {
 }
 
 p {
-    font-size: 0.7rem;
+    font-size: 0.15rem;
 }
 </style>

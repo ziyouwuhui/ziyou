@@ -50,24 +50,23 @@ export default {
 }
 
 .content {
-    padding: 2rem 0;
+    padding-top: 1rem;
 }
 
 img {
-    width: 15rem;
-    height: 15rem;
+    width: 2rem;
     border-radius: 15%;
 }
 
 .bottom {
-    padding: 1rem;
+    padding: 0.2rem;
     background-color: rgb(76, 217, 100);
-    margin: 0 2rem;
+    margin: 0 0.1rem;
     border-radius: 0.2rem;
 }
 
 .p2 {
-    padding: 1rem 0;
+    padding: 0.2rem 0;
     color: rgb(181, 126, 102)
 }
 
@@ -77,20 +76,13 @@ img {
 
 .p4,
 .p5 {
-    padding: 1rem 0;
+    padding: 0.1rem 0;
 }
 
 .p5 {
     background-color: rgb(76, 217, 100);
 }
-
-.img2 {
-    width: 10rem;
-    height: 10rem;
-}
-
 .tanchuang {
-    width: 20rem;
     text-align: center;
     background-color: white;
     position: absolute;

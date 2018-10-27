@@ -49,7 +49,7 @@ article {
 .tiao {
     display: flex;
     justify-content: space-around;
-    padding: 1.6rem 0;
+    padding: 0.2rem 0;
     background-color: white;
 }
 

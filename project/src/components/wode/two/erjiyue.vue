@@ -59,52 +59,53 @@ article {
 }
 section {
     background-color: #3190e8;
-    padding: 1rem;
+    padding: 0.1rem;
 }
 .wrap {
     border: 1px solid #3190e8;
     background-color: white;
-    border-radius: 0.7rem;
+    border-radius: 0.1rem;
 }
 .wrap_top {
     display: flex;
     justify-content: space-between;
 }
 .img01{
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 0.2rem;
+    height: 0.2rem;
 }
 .wrap_top>p {
-    padding: 1rem;
-    font-size: 1.25rem;
+  
+    padding: 0.1rem;
+    font-size: 0.2rem;
 }
 .wrap_content>span:nth-child(1) {
-    padding: 1rem 0rem 1rem 1rem;
+    padding: 0rem 0rem 1rem 0.1rem;
     font-weight: bold;
-    font-size: 3rem;
+    font-size: 0.3rem;
 }
 .wrap_bottom>p {
     background-color: rgb(204, 204, 204);
-    height: 20px;
     text-align: center;
-    margin: 2rem;
-    padding: 1rem 2rem;
-    border-radius: 1rem;
+    padding: 0.1rem ;
+    border-radius: 0 0 0.1rem 0.1rem;
     color: white;
-    font-size: 1.6rem;
+    font-size: 0.3rem;
+      margin-top: 1rem;
 }
 footer>p{
-    font-size: 1.3rem;
-    padding: 1rem;
+    font-size: 0.2em;
+    padding: 0.2rem;
+    color:  rgb(109, 169, 230);
 }
 .img02{
-    width: 15rem;
-    height: 10rem;
+    width: 3rem;
+    height: 1.5rem;
 }
 footer>div{
     text-align: center;
 }
 footer>div>p{
-    padding: 1rem;
+    padding: 0.1rem;
 }
 </style>

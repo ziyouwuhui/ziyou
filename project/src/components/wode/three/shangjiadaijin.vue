@@ -35,16 +35,16 @@ export default {
 .top {
     display: flex;
     justify-content: space-between;
-    padding: 2rem 1rem;
-    font-size: 0.7rem;
+    padding: 0.2rem 0.1rem;
+    font-size: 0.18rem;
 }
 .top img{
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 0.2rem;
+    height: 0.2rem;
 }
 span {
     color: rgb(49, 144, 232);
-    padding: 0.2rem 0 0 0.5rem;
+    padding: 0.2rem 0 0 0.1rem;
 }
 
 .top>div:nth-child(2) {
@@ -53,30 +53,30 @@ span {
 }
 
 .bottom {
-    padding-top: 8rem;
+    padding-top: 0.8rem;
     flex-direction: column;
     text-align: center;
 }
 
 .bottom>img {
-    width: 10rem;
-    height: 6rem;
+    width: 2rem;
+    height: 1rem;
 }
 .p1,.p2,.p3{
-    padding: 0.4rem 0;
+    padding: 0.1rem 0;
 }
 .p1{
-     font-size: 0.7rem;
+     font-size: 0.2rem;
 }
 .p2{
-     font-size: 0.5rem;
+     font-size: 0.1rem;
+     color: #9999;
 }
 .p3{
-    font-size: 0.65rem;
     color: white;
     background-color: #56d176;
-    padding: 1.2rem 1rem;
-    margin: 1rem 10rem;
+    padding: 0.2rem 0.1rem;
+    margin: 0.1rem 1rem;
     border-radius: 0.15rem;
 }
 </style>
