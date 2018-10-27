@@ -80,6 +80,7 @@ export default new Router({
       path: '/forget',
       name: 'Forget',
       component: Forget
-    }
+    },
+   
   ]
 })
