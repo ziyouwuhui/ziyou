@@ -15,11 +15,34 @@ import Forget from '../components/home/forget'
 import Sousuo from '../components/home/sousuo'
 // 我的
 import Wodes from '../components/wode/wode'
- Vue.use(Router)
+// 我的余额
+import Erjiyue from '../components/wode/two/erjiyue'
+// 我的优惠
+import Erjiwodeyouhui from '../components/wode/two/erjiwodeyouhui'
+// 我的积分
+import Erjijiwodejifen from '../components/wode/two/erjiwodejifen'
+// 积分商城
+import Erjijifen from '../components/wode/two/erjijifen'
+// 服务中心
+import Erjifuwu from '../components/wode/two/erjifuwu'
+// 下载饿了吗
+import Erjixiazai from '../components/wode/two/erjixiazai'
+// 引入我的三级路由
+// 余额说明
+import Sanjiyue from '../components/wode/three/sanjiyue'
+// 红包
+// 热门问题
+import Sanjifuwu from '../components/wode/three/sanjifuwu'
+// 红包说明
+import Sanhongbaoshuoming from '../components/wode/three/wodeyouhui/sanhongbaoshuoming'
+// 历史红包
+import Sanjilishihongbao from '../components/wode/three/wodeyouhui/sanjilishihongbao'
+// 积分说明
+import Sanjifenshuoming from '../components/wode/three/sanjifenshuoming'
+Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       component: Home
     },
@@ -32,8 +55,7 @@ export default new Router({
       path: '/result/:id',
       name: 'result',
       component: Result,
-      children:[
-        {
+      children: [{
           path: '/result/resulr_li/:id',
           component: Resulr_li,
         },
@@ -44,29 +66,29 @@ export default new Router({
       ]
     },
     {
-      path:"/home",
+      path: "/home",
       name: 'Home',
-      component:Home
+      component: Home
     },
     {
       path: '/sousuo',
       name: 'sousuo',
       component: Sousuo
-    } ,
+    },
     {
       path: '/business',
       name: 'business',
       component: Business
     },
     {
-      path:'/classification/:id',
-      name:'classification',
-      component:Classification
+      path: '/classification/:id',
+      name: 'classification',
+      component: Classification
     },
     {
-       path:'/none_shangjia/:id',
-       name:'none_shangjia',
-       component:Noneshangjia
+      path: '/none_shangjia/:id',
+      name: 'none_shangjia',
+      component: Noneshangjia
     },
     {
       path: '/city/:id',
@@ -82,12 +104,66 @@ export default new Router({
       path: '/forget',
       name: 'Forget',
       component: Forget
-    },
-    ,
+    }, ,
+    // 我的主界面
     {
       path: '/pro',
       component: Wodes
     },
-   
+    // 我的余额
+    {
+      path: '/wodeyue',
+      component: Erjiyue,
+      children: [{
+        path: '/yueshuoming',
+        component: Sanjiyue
+      }, ]
+    },
+    // 我的优惠
+    {
+      path: '/wodeyouhui',
+      component: Erjiwodeyouhui,
+      children: [{
+        path: '/sanjihongbaoshuoming',
+        component: Sanhongbaoshuoming
+      }, ]
+    },
+    // 历史红包
+    {
+      path: '/kanlishihongbao',
+      component: Sanjilishihongbao
+    },
+    {
+      path: '/shengjixiazai',
+      component: Erjixiazai,
+    },
+    // 我的积分
+    {
+      path: '/wodejifen',
+      component: Erjijiwodejifen,
+      children: [{
+        path: '/erjifenshuoming',
+        component: Sanjifenshuoming
+      }]
+    },
+    // content
+    {
+      path: '/jifenn',
+      component: Erjijifen
+    },
+    // 服务中心
+    {
+      path: '/fufu',
+      component: Erjifuwu,
+      children: [{
+        path: '/erjifuwu',
+        component: Sanjifuwu
+      }, ]
+    },
+    // 下载app
+    {
+      path: '/xiaxia',
+      component: Erjixiazai,
+    },
   ]
 })
