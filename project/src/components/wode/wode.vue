@@ -3,7 +3,7 @@
     <Header></Header>
     <Zicontent></Zicontent>
     <Zibuttom></Zibuttom>
-    <Zifooter></Zifooter>
+    <BButtom></BButtom>
 </div>
 </template>
 
@@ -11,14 +11,14 @@
 import Header from './header'
 import Zicontent from './zicontent'
 import Zibuttom from './zibuttom'
-import Zifooter from '../zifooter'
+import BButtom from '../waimai/buttom'
 export default {
-    name: "wode",
+    name: "wodes",
     components: {
         Header,
         Zicontent,
         Zibuttom,
-        Zifooter
+        BButtom
     }
 }
 </script>

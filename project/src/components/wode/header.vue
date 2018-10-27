@@ -21,13 +21,13 @@ export default {
 header {
     background-color: #3190e8;
     color: white;
-    line-height: 3.3rem;
+    line-height: 0.7rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 p{
    font-weight: bold; 
-   font-size: 1.7rem;
+   font-size: 0.3rem;
 }
 </style>

@@ -13,6 +13,8 @@ import City from '../components/home/city'
 import Login from '../components/home/login'
 import Forget from '../components/home/forget'
 import Sousuo from '../components/home/sousuo'
+// 我的
+import Wodes from '../components/wode/wode'
  Vue.use(Router)
 
 export default new Router({
@@ -80,6 +82,11 @@ export default new Router({
       path: '/forget',
       name: 'Forget',
       component: Forget
+    },
+    ,
+    {
+      path: '/pro',
+      component: Wodes
     },
    
   ]

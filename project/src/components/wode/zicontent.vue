@@ -1,5 +1,5 @@
 <template>
-<article>
+<div>
     <section class="top">
         <div class="left">
             <el-upload class="avatar-uploader" action="https://jsonplaceholder.typicode.com/posts/" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
@@ -37,7 +37,7 @@
 
         </div>
     </section>
-</article>
+</div>
 </template>
 
 <script>
@@ -82,7 +82,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     background-color: #3190e8;
-    padding: 2.7rem 1rem;
+    padding: 0.3rem 0.1rem;
 }
 
 .font1,
@@ -92,7 +92,7 @@ export default {
 
 .font1 {
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.05rem;
 }
 
 .left {
@@ -103,10 +103,14 @@ export default {
 .content {
     display: flex;
     flex-direction: column;
-    margin-left: 1rem;
+    margin-left: 0.1rem;
 
 }
-
+p {
+    color: black;
+    padding-top: 0.1rem;
+    font-size: 0.1rem; 
+}
 .avatar-uploader {
     background-color: white;
     border-radius: 50%;
@@ -118,14 +122,14 @@ export default {
 
 /* 设置图片大小 */
 .avatar {
-    width: 3rem;
-    padding: 0.5rem;
+    width: 0.5rem;
+    padding: 0.05rem;
 }
 
 .bottom {
     display: flex;
     justify-content: space-between;
-    padding: 1.4rem 1rem;
+    padding: 0.2rem 0.2rem;
     text-align: center;
     background-color: white;
 }
@@ -134,7 +138,7 @@ export default {
 .span1,
 .span2,
 .span3 {
-    font-size: 2rem;
+    font-size: 0.4rem;
     font-weight: bold;
 }
 
@@ -149,9 +153,5 @@ export default {
 .span4{
      color: black;
 }
-p {
-    color: black;
-    padding-top: 1rem;
-    font-size: 1rem;
-}
+
 </style>
