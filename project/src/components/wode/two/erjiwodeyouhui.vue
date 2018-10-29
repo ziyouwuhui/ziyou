@@ -2,11 +2,10 @@
 <article>
     <Header></Header>
     <section class="tiao">
-        <span @click="fn()">红包</span>
-        <span @click="fn()">商家代金券</span>
+        <a href="#" @click.prevent="handel($event,'Hongbao')">红包</a>
+        <a href="#" @click.prevent="handel('Shangjiadaijin')">商家代金券</a>
     </section>
-    <Hongbao :class="{hongbao:span1}"></Hongbao>
-   <Shangjiadaijin :class="{shangjia:span2}"></Shangjiadaijin>
+    <component :is="cc"></component>
 </article>
 </template>
 
@@ -20,7 +19,12 @@ export default {
         return {
             span1: false,
             span2: true,
+            cc: Hongbao
         }
+    },
+     created() {
+        this.$store.commit("zihe",'我的优惠');
+      
     },
     components: {
         Header,
@@ -28,10 +32,9 @@ export default {
         Shangjiadaijin
     },
     methods: {
-        fn() {
-            this.span1=!this.span1;
-             this.span2=!this.span2;
-        },
+            handel(ev,value) {
+                this.cc = value;
+            }
     }
 }
 </script>
@@ -52,12 +55,7 @@ article {
     padding: 0.2rem 0;
     background-color: white;
 }
-
-.hongbao {
-    display: none;
-}
-
-.shangjia {
-   display: none;
+a{
+    color: black;
 }
 </style>

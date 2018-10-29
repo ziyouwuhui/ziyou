@@ -14,6 +14,10 @@ import Zibuttom from './zibuttom'
 import BButtom from '../waimai/buttom'
 export default {
     name: "wodes",
+    created() {
+        this.$store.commit("zihe",'我的');
+      
+    },
     components: {
         Header,
         Zicontent,

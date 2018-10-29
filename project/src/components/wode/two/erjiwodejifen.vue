@@ -38,7 +38,6 @@
         <div></div>
 
     </div>
-    <router-view></router-view>
 </article>
 </template>
 
@@ -57,6 +56,10 @@ export default {
             tishi: require('../../../assets/img/提示.png'),
             tan: true
         }
+    },
+     created() {
+        this.$store.commit("zihe",'我的积分');
+      
     },
     methods: {
         fn() {

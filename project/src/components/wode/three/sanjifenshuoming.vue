@@ -16,6 +16,10 @@
 import Header from '../header'
 export default {
     name: "sanjijifenshuoming",
+     created() {
+        this.$store.commit("zihe",'积分说明');
+      
+    },
     components:{
         Header
     }

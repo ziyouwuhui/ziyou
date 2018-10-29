@@ -45,8 +45,8 @@
     </section>
     <section class="bottom">
         <div>
-            <router-link to="" class="bottom_bottom"><span>兑换红包</span></router-link>
-            <router-link to="" class="bottom_bottom"><span>推荐有奖</span></router-link>
+            <router-link to="/duihuanhongbao" class="bottom_bottom"><span>兑换红包</span></router-link>
+            <router-link to="/tuijianyoujiang" class="bottom_bottom"><span>推荐有奖</span></router-link>
         </div>
 
     </section>
@@ -125,7 +125,8 @@ export default {
     display: flex;
 }
 
-.bottom_p5,.bottom_bottom1>span {
+.bottom_p5,
+.bottom_bottom1>span {
     padding-top: 0.1rem;
     font-size: 0.15rem;
     color: rgb(153, 153, 153);
@@ -146,7 +147,7 @@ export default {
 
 }
 
-.bottom_bottom>span{
+.bottom_bottom>span {
     color: black;
 }
 
@@ -158,5 +159,4 @@ export default {
 .bottom_bottom {
     color: rgb(153, 153, 153);
 }
-
 </style>

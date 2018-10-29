@@ -35,6 +35,10 @@ export default {
             tan: true
         }
     },
+     created() {
+        this.$store.commit("zihe",'下载');
+      
+    },
     methods: {
         fn() {
             this.tan = !this.tan;

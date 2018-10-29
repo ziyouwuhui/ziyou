@@ -1,6 +1,5 @@
 <template>
 <article>
-    <Header></Header>
     <div>
         <h1 class="p1">请重新进入</h1>
         <p class="p2">请返回后重新进入积分商城</p>
@@ -10,11 +9,9 @@
 </template>
 
 <script>
-import Header from '../header'
 export default {
     name: "erjifenn",
     components: {
-        Header
     },
     data() {
         return {

@@ -35,6 +35,10 @@ export default {
     components: {
         Header
     },
+    created() {
+        this.$store.commit("zihe", '服务中心');
+        console.log(this.$store.state.count);
+    },
     data() {
         return {
             wentivalue: "45",
@@ -49,6 +53,7 @@ export default {
         let menu = "https://elm.cangdu.org/v3/profile/explain";
         this.$http.get(menu).then((res) => {
             this.data = res.data;
+            
         });
         console.log(this.data);
     }

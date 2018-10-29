@@ -23,6 +23,9 @@ import Erjiwodeyouhui from '../components/wode/two/erjiwodeyouhui'
 import Erjijiwodejifen from '../components/wode/two/erjiwodejifen'
 // 积分商城
 import Erjijifen from '../components/wode/two/erjijifen'
+// 会员卡
+import Erhuiyuanzhongxin from '../components/wode/two/huiyuanzhongxin'
+import Sangoumaishi from '../components/wode/three/sangoumaishi'
 // 服务中心
 import Erjifuwu from '../components/wode/two/erjifuwu'
 // 下载饿了吗
@@ -37,6 +40,10 @@ import Sanjifuwu from '../components/wode/three/sanjifuwu'
 import Sanhongbaoshuoming from '../components/wode/three/wodeyouhui/sanhongbaoshuoming'
 // 历史红包
 import Sanjilishihongbao from '../components/wode/three/wodeyouhui/sanjilishihongbao'
+// 兑换红包
+import Sanduihuanhongbao from '../components/wode/three/wodeyouhui/sanduihuanhongbao'
+// 推荐有奖
+import Tuijianyoujiang from "../components/wode/three/wodeyouhui/tuijianyoujiang";
 // 积分说明
 import Sanjifenshuoming from '../components/wode/three/sanjifenshuoming'
 
@@ -115,11 +122,12 @@ export default new Router({
     {
       path: '/wodeyue',
       component: Erjiyue,
-      children: [{
-        path: '/yueshuoming',
-        component: Sanjiyue
-      }, ]
+     
     },
+    {
+      path: '/yueshuoming',
+      component: Sanjiyue
+    }, 
     // 我的优惠
     {
       path: '/wodeyouhui',
@@ -138,20 +146,41 @@ export default new Router({
       path: '/shengjixiazai',
       component: Erjixiazai,
     },
+    // 兑换红包
+    {
+      path: '/duihuanhongbao',
+      component: Sanduihuanhongbao
+    },
+        // 推荐有奖
+        {
+          path: '/tuijianyoujiang',
+          component: Tuijianyoujiang
+        },
+       
     // 我的积分
     {
       path: '/wodejifen',
       component: Erjijiwodejifen,
-      children: [{
+    },
+      {
         path: '/erjifenshuoming',
         component: Sanjifenshuoming
-      }]
-    },
+      },
     // content
     {
       path: '/jifenn',
       component: Erjijifen
     },
+    // 会员卡
+    {
+      path: '/hui',
+      component: Erhuiyuanzhongxin
+    },
+    {
+      path: '/goumaishi',
+      component:  Sangoumaishi
+    },
+   
     // 服务中心
     {
       path: '/fufu',

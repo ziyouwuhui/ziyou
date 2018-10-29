@@ -1,8 +1,11 @@
 <template>
 <div class="article">
     <Header></Header>
+    <div class="top_div"></div>
     <div class="top_header"></div>
-    <p v-html="selectName"></p>
+    <div class="aa">
+        <p v-html="selectName"></p>
+    </div>
 </div>
 </template>
 
@@ -16,7 +19,7 @@ export default {
     data() {
         return {
             data: [],
-            selectName: ""
+            selectName: "",
         };
     },
     created() {
@@ -29,32 +32,33 @@ export default {
             var ddd = this.$route.params.index;
             this.selectName = this.data[ddd - 1]
             console.log(this.selectName);
+           
         });
     }
 };
 </script>
 
 <style scoped>
-.article{
-    position: absolute;
+ .article {
+    /* position: absolute;
     left: 0;
     right: 0;
     top: 0;
-    bottom: 0;
+    bottom: 0; */
+    background-color: white;
 
-}
+} 
+
 Header {
     width: 100%;
     position: fixed;
 }
-.article {
-    background-color: white;
-}
-.top_header {
-    padding: 0.4rem;
+.top_div{
+     padding: 0.4rem;
 }
 p {
     font-size: 0.3rem;
     margin: 0 0.2rem;
+    
 }
 </style>
