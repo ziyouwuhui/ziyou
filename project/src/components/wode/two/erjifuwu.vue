@@ -1,6 +1,7 @@
 <template>
-<article>
-  <Header></Header>
+<div class="article">
+    <Header></Header>
+    <div class="top_header"></div>
     <section>
         <div class="left">
             <img :src="qqkefu" alt="">
@@ -17,54 +18,57 @@
     <section>
         <ul>
             <li v-if="key.indexOf('Caption')!=-1" v-for="(it,key,index) in data" :key="index">
-                <router-link class="router" to="/erjifuwu">
+                <router-link class="router" :to="'/erjifuwu/'+index">
                     <span class="span2">{{it}}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
             </li>
         </ul>
     </section>
-</article>
+</div>
 </template>
 
 <script>
 import Header from '../header'
 export default {
     name: "erjifuwu",
-    components:{
-         Header 
+    components: {
+        Header
     },
     data() {
         return {
             wentivalue: "45",
             service: '在线客服',
-            
             qqkefu: require("../../../assets/img/客服.png"),
             diankefu: require("../../../assets/img/电话.png"),
             data: [],
         };
     },
-    methods: {
-    },
+    methods: {},
     created() {
         let menu = "https://elm.cangdu.org/v3/profile/explain";
         this.$http.get(menu).then((res) => {
             this.data = res.data;
         });
-        console.log(this.$route.params);
+        console.log(this.data);
     }
 };
 </script>
 
 <style scoped>
-article{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-bottom: 0;
-background-color: white;
+Header {
+    width: 100%;
+    position: fixed;
 }
+
+.top_header {
+    padding: 0.35rem;
+}
+
+.article {
+    background-color: white;
+}
+
 .left,
 .right {
     box-sizing: border-box;

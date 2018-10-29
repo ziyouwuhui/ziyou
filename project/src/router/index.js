@@ -39,6 +39,7 @@ import Sanhongbaoshuoming from '../components/wode/three/wodeyouhui/sanhongbaosh
 import Sanjilishihongbao from '../components/wode/three/wodeyouhui/sanjilishihongbao'
 // 积分说明
 import Sanjifenshuoming from '../components/wode/three/sanjifenshuoming'
+
 Vue.use(Router)
 
 export default new Router({
@@ -155,10 +156,10 @@ export default new Router({
     {
       path: '/fufu',
       component: Erjifuwu,
-      children: [{
-        path: '/erjifuwu',
-        component: Sanjifuwu
-      }, ]
+    },
+    {
+      path: '/erjifuwu/:index',
+      component: Sanjifuwu
     },
     // 下载app
     {
