@@ -4,41 +4,40 @@
     <section class="top">
         <p>支付剩余时间</p>
         <p>{{shijian}}</p>
-        <input type="text" :value="shijian" :v-model="shijian">
     </section>
-        <section class="bottom">
-            <div class="bottom_bottom">
-                <p>
-                    <img src="" alt="">
-                    <span>支付宝</span>
-                </p>
-                <p>
-                    <img class="xuan11" :src="xuan" alt="" @click="xuan1($event,12)">
+    <section class="bottom">
+        <div class="bottom_bottom">
+            <p>
+                <img class="zhitu" :src="zhifutu" alt="">
+                <span>支付宝</span>
             </p>
-            </div>
-            <div class="bottom_bottom">
-                <p>
-                    <img src="" alt="">
-                    <span>微信</span>
-                </p>
-                <p>
-                    <img class="xuan12" :src="xuan" alt="" @click="xuan2($event)">
+            <p>
+                <img class="xuan11" :class="{color1:co}" :src="xuan" @click="xuan1($event)">
             </p>
-            </div>
-        </section>
-        <section class="zhifu">
-            <p class="p3" @click="fn($event)">确认支付</p>
-        </section>
-        <div class="tanchuang " v-bind:class="{tanchuang1:tan}">
-            <div></div>
-            <div>
-                <img class="img2" :src="tishi" alt="">
-                <p class="p4">IOS用户请前往AppStore下载</p>
-                <p class="p5" @click="fn()">确认</p>
-            </div>
-            <div></div>
-
         </div>
+        <div class="bottom_bottom">
+            <p>
+                <img class="zhitu" :src="zhifutu" alt="">
+                <span>微信</span>
+            </p>
+            <p>
+                <img class="xuan12" :class="{color2:cd}"  :src="xuan" @click="xuan2($event)">
+            </p>
+        </div>
+    </section>
+    <section class="zhifu">
+        <p class="p3" @click="fn($event)">确认支付</p>
+    </section>
+    <div class="tanchuang " v-bind:class="{tanchuang1:tan}">
+        <div></div>
+        <div>
+            <img class="img2" :src="tishi" alt="">
+            <p class="p4">当前环境无法支付，请打开官方App进行付款</p>
+            <p class="p5" @click="fn()">确认</p>
+        </div>
+        <div></div>
+
+    </div>
 </div>
 </template>
 
@@ -48,14 +47,19 @@ export default {
     name: "huiyuanzhongxin",
     data() {
         return {
+            co: true,
+            cd: false,
             shijian: null,
             xuan: require('../../../assets/img/选中对号.png'),
             tishi: require('../../../assets/img/提示.png'),
+            zhifutu: require('../../../assets/img/饿了么1.png'),
             tan: true
         }
     },
-    created() {  
-        this.$store.commit("zihe",'在线支付');
+    created() {
+        this.$store.commit("zihe", '在线支付');
+        let _this = this;
+
         function count(times) {
             var timer = null;
             timer = setInterval(function () {
@@ -68,9 +72,8 @@ export default {
                 if (second <= 9) {
                     second = '0' + second;
                 };
-                // console.log(minute + '分钟' + second + '秒');
                 times--;
-                this.shijian = minute + ':' + second;
+                _this.shijian = minute + ':' + second;
             }, 1000);
             if (times <= 0) {
                 clearInterval(timer);
@@ -82,12 +85,19 @@ export default {
         fn(ev) {
             this.tan = !this.tan;
         },
-        xuan1(ev, n) {
+        xuan1(ev) {
             ev.target.style.backgroundColor = 'red';
-            console.log(ev.target);
+            this.co = true;
+            this.cd = false;
+            console.log(this.co);
+             console.log(this.cd);
         },
-        xuan2(ev, n) {
+        xuan2(ev) {
             ev.target.style.backgroundColor = 'red';
+            this.co = false;
+            this.cd = true;
+              console.log(this.co);
+             console.log(this.cd);
         }
     },
     components: {
@@ -98,6 +108,28 @@ export default {
 </script>
 
 <style scoped>
+.co {
+    background-color: red;
+}
+
+.cd {
+    background-color: red;
+}
+
+.zhitu {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.bottom_bottom>p:nth-child(1) {
+    display: flex;
+}
+
+.bottom_bottom>p:nth-child(1)>span {
+    padding-top: 0.15rem;
+    padding-left: 0.2rm;
+}
+
 .top {
     background-color: white;
     text-align: center;

@@ -1,6 +1,7 @@
 <template>
 <header>
-    <i class="el-icon-arrow-left"></i>
+    <p  @click="goback"><i class="el-icon-arrow-left"></i></p>
+   
     <p>{{count}}</p>
     <p></p>
 </header>
@@ -14,6 +15,12 @@ export default {
             return this.$store.state.count
         }
     },
+    methods:{
+    goback(){
+      this.$router.go(-1);
+    }
+  }
+
 }
 </script>
 

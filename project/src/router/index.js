@@ -26,6 +26,7 @@ import Erjijifen from '../components/wode/two/erjijifen'
 // 会员卡
 import Erhuiyuanzhongxin from '../components/wode/two/huiyuanzhongxin'
 import Sangoumaishi from '../components/wode/three/sangoumaishi'
+import Sangoumaijilu from '../components/wode/three/sangoumaijilu'
 // 服务中心
 import Erjifuwu from '../components/wode/two/erjifuwu'
 // 下载饿了吗
@@ -179,6 +180,10 @@ export default new Router({
     {
       path: '/goumaishi',
       component:  Sangoumaishi
+    },
+    {
+      path: '/snafapiao',
+      component: Sangoumaijilu
     },
    
     // 服务中心
