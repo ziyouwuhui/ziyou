@@ -13,13 +13,51 @@ import City from '../components/home/city'
 import Login from '../components/home/login'
 import Forget from '../components/home/forget'
 import Sousuo from '../components/home/sousuo'
+<<<<<<< HEAD
 import Order from '../components/home/order'
 import Details from '../components/home/orderdetails'
  Vue.use(Router)
+=======
+// 我的
+import Wodes from '../components/wode/wode'
+// 我的余额
+import Erjiyue from '../components/wode/two/erjiyue'
+// 我的优惠
+import Erjiwodeyouhui from '../components/wode/two/erjiwodeyouhui'
+// 我的积分
+import Erjijiwodejifen from '../components/wode/two/erjiwodejifen'
+// 积分商城
+import Erjijifen from '../components/wode/two/erjijifen'
+// 会员卡
+import Erhuiyuanzhongxin from '../components/wode/two/huiyuanzhongxin'
+import Sangoumaishi from '../components/wode/three/sangoumaishi'
+import Sangoumaijilu from '../components/wode/three/sangoumaijilu'
+// 服务中心
+import Erjifuwu from '../components/wode/two/erjifuwu'
+// 下载饿了吗
+import Erjixiazai from '../components/wode/two/erjixiazai'
+// 引入我的三级路由
+// 余额说明
+import Sanjiyue from '../components/wode/three/sanjiyue'
+// 红包
+// 热门问题
+import Sanjifuwu from '../components/wode/three/sanjifuwu'
+// 红包说明
+import Sanhongbaoshuoming from '../components/wode/three/wodeyouhui/sanhongbaoshuoming'
+// 历史红包
+import Sanjilishihongbao from '../components/wode/three/wodeyouhui/sanjilishihongbao'
+// 兑换红包
+import Sanduihuanhongbao from '../components/wode/three/wodeyouhui/sanduihuanhongbao'
+// 推荐有奖
+import Tuijianyoujiang from "../components/wode/three/wodeyouhui/tuijianyoujiang";
+// 积分说明
+import Sanjifenshuoming from '../components/wode/three/sanjifenshuoming'
+
+Vue.use(Router)
+>>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       component: Home
     },
@@ -32,8 +70,7 @@ export default new Router({
       path: '/result/:id',
       name: 'result',
       component: Result,
-      children:[
-        {
+      children: [{
           path: '/result/resulr_li/:id',
           component: Resulr_li,
         },
@@ -44,29 +81,29 @@ export default new Router({
       ]
     },
     {
-      path:"/home",
+      path: "/home",
       name: 'Home',
-      component:Home
+      component: Home
     },
     {
       path: '/sousuo',
       name: 'sousuo',
       component: Sousuo
-    } ,
+    },
     {
       path: '/business',
       name: 'business',
       component: Business
     },
     {
-      path:'/classification/:id',
-      name:'classification',
-      component:Classification
+      path: '/classification/:id',
+      name: 'classification',
+      component: Classification
     },
     {
-       path:'/none_shangjia/:id',
-       name:'none_shangjia',
-       component:Noneshangjia
+      path: '/none_shangjia/:id',
+      name: 'none_shangjia',
+      component: Noneshangjia
     },
     {
       path: '/city/:id',
@@ -82,6 +119,7 @@ export default new Router({
       path: '/forget',
       name: 'Forget',
       component: Forget
+<<<<<<< HEAD
     },
     {
       path: '/order',
@@ -95,5 +133,94 @@ export default new Router({
         }
       ]
     }
+=======
+    }, ,
+    // 我的主界面
+    {
+      path: '/pro',
+      component: Wodes
+    },
+    // 我的余额
+    {
+      path: '/wodeyue',
+      component: Erjiyue,
+     
+    },
+    {
+      path: '/yueshuoming',
+      component: Sanjiyue
+    }, 
+    // 我的优惠
+    {
+      path: '/wodeyouhui',
+      component: Erjiwodeyouhui,
+      children: [{
+        path: '/sanjihongbaoshuoming',
+        component: Sanhongbaoshuoming
+      }, ]
+    },
+    // 历史红包
+    {
+      path: '/kanlishihongbao',
+      component: Sanjilishihongbao
+    },
+    {
+      path: '/shengjixiazai',
+      component: Erjixiazai,
+    },
+    // 兑换红包
+    {
+      path: '/duihuanhongbao',
+      component: Sanduihuanhongbao
+    },
+        // 推荐有奖
+        {
+          path: '/tuijianyoujiang',
+          component: Tuijianyoujiang
+        },
+       
+    // 我的积分
+    {
+      path: '/wodejifen',
+      component: Erjijiwodejifen,
+    },
+      {
+        path: '/erjifenshuoming',
+        component: Sanjifenshuoming
+      },
+    // content
+    {
+      path: '/jifenn',
+      component: Erjijifen
+    },
+    // 会员卡
+    {
+      path: '/hui',
+      component: Erhuiyuanzhongxin
+    },
+    {
+      path: '/goumaishi',
+      component:  Sangoumaishi
+    },
+    {
+      path: '/snafapiao',
+      component: Sangoumaijilu
+    },
+   
+    // 服务中心
+    {
+      path: '/fufu',
+      component: Erjifuwu,
+    },
+    {
+      path: '/erjifuwu/:index',
+      component: Sanjifuwu
+    },
+    // 下载app
+    {
+      path: '/xiaxia',
+      component: Erjixiazai,
+    },
+>>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
   ]
 })

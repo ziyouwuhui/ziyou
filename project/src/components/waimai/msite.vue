@@ -1,5 +1,6 @@
 <template>
 <div class="wrap">
+<<<<<<< HEAD
   <div class="nav">
     <router-link to="/sousuo" class="link_search">
       <i class="el-icon-search"></i>
@@ -30,24 +31,48 @@
            </ol>
          </el-carousel-item>
        </el-carousel>
+=======
+    <div class="nav">
+        <router-link to="/sousuo" class="link_search">
+            <i class="el-icon-search"></i>
+        </router-link>
+        <router-link to="/home" class="msite_title">
+            <span>xzxz</span>
+        </router-link>
+        <router-link class="nav_t" to="/login">
+            <span>登陆</span>|<span>注册</span>
+        </router-link>
+>>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
     </div>
-     <div class="connt">
-          <div class="seller">
+    <div class="top">
+        <el-carousel :interval="5000" type="" height="2.3rem">
+            <el-carousel-item v-for="(ite,index) in 2" :key="index">
+                <ol>
+                    <li class="li1" v-for="(ite,index) in swiperData" :key="index">
+                        <img :src="'https://fuss10.elemecdn.com'+ite.image_url" alt="" >
+                        <p>{{ite.title}}</p>
+                    </li>
+                </ol>
+            </el-carousel-item>
+        </el-carousel>
+    </div>
+    <div class="connt">
+        <div class="seller">
             <span class="seller_f"><img src="./img/主页.png" alt=""></span>
             <span class="seller_a">附近商家</span>
-          </div>
-          <div class="guaranteed">
-              <ul>
+        </div>
+        <div class="guaranteed">
+            <ul>
                 <router-link tag="li" :to="'/result/resulr_li/'+i.id" class="li_g" v-for="(i,index) in data" :key="index">
-                  <div class="infor_l"><img :src="'//elm.cangdu.org/img/'+i.image_path" alt=""></div>
-                  <div class="infor_r">
-                    <div class="infor_r_pinpai">
-                      <span class="infor_r_p">{{i.icon_color}} 品牌</span>
-                      <span class="infor_r_x">{{i.name}}</span>
-                      <div class="infor_r_b"><span v-for="(child,cindex) in i.supports" :key="child.id">{{child.icon_name}}</span></div>
-                    </div>
-                    <div v-for="(child,cindex) in i.supports" :key="child.id">
-                       <span v-if="child.id == 9">
+                    <div class="infor_l"><img :src="'//elm.cangdu.org/img/'+i.image_path" alt=""></div>
+                        <div class="infor_r">
+                            <div class="infor_r_pinpai">
+                                <span class="infor_r_p">{{i.icon_color}} 品牌</span>
+                                <span class="infor_r_x">{{i.name}}</span>
+                                <div class="infor_r_b"><span v-for="(child,cindex) in i.supports" :key="child.id">{{child.icon_name}}</span></div>
+                            </div>
+                            <div v-for="(child,cindex) in i.supports" :key="child.id">
+                                <span v-if="child.id == 9">
                          <el-rate
                            v-model="i.rating"
                            disabled
@@ -56,6 +81,7 @@
                            score-template="{value}">
                          </el-rate>
                        </span>
+<<<<<<< HEAD
                        <div class="r">
                          <span class="infor_r_S" v-if="child.id == 9">{{child.name}}</span>
                        </div>
@@ -66,35 +92,48 @@
                       <span class="infor_r_l">{{i.distance}}</span>
                     </div>
                   </div>
+=======
+                                <div class="r">
+                                    <!--<span class="infor_r_B" v-if="child.id == 9">{{text2}}</span>-->
+                                    <span class="infor_r_S" v-if="child.id == 9">{{child.name}}</span>
+                                </div>
+                            </div>
+                            <div class="infor_r_peisong">
+                                <span class="infor_r_s">${{i.float_minimum_order_amount}}起送 / {{i.piecewise_agent_fee.tips}}</span>
+                                <span class="infor_r_h">/{{i.order_lead_time}}</span>
+                                <span class="infor_r_l">{{i.distance}}</span>
+                            </div>
+                        </div>
+>>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
                 </router-link>
-              </ul>
-          </div>
-     </div>
-     <Buttom></Buttom>
+            </ul>
+        </div>
+    </div>
+    <Buttom></Buttom>
 </div>
-
 </template>
 
 <script>
-  import Buttom from "./buttom"
-    export default {
-        name: "msite",
-        components:{
-           Buttom
-      },
-        data(){
-          return{
-            value5:'',
-            data:[],
+import Buttom from "./buttom"
+export default {
+    name: "msite",
+    components: {
+        Buttom
+    },
+    data() {
+        return {
+            value5: '',
+            data: [],
             swiperData: [],
             swiperData1: [],
             swiperData2: [],
             swiperOption: {
-              navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-              }
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                }
             },
+<<<<<<< HEAD
             text2:'',
             latitude:"",
             longitude:"",
@@ -107,21 +146,42 @@
       },
       created(){
         /*获取路径中的经纬度*/ 
+=======
+            text2: '',
+            latitude: "",
+            longitude: "",
+            geohash: this.$route.query.geohash,
+            address: ""
+        }
+    },
+    methods: {
+        read(i) {
+            console.log(i);
+        }
+    },
+    created() {
+        /*获取路径中的经纬度*/
+        console.log(this.$route.query.geohash);
+>>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
         let str = this.$route.query.geohash;
         let arr = str.split(",");
         this.latitude = arr[1];
         this.longitude = arr[0];
+<<<<<<< HEAD
+=======
+        console.log(this.latitude, this.longitude);
+>>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
 
-        let api = "https://elm.cangdu.org/shopping/restaurants?latitude="+this.latitude+"&longitude="+this.longitude;
-        this.$http.get(api).then((data)=>{
-          this.data = data.data;
-          this.value5 = data.rating;
-          })
-        
+        let api = "https://elm.cangdu.org/shopping/restaurants?latitude=" + this.latitude + "&longitude=" + this.longitude;
+        this.$http.get(api).then((data) => {
+            this.data = data.data;
+            this.value5 = data.rating;
+        })
 
         let api_1 = "https://elm.cangdu.org/v2/index_entry";
-         this.$http.get(api_1).then((data)=>{
+        this.$http.get(api_1).then((data) => {
             this.swiperData = data.data;
+<<<<<<< HEAD
             this.swiperData1 = this.swiperData.slice(0,8);
             this.swiperData2 = this.swiperData.slice(-8);
          })
@@ -129,28 +189,36 @@
          
 
       }
+=======
+        })
+
+>>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
     }
+}
 </script>
 
 <style scoped>
-  .r .infor_r_B{
+.r .infor_r_B {
     background: #3190e8;
     color: white;
     font-size: .05rem;
     padding: 0.01rem;
-    border-radius:.028rem;
+    border-radius: .028rem;
     border: .015rem solid #3190e8;
-  }
-  .r .infor_r_S{
+}
+
+.r .infor_r_S {
     color: #3190e8;
     font-size: .05rem;
     padding: 0.01rem;
     border: .015rem solid #3190e8;
-  }
-  .el-icon-arrow-right{
+}
+
+.el-icon-arrow-right {
     background: red;
-  }
-  .nav{
+}
+
+.nav {
     background: blue;
     position: fixed;
     z-index: 100;
@@ -158,12 +226,14 @@
     right: 0;
     top: 0;
     height: 0.566rem;
-    width:100%;
-    box-shadow: 0 -0.02667rem 0.05333rem rgba(0,0,0,.1);
-  }
-  .nav .msite_title{
+    width: 100%;
+    box-shadow: 0 -0.02667rem 0.05333rem rgba(0, 0, 0, .1);
+}
+
+.nav .msite_title {
     position: absolute;
     top: .2rem;
+<<<<<<< HEAD
     left: 25%;
     width: 50%;
   }
@@ -177,13 +247,28 @@
     white-space: nowrap;
   }
   .nav .link_search{
+=======
+    left: 35%;
+    text-align: center;
+}
+
+.nav .msite_title span {
+    color: white;
+    font-size: .22rem;
+    text-overflow: ellipsis;
+}
+
+.nav .link_search {
+>>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
     position: absolute;
     top: .1rem;
     left: .1rem;
-  }
-  .nav .el-icon-search{
+}
+
+.nav .el-icon-search {
     font-size: .35rem;
     color: white;
+<<<<<<< HEAD
   }
 .nav .nav_t{
   font-size: .18rem;
@@ -193,32 +278,50 @@
   right: .1rem;
 }
   .infor_r_h{
+=======
+}
+
+.nav .nav_t {
+    font-size: .22rem;
+    color: white;
+    position: absolute;
+    top: .2rem;
+    right: .1rem;
+}
+
+.infor_r_h {
+>>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
     float: right;
     color: #3190e8;
-  }
-  .infor_r_peisong .infor_r_l{
+}
+
+.infor_r_peisong .infor_r_l {
     float: right;
     margin-left: 0.3rem;
     color: #999;
-  }
-  .infor_r_peisong .infor_r_s{
+}
+
+.infor_r_peisong .infor_r_s {
     transform: scale(.2);
     font-size: .1rem;
     color: #666;
-  }
-  .infor_r_pinpai .infor_r_b{
+}
+
+.infor_r_pinpai .infor_r_b {
     float: right;
     color: #999;
-  }
-  .infor_r_pinpai .infor_r_x{
+}
+
+.infor_r_pinpai .infor_r_x {
     /*width: 8.5rem;*/
     color: #333;
     padding-top: .01rem;
     font: .19rem/.18rem PingFangSC-Regular;
     font-weight: 700;
-   padding-right: 1.6rem;
-  }
-  .infor_r_pinpai .infor_r_p{
+    padding-right: 1.6rem;
+}
+
+.infor_r_pinpai .infor_r_p {
     content: "\54C1\724C";
     display: inline-block;
     font-size: .1rem;
@@ -228,89 +331,114 @@
     padding: 0 .1rem;
     border-radius: .02rem;
     margin-right: .1rem;
-  }
-  .li_g{
+}
+
+.li_g {
     display: flex;
     border-bottom: .025rem solid #f1f1f1;
     padding: .2rem .1rem;
-  }
-  .guaranteed .infor_l img{
-    width:0.78rem;
+}
+
+.guaranteed .infor_l img {
+    width: 0.78rem;
     float: left;
     /*border: 1px solid red;*/
-  }
-  .guaranteed .infor_r{
+}
+
+.guaranteed .infor_r {
     font-size: .1rem;
     float: right;
     margin-left: .1rem;
-  }
-  .guaranteed .infor_r>div{
+}
+
+.guaranteed .infor_r>div {
     margin-bottom: .15rem;
-  }
-  .guaranteed{
+}
+
+.guaranteed {
     background-color: #fff;
-  }
- .connt .seller{
-    padding-top:.2rem;
+}
+
+.connt .seller {
+    padding-top: .2rem;
     padding-left: .15rem;
     /*margin-bottom: 0.35rem;*/
-  }
-  .seller .seller_a{
+}
+
+.seller .seller_a {
     color: #999;
     font-size: .18rem;
-    font-family: Microsoft YaHei;;
-  }
-  .seller .seller_f img{
+    font-family: Microsoft YaHei;
+    ;
+}
+
+.seller .seller_f img {
     width: .25rem;
     height: .25rem;
-  }
-  .wrap .connt{
+}
+
+.wrap .connt {
     margin-top: .12rem;
     border-top: .012rem solid #e4e4e4;
     background-color: #fff;
-  }
-  .swiper-button-next{
+}
+
+.swiper-button-next {
     background: blue;
     width: 8px;
     height: 8px;
-    border-radius:50%;
+    border-radius: 50%;
     top: 2.4rem;
     right: 176px;
-  }
-  .swiper-button-prev{
+}
+
+.swiper-button-prev {
     background: blue;
     width: 8px;
     height: 8px;
-    border-radius:50%;
+    border-radius: 50%;
     top: 2.4rem;
     left: 166px;
-  }
-  em,.li1{
+}
+
+em,
+.li1 {
     text-align: center;
     float: left;
     font-size: .16rem;
     color: #666;
+<<<<<<< HEAD
     margin: .12rem .18rem;
     padding-left: 0.14rem;
   }
  .top li img{
+=======
+    margin: .12rem .2rem;
+    padding-left: 0.15rem;
+}
+
+.top li img {
+>>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
     margin-bottom: .22rem;
     width: 0.5rem;
     height: 0.5rem;
-  }
-  .wrap>.top{
+}
+
+.wrap>.top {
     margin-top: .7rem;
     padding-bottom: 0.23rem;
     border-bottom: 1px solid gainsboro;
     font-family: Microsoft Yahei;
     position: relative;
     background: white;
-  }
- .wrap{
-   width: 100%;
+}
+
+.wrap {
+    width: 100%;
     background: ghostwhite;
-  }
-  .transition-box {
+}
+
+.transition-box {
     margin-bottom: 10px;
     width: 200px;
     height: 100px;
@@ -321,37 +449,43 @@
     padding: 40px 20px;
     box-sizing: border-box;
     margin-right: 20px;
-  }
-  .el-row {
+}
+
+.el-row {
     margin-bottom: 20px;
-  }
-  .el-col {
+}
+
+.el-col {
     border-radius: 4px;
-  }
-  .grid-content {
+}
+
+.grid-content {
     border-radius: 4px;
     min-height: 36px;
-  }
-  .el-carousel__indicators{
+}
+
+.el-carousel__indicators {
     height: 200px;
     background: red;
-  }
-  .infor_r div .r{
+}
+
+.infor_r div .r {
     float: right;
-  }
-  .el-rate{
+}
+
+.el-rate {
     display: inline-block;
     height: 10px !important;
     font-size: 14px !important;
     margin-right: 2px !important;
-  }
-  .el-rate .el-rate__icon{
+}
+
+.el-rate .el-rate__icon {
     font-size: 14px !important;
     margin-right: 2px !important;
-  }
-</style>
-<style>
-  .el-rate__item{
+}
+</style><style>
+.el-rate__item {
     font-size: .01rem;
-  }
+}
 </style>
