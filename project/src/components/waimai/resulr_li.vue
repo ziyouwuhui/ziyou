@@ -16,7 +16,7 @@
       <ul v-for="(it,index) in meNu" :key="index">
         <router-link tag="li" :to="'/classification/'+it.id" style="padding-bottom: 0.1rem " class="li_t">
           <!--src="//elm.cangdu.org/img/1661a8e8aa318572.png">-->
-          <div class="right_li_id"  v-for="(child,cindex) in it.foods" :key="child.index">
+          <div class="right_li_id"  v-for="(child,i) in it.foods" :key="i">
             <section class="right_li_l">
               <img :src="'//elm.cangdu.org/img/'+child.image_path" alt="" style="width: 0.5rem">
             </section>
@@ -24,7 +24,7 @@
               <h3>
                 {{child.name}}
               </h3>
-              <div class="h_x" v-for="(x,cindex) in child.attributes" :key="x.id">
+              <div class="h_x" v-for="(x,cindex) in child.attributes" :key="cindex">
                         <span class="h_x_if" v-if="x.icon_name==='招牌'">
                           {{x.icon_name}}
                         </span>
@@ -59,7 +59,7 @@
         let menu = "https://elm.cangdu.org/shopping/v2/menu?restaurant_id="+this.id;
         this.$http.get(menu).then((data)=>{
           this.meNu = data.data;
-          console.log(data);
+          console.log(data.data);
         });
       }
     }
@@ -161,8 +161,7 @@
     overflow: hidden;
     margin-left: 4rem;
   }
-</style>
-<style>
+
   .el-rate__icon{
     font-size: .01rem;
   }

@@ -8,8 +8,6 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-<<<<<<< HEAD
-=======
 // 导入vuex
 import Vuex from 'vuex'
 //引入vuex封装模块
@@ -18,11 +16,9 @@ import store from './store/wode/'
 
 Vue.use(Vuex)
 Vue.use(VueAxios, axios);
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
 // require styles
 import 'swiper/dist/css/swiper.css'
 
-Vue.use(VueAxios, axios);
 
 
 Vue.use(VueAwesomeSwiper, /* { default global options } */)

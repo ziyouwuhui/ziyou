@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import HelloWorld from '../components/HelloWorld'
 import Mstie from '../components/waimai/msite'
 import Result from '../components/waimai/result'
 import Resulr_li from '../components/waimai/resulr_li'
@@ -13,11 +12,8 @@ import City from '../components/home/city'
 import Login from '../components/home/login'
 import Forget from '../components/home/forget'
 import Sousuo from '../components/home/sousuo'
-<<<<<<< HEAD
 import Order from '../components/home/order'
 import Details from '../components/home/orderdetails'
- Vue.use(Router)
-=======
 // 我的
 import Wodes from '../components/wode/wode'
 // 我的余额
@@ -54,8 +50,6 @@ import Tuijianyoujiang from "../components/wode/three/wodeyouhui/tuijianyoujiang
 import Sanjifenshuoming from '../components/wode/three/sanjifenshuoming'
 
 Vue.use(Router)
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
-
 export default new Router({
   routes: [{
       path: '/',
@@ -119,7 +113,6 @@ export default new Router({
       path: '/forget',
       name: 'Forget',
       component: Forget
-<<<<<<< HEAD
     },
     {
       path: '/order',
@@ -132,9 +125,7 @@ export default new Router({
           component: Details
         }
       ]
-    }
-=======
-    }, ,
+    },
     // 我的主界面
     {
       path: '/pro',
@@ -157,7 +148,7 @@ export default new Router({
       children: [{
         path: '/sanjihongbaoshuoming',
         component: Sanhongbaoshuoming
-      }, ]
+      }]
     },
     // 历史红包
     {
@@ -221,6 +212,5 @@ export default new Router({
       path: '/xiaxia',
       component: Erjixiazai,
     },
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
   ]
 })

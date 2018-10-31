@@ -1,6 +1,5 @@
 <template>
 <div class="wrap">
-<<<<<<< HEAD
   <div class="nav">
     <router-link to="/sousuo" class="link_search">
       <i class="el-icon-search"></i>
@@ -31,31 +30,8 @@
            </ol>
          </el-carousel-item>
        </el-carousel>
-=======
-    <div class="nav">
-        <router-link to="/sousuo" class="link_search">
-            <i class="el-icon-search"></i>
-        </router-link>
-        <router-link to="/home" class="msite_title">
-            <span>xzxz</span>
-        </router-link>
-        <router-link class="nav_t" to="/login">
-            <span>登陆</span>|<span>注册</span>
-        </router-link>
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
     </div>
-    <div class="top">
-        <el-carousel :interval="5000" type="" height="2.3rem">
-            <el-carousel-item v-for="(ite,index) in 2" :key="index">
-                <ol>
-                    <li class="li1" v-for="(ite,index) in swiperData" :key="index">
-                        <img :src="'https://fuss10.elemecdn.com'+ite.image_url" alt="" >
-                        <p>{{ite.title}}</p>
-                    </li>
-                </ol>
-            </el-carousel-item>
-        </el-carousel>
-    </div>
+    
     <div class="connt">
         <div class="seller">
             <span class="seller_f"><img src="./img/主页.png" alt=""></span>
@@ -81,30 +57,16 @@
                            score-template="{value}">
                          </el-rate>
                        </span>
-<<<<<<< HEAD
-                       <div class="r">
-                         <span class="infor_r_S" v-if="child.id == 9">{{child.name}}</span>
-                       </div>
-                    </div>
-                    <div class="infor_r_peisong">
-                      <span class="infor_r_s">${{i.float_minimum_order_amount}}起送 / {{i.piecewise_agent_fee.tips}}</span>
-                      <span class="infor_r_h">/{{i.order_lead_time}}</span>
-                      <span class="infor_r_l">{{i.distance}}</span>
-                    </div>
-                  </div>
-=======
                                 <div class="r">
-                                    <!--<span class="infor_r_B" v-if="child.id == 9">{{text2}}</span>-->
                                     <span class="infor_r_S" v-if="child.id == 9">{{child.name}}</span>
                                 </div>
                             </div>
                             <div class="infor_r_peisong">
-                                <span class="infor_r_s">${{i.float_minimum_order_amount}}起送 / {{i.piecewise_agent_fee.tips}}</span>
+                                <span class="infor_r_s">￥{{i.float_minimum_order_amount}}起送 / {{i.piecewise_agent_fee.tips}}</span>
                                 <span class="infor_r_h">/{{i.order_lead_time}}</span>
                                 <span class="infor_r_l">{{i.distance}}</span>
                             </div>
                         </div>
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
                 </router-link>
             </ul>
         </div>
@@ -133,20 +95,6 @@ export default {
                     prevEl: ".swiper-button-prev",
                 }
             },
-<<<<<<< HEAD
-            text2:'',
-            latitude:"",
-            longitude:"",
-            geohash:this.$route.query.geohash,
-            address:""
-          }
-        },
-      methods:{
-        
-      },
-      created(){
-        /*获取路径中的经纬度*/ 
-=======
             text2: '',
             latitude: "",
             longitude: "",
@@ -162,37 +110,26 @@ export default {
     created() {
         /*获取路径中的经纬度*/
         console.log(this.$route.query.geohash);
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
         let str = this.$route.query.geohash;
         let arr = str.split(",");
         this.latitude = arr[1];
         this.longitude = arr[0];
-<<<<<<< HEAD
-=======
-        console.log(this.latitude, this.longitude);
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
+        // console.log(this.latitude, this.longitude);
 
         let api = "https://elm.cangdu.org/shopping/restaurants?latitude=" + this.latitude + "&longitude=" + this.longitude;
         this.$http.get(api).then((data) => {
             this.data = data.data;
             this.value5 = data.rating;
+            // console.log(this.data,'xxxxx');
         })
 
         let api_1 = "https://elm.cangdu.org/v2/index_entry";
         this.$http.get(api_1).then((data) => {
             this.swiperData = data.data;
-<<<<<<< HEAD
             this.swiperData1 = this.swiperData.slice(0,8);
             this.swiperData2 = this.swiperData.slice(-8);
-         })
-
-         
-
-      }
-=======
         })
 
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
     }
 }
 </script>
@@ -233,11 +170,14 @@ export default {
 .nav .msite_title {
     position: absolute;
     top: .2rem;
-<<<<<<< HEAD
     left: 25%;
     width: 50%;
-  }
-  .nav .msite_title span{
+    color: #fff;
+    text-align: center;
+    margin-left: -.15rem;
+}
+
+.nav .msite_title span {
     color: white;
     font-size: .22rem;
     text-align: center;
@@ -245,21 +185,9 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-  .nav .link_search{
-=======
-    left: 35%;
-    text-align: center;
-}
-
-.nav .msite_title span {
-    color: white;
-    font-size: .22rem;
-    text-overflow: ellipsis;
 }
 
 .nav .link_search {
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
     position: absolute;
     top: .1rem;
     left: .1rem;
@@ -268,17 +196,6 @@ export default {
 .nav .el-icon-search {
     font-size: .35rem;
     color: white;
-<<<<<<< HEAD
-  }
-.nav .nav_t{
-  font-size: .18rem;
-  color: white;
-  position: absolute;
-  top: .2rem;
-  right: .1rem;
-}
-  .infor_r_h{
-=======
 }
 
 .nav .nav_t {
@@ -290,7 +207,6 @@ export default {
 }
 
 .infor_r_h {
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
     float: right;
     color: #3190e8;
 }
@@ -313,19 +229,18 @@ export default {
 }
 
 .infor_r_pinpai .infor_r_x {
-    /*width: 8.5rem;*/
     color: #333;
     padding-top: .01rem;
-    font: .19rem/.18rem PingFangSC-Regular;
+    font: .15rem PingFangSC-Regular;
     font-weight: 700;
-    padding-right: 1.6rem;
+    padding-right: 1rem;
 }
 
 .infor_r_pinpai .infor_r_p {
     content: "\54C1\724C";
     display: inline-block;
-    font-size: .1rem;
-    line-height: .2rem;
+    font-size: .06rem;
+    line-height: .16rem;
     color: #333;
     background-color: #ffd930;
     padding: 0 .1rem;
@@ -349,6 +264,7 @@ export default {
     font-size: .1rem;
     float: right;
     margin-left: .1rem;
+    width: 4rem;
 }
 
 .guaranteed .infor_r>div {
@@ -407,18 +323,11 @@ em,
     float: left;
     font-size: .16rem;
     color: #666;
-<<<<<<< HEAD
-    margin: .12rem .18rem;
-    padding-left: 0.14rem;
-  }
- .top li img{
-=======
     margin: .12rem .2rem;
-    padding-left: 0.15rem;
+    padding-left: 0.1rem;
 }
 
 .top li img {
->>>>>>> 4404b66b540275683a37d6117b9c9f47a1d603be
     margin-bottom: .22rem;
     width: 0.5rem;
     height: 0.5rem;
@@ -484,7 +393,6 @@ em,
     font-size: 14px !important;
     margin-right: 2px !important;
 }
-</style><style>
 .el-rate__item {
     font-size: .01rem;
 }
