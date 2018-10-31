@@ -69,15 +69,14 @@ Header {
 }
 
 .kongbai {
-    height: 4rem;
-    ;
+    height: 1rem;
 }
 
 li {
     background-color: white;
-    margin: 1rem 1rem;
-    padding: 3rem 0 0 0;
-    border-radius: 1rem 1rem 1rem 1rem;
+    margin: 0.1rem 0.1rem;
+    padding: 0.15rem 0 0 0;
+    border-radius: 0.1rem;
 }
 
 .ol1 {
@@ -86,16 +85,16 @@ li {
 
 .left {
 
-    padding: 0 1rem;
-    border-right: 0.1rem dashed rgb(153, 153, 153);
+    padding: 0 0.1rem;
+    border-right: 0.018rem dashed rgb(153, 153, 153);
 }
 
 .left>p>span:nth-child(2) {
-    font-size: 2.5rem;
+    font-size: 0.5rem;
 }
 
 .content {
-    padding-left: 1rem;
+    padding-left: 0.1rem;
 }
 
 .top {
@@ -103,30 +102,30 @@ li {
 }
 
 p {
-    padding: 0.2rem 0;
+    padding: 0.02rem 0;
 }
 
 .p1,
 .p2,
-.p3,
-.p4 {
-    font-size: 0.7rem;
+.p3 {
+    font-size: 0.02rem;
     color: rgb(153, 153, 153);
 }
 
-.p4 {
-    padding: 0.5rem 1rem 2rem 1rem;
-    background-color: rgb(249, 249, 249);
-    border-radius: 0rem 0rem 1rem 1rem;
-}
+
 
 img {
-    width: 5rem;
+    width: 0.8rem;
     position: relative;
-    top: -1rem;
+    /* top: -1rem; */
 }
 
 span {
     color: rgb(153, 153, 153);
+}
+.bottom{
+     font-size: 0.02rem;
+    color: rgb(153, 153, 153);
+     padding: 0 0rem 0.1rem 0.1rem;
 }
 </style>

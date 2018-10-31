@@ -70,7 +70,7 @@ export default {
 
 <style scoped>
 section {
-    border-top: 0.5rem solid #E9EEF3;
+    border-top: 0.1rem solid #E9EEF3;
 }
 
 .router1,
@@ -80,7 +80,7 @@ section {
 .router5 {
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 0.5rem;
+    padding: 0.1rem 0.1rem;
     background-color: white;
 
 }
@@ -88,16 +88,16 @@ section {
 .router1,
 .router2,
 .router4 {
-    border-bottom: 0.1rem solid #E9EEF3;
+    border-bottom: 0.01rem solid #E9EEF3;
 }
 
 img {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 0.2rem;
+    height: 0.2rem;
 }
 
 span {
     color: black;
-    font-size: 1.2rem;
+    font-size: 0.2rem;
 }
 </style>

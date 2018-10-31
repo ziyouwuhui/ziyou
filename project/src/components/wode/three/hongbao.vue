@@ -38,14 +38,17 @@
         </ol>
     </section>
     <section class="lishihongbao">
-        <router-link to="/kanlishihongbao" class="bottom_bottom">
+        <router-link to="/kanlishihongbao" class="bottom_bottom1">
             <span>查看历史红包</span>
             <i class="el-icon-arrow-right"></i>
         </router-link>
     </section>
     <section class="bottom">
-        <router-link to="" class="bottom_bottom">兑换红包</router-link>
-        <router-link to="" class="bottom_bottom">推荐有奖</router-link>
+        <div>
+            <router-link to="/duihuanhongbao" class="bottom_bottom"><span>兑换红包</span></router-link>
+            <router-link to="/tuijianyoujiang" class="bottom_bottom"><span>推荐有奖</span></router-link>
+        </div>
+
     </section>
     <router-view></router-view>
 </div>
@@ -82,23 +85,23 @@ export default {
 .top {
     display: flex;
     justify-content: space-between;
-    padding: 1rem 1rem;
+    padding: 0.1rem 0.1rem;
 }
 
 .top p {
-    font-size: 0.7rem;
+    font-size: 0.2rem;
 }
 
 .top img {
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 0.2rem;
 }
 
 .xiaoli {
     background-color: white;
-    margin: 1rem;
-    padding: 1rem;
-    border-radius: 1rem;
+    margin: 0.1rem;
+    padding: 0.1rem;
+    border-radius: 0.2rem;
+    border: 0.1rem solid white;
 }
 
 .li_top {
@@ -114,7 +117,7 @@ export default {
 .left_p1,
 .content_p2,
 .content_p3 {
-    font-size: 0.7rem;
+    font-size: 0.1rem;
     color: rgb(153, 153, 153);
 }
 
@@ -122,9 +125,10 @@ export default {
     display: flex;
 }
 
-.bottom_p5 {
-    padding-top: 1rem;
-    font-size: 0.7rem;
+.bottom_p5,
+.bottom_bottom1>span {
+    padding-top: 0.1rem;
+    font-size: 0.15rem;
     color: rgb(153, 153, 153);
 }
 
@@ -133,16 +137,23 @@ export default {
     bottom: 0;
     width: 100%;
     text-align: center;
-    padding: 2rem;
+    background-color: white;
+    padding: 0.2rem 0;
 }
 
-.bottom_bottom {
-    padding: 4rem
+.bottom>div {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.bottom_bottom>span {
+    color: black;
 }
 
 .lishihongbao {
     text-align: center;
-    padding-top: 6rem;
+    padding-top: 0.6rem;
 }
 
 .bottom_bottom {

@@ -1,15 +1,12 @@
 <template>
-<article>
+<div class="article">
     <Header></Header>
-    <section>
-        <div></div>
-        <ul>
-            <li v-if="key.indexOf('Content')!=-1" v-for="(it,key,index) in data" :key="index">
-                <p>{{it}}</p>
-            </li>
-        </ul>
-    </section>
-</article>
+    <div class="top_div"></div>
+    <div class="top_header"></div>
+    <div class="aa">
+        <p v-html="selectName"></p>
+    </div>
+</div>
 </template>
 
 <script>
@@ -22,21 +19,41 @@ export default {
     data() {
         return {
             data: [],
+            selectName: "",
         };
     },
     created() {
         let menu = "https://elm.cangdu.org/v3/profile/explain";
         this.$http.get(menu).then((res) => {
-            this.data = res.data;
-
+            var obj = res.data;
+            for (let i in obj) {
+                this.data.push(obj[i]);
+            }
+            var ddd = this.$route.params.index;
+            this.selectName = this.data[ddd - 1]
+            console.log(this.selectName);
+           
         });
     }
 };
 </script>
 
 <style scoped>
+ .article {
+    background-color: white;
+
+} 
+
+Header {
+    width: 100%;
+    position: fixed;
+}
+.top_div{
+     padding: 0.4rem;
+}
 p {
-    font-size: 2rem;
-    padding: 0 1rem;
+    font-size: 0.3rem;
+    margin: 0 0.2rem;
+    
 }
 </style>

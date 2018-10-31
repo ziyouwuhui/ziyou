@@ -4,6 +4,7 @@
     <Zicontent></Zicontent>
     <Zibuttom></Zibuttom>
     <!-- <Zifooter></Zifooter> -->
+    <BButtom></BButtom>
 </div>
 </template>
 
@@ -11,14 +12,19 @@
 import Header from './header'
 import Zicontent from './zicontent'
 import Zibuttom from './zibuttom'
+import BButtom from '../waimai/buttom'
 // import Zifooter from '../zifooter'
 export default {
-    name: "wode",
+    name: "wodes",
+    created() {
+        this.$store.commit("zihe",'我的');
+      
+    },
     components: {
         Header,
         Zicontent,
         Zibuttom,
-       
+        BButtom
     }
 }
 </script>

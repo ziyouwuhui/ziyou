@@ -1,9 +1,10 @@
 export default {
- count:'我的',
+ count:'',
  s11:'',
  s12:{},
  apis:[],
  s1:'',
  meNu:[],
  inde:''
+
 }

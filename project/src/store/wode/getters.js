@@ -11,5 +11,6 @@ let getters = {
    in(state){
      return state.inde
    }
+ 
 };
 export  {getters}

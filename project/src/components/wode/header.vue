@@ -1,6 +1,7 @@
 <template>
 <header>
-    <i class="el-icon-arrow-left"></i>
+    <p  @click="goback"><i class="el-icon-arrow-left"></i></p>
+   
     <p>{{count}}</p>
     <p></p>
 </header>
@@ -14,6 +15,12 @@ export default {
             return this.$store.state.count
         }
     },
+    methods:{
+    goback(){
+      this.$router.go(-1);
+    }
+  }
+
 }
 </script>
 
@@ -21,13 +28,13 @@ export default {
 header {
     background-color: #3190e8;
     color: white;
-    line-height: 3.3rem;
+    line-height: 0.7rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 p{
    font-weight: bold; 
-   font-size: 1.7rem;
+   font-size: 0.3rem;
 }
 </style>
