@@ -8,7 +8,13 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+// 导入vuex
+import Vuex from 'vuex'
+//引入vuex封装模块
+import store from './store/wode/'
 
+
+Vue.use(Vuex)
 Vue.use(VueAxios, axios);
 // require styles
 import 'swiper/dist/css/swiper.css'
@@ -20,6 +26,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
   template: '<App/>'

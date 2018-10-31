@@ -15,13 +15,6 @@ import Forget from '../components/home/forget'
 import Sousuo from '../components/home/sousuo'
 import Spinner from '../components/waimai/Spinner'
 import Fen from '../components/waimai/fen'
-import Fenr from '../components/waimai/fenright'
-import Wode from '../components/wode/wode'
-import Shoping from '../components/waimai/shoping'
-import xuanze from '../components/waimai/xuanze'
-import add from '../components/waimai/add'
-import kouwei from '../components/waimai/kouwei'
-import invoice from '../components/waimai/invoice'
  Vue.use(Router)
 
 export default new Router({
@@ -96,41 +89,9 @@ export default new Router({
       children:[
         {
           path: '/Spinner/fen',
-          name:'fen',
           component: Fen,
         },
-        {
-          path: '/Spinner/fenright',
-          name:'fenringht',
-          component: Fenr,
-        },
       ]
-    },
-    {
-      path: '/pro',
-      component: Wode,
-    },
-      {
-        path:'/shoping',
-        name:'shoping',
-        component:Shoping
-      },{
-        path:'xuanze',
-        name:'xuanze',
-        component:xuanze
-      },{
-        path:'add',
-        name:'add',
-        component:add
-      },{
-        path:'kouwei',
-        name:'kouwei',
-        component:kouwei
-      },{
-        path:'invoice',
-        name:'invoice',
-        component:invoice
-      }
-
+    }
   ]
 })

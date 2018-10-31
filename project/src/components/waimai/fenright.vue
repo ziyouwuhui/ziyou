@@ -1,12 +1,14 @@
 <template>
   <div>
-   
+     <div class="none_ul">
+             </div>   
+
 
   </div>
 </template>
 <script>
 export default {
-  name: "fen",
+  name: "fenright",
   data() {
     return {
       value:'',
@@ -23,13 +25,13 @@ export default {
     });
   },
   methods:{
-    // test:function(){
-    //   // alert("ok");
-    //   alert(this.data.index);
+    test:function(){
+      // alert("ok");
+      alert(this.i);
       
     }
-  };
-
+  }
+};
 </script>
 
 <style scoped>

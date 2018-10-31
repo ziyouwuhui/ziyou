@@ -19,6 +19,7 @@
         <!-- :to="'/classification/'+id" style="padding-bottom: 0.1rem "  -->
         <router-link tag="li" to="" class="li_t">
           <!--src="//elm.cangdu.org/img/1661a8e8aa318572.png">-->
+          <!-- 好吃的 -->
           <div class="right_li_id"  v-for="(child,cindex) in it.foods" :key="cindex">
             <section class="right_li_l">
               <img :src="'//elm.cangdu.org/img/'+child.image_path" alt="" style="width: 0.5rem">
@@ -43,7 +44,10 @@
               </p>
                <div class="right_l_buttom">
                 <span class="right_li_but">${{child.specfoods[0].price}}</span>
-                <span class="right_li_add" @click = "counter++">+</span>
+                <span class="right_li_add" @click = "count(data[0].foods[0].specfoods[0]._id)">+</span>
+                <!-- <span class="item">
+                    <i class="con"> <i class="qiu"> </i> </i>
+                </span> -->
                 <span class="right_li_add_1">{{ counter }}</span>
                 <span class="right_li_a" @click = "counter--">-</span>
         </div>
@@ -53,72 +57,91 @@
         
       </ul>
     </section>
-    <div class="buttom">
-          <section class="buttom_img">
-            <img src="./img/购物车.png" alt="">
-             <div class="buttom_t">{{counter}}</div>
-          </section>
-          <section class="buttom_two">
-            <div class="buttom_two_money">¥ {{counter}}</div>
-            <div class="buttom_two_bigm">配送费¥5</div>
-          </section>
-          <section class="buttom_go">
-            <span style="margin: auto" @click="show=!show">还差¥20起送</span>
-          </section>
-      </div>
-      <div class="coudan" v-show="!show">
-        <p class="coudan_shoping">
-          <span>购物车</span>
-          <span class="coudan_shoping_right el-icon-delete">  清空</span>
-        </p>
-        <ul>
-          <li v-for="(it,index) in meNu" :key="index">
-            <span>{{it.name}}}</span>
-            <span>money</span>
-            <span>+</span>
-            <span></span>
-            <span>-</span>
-          </li>
-        </ul>
-      </div>
+
+      
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import {mapState} from 'vuex'
 export default {
   name: "resulr_li",
   data() {
     return {
       meNu: null,
-      show:true,
       counter: 0,
       // id: this.$route.params.id
       // m:'<span class="li_s">{{ite.name}}</span>',
     };
   },
   created() {
+    this.$store.commit("s1", this.$route.params.id);
     let menu =
       "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
       this.$route.params.id;
-    this.$http.get(menu).then(data => {
+      this.$http.get(menu).then(data => {
       this.meNu = data.data;
-      console.log(data);
+      for(let i=0;i<data.data.length;i++){
+               Vue.set(data.data[i].foods[i].specfoods[0],'count',0);
+      }
+       this.$store.commit("s2",data.data);
+
+       console.log(data);
     });
   },
+ computed:{
+           ...mapState(['s12']),
+           // ...mapGetters({s1:'n'}),
+        },
   methods: {
-    // zen(e) {
-    //   var target = event.target;
-    //   var dataid = e; 
-    //   $(target); 
-    // }
-    // add(){
-      
-    // }
+      cheng(){
+         this.$router.back(-1);
+      },
+      count(i){
+        console.log(i)
+        this.counter++;
+        this.$store.commit('arrs', i);
+        this.$router.push({path:'/shoping',query:{foodname:this.meNu.foods}})
+         console.log(this.$store.state.meNu);
+
+   
+      }
   }
 };
 </script>
 
 <style scoped>
+  .qiu {
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+            border-radius: 50%;
+            position: absolute;
+            transition: all 0.8s;
+        }
+
+        .con {
+
+            width: 20px;
+            height: 20px;
+            background-color: transparent;
+            border-radius: 50%;
+            position: absolute;
+            top: -10px;
+            right:10px;
+            transition: all 0.8s;
+        }
+
+        .item:hover .con {
+            transform: translateX(-200px);
+            transition-timing-function: linear;
+        }
+
+        .item:hover .qiu {
+            transform: translateY(200px);
+            transition-timing-function: cubic-bezier(.58, -0.42, 1, .65 )
+        }
 .buttom_t{
   position:absolute;
   top: -.05rem;

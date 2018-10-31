@@ -37,8 +37,23 @@
             <div class="buttom_two_bigm">配送费¥5</div>
           </section>
           <section class="buttom_go">
-            <span style="margin: auto">还差¥20起送</span>
+             <router-link :to="{name:'shoping',path:'/shoping',query:{src:'//elm.cangdu.org/img/'+meNu.image_path,name:meNu.name}}">
+               <span style="margin: auto">还差20元</span>
+            </router-link>
           </section>
+      </div>
+      <!-- 購物車彈 -->
+      <div class="tankuang">
+          <div class="tankuang_1">
+             <span>购物车</span>
+             <span class="el-icon-delete right">
+               清空
+             </span>
+          </div>
+          <div v-for="(nam,index) in names" :key="index">
+            <!-- <span>{{nam.name}}</span> -->
+            <span>{{names}}</span>
+          </div>
       </div>
    <router-view></router-view>
    <transition name="el-fade-in-linear">
@@ -59,11 +74,13 @@
      </div>
    </transition>
 
+
  </div>
 
 </template>
 
 <script>
+import {mapMutations} from 'vuex'
     export default {
         name: "result",
         data(){
@@ -72,12 +89,18 @@
             me:{},
             id:this.$route.params.id,
             show:true,
+            names:this.$store.state.meNu
           }
       },
       computed:{
           // id:this.$route.params.id
+        
       },
       created(){
+      
+      // var a1 = this.$store.state.meNu;
+      var a2 = this.$store.state.cc;
+      console.log('hkhfldsf'+a2)
 
           // console.log('当前id='+this.$route.params.id);
 
@@ -105,6 +128,22 @@
 </script>
 
 <style scoped>
+.right{
+  float: right;
+}
+.tankuang_1{
+  border: 1px solid red;
+  padding: .17rem;
+}
+.tankuang{
+  position:fixed;
+  right: 0;
+  left: 0;
+  bottom: .7rem;
+  height: 2rem;
+  z-index: 100;
+  background:white;
+}
   .none_ul_p3{
     padding-left: .5rem;
     font-size: .1rem;
