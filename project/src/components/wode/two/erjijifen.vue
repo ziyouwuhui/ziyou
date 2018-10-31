@@ -23,7 +23,6 @@ export default {
 
 <style scoped>
 article {
-
     position: absolute;
     left: 0;
     right: 0;

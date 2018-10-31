@@ -3,6 +3,7 @@
     <Header></Header>
     <Zicontent></Zicontent>
     <Zibuttom></Zibuttom>
+    <!-- <Zifooter></Zifooter> -->
     <BButtom></BButtom>
 </div>
 </template>
@@ -12,6 +13,7 @@ import Header from './header'
 import Zicontent from './zicontent'
 import Zibuttom from './zibuttom'
 import BButtom from '../waimai/buttom'
+// import Zifooter from '../zifooter'
 export default {
     name: "wodes",
     created() {

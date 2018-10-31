@@ -1,22 +1,23 @@
 <template>
-   <div>
-       <section class="big" v-for="(it1,index) in data" :key="index">
-           <div class="big_top">
-             <span class="span" @click="change"><</span>
-             <span class="span1">{{it1.name}}</span>
-           </div>
-           <div class="big_bottom">
-             <div class="big_img" v-for="(child,cindex) in it1.foods" :key="child.id">
-               <!--<img src="./img/主页.png" alt="">-->
-               <img :src="'//elm.cangdu.org/img/'+child.image_path" alt="">
-             </div>
-             <div class="binjia">
-               <p>{{it1.phone}}</p>
-               <p>{{it1.name}}</p>
-               <p style="display: flex">
-                 <span>评分: </span>
-                 &nbsp; &nbsp;
-                 <span class="spannnnn">
+  <div>
+    <div>
+      <section class="big" v-for="(it1,key) in data">
+        <div class="big_top">
+          <span class="span" @click="change"><</span>
+          <span class="span1">{{it1.name}}---{{key}}</span>
+        </div>
+        <div class="big_bottom">
+          <div class="big_img" v-for="(child,cindex) in it1.foods" :key="child.id">
+            <!--<img src="./img/主页.png" alt="">-->
+            <img :src="'//elm.cangdu.org/img/'+child.image_path" alt="">
+          </div>
+          <div class="binjia">
+            <p>{{it1.phone}}</p>
+            <p>{{it1.name}}</p>
+            <p style="display: flex">
+              <span>评分: </span>
+              &nbsp; &nbsp;
+              <span class="spannnnn">
                     <el-rate
                       v-model="it1.rating"
                       disabled
@@ -25,19 +26,20 @@
                       score-template="{value}">
                      </el-rate>
                    </span>
-               </p>
-               <p>
-                 <span>月售{{it1.recent_order_num}}单</span>
-                 <span>售价{{it1.float_minimum_order_amount}}起</span>
-               </p>
-               <p>
-                 <span>评论数 {{it1.rating_count}}</span>
-                 <span>好评率{{it1.float_delivery_fee}}%</span>
-               </p>
-             </div>
-           </div>
-       </section>
-   </div>
+            </p>
+            <p>
+              <span>月售{{it1.recent_order_num}}单</span>
+              <span>售价{{it1.float_minimum_order_amount}}起</span>
+            </p>
+            <p>
+              <span>评论数 {{it1.rating_count}}</span>
+              <span>好评率{{it1.float_delivery_fee}}%</span>
+            </p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 
 </template>
 
@@ -46,22 +48,20 @@
         name: "classification",
         data() {
               return {
-                data:null,
-                da:[],
+                data:[],
+                da:{},
                 value5:'',
-                id:[],
+                id:this.$route.params.id,
               };
       },
       created(){
-        let api = "https://elm.cangdu.org/shopping/v2/menu?restaurant_id="+this.id;
-        //+this.$route.params.id
+        let api = "https://elm.cangdu.org/shopping/v2/menu?restaurant_id="+this.$route.params.id;
         // let api = '\n' +
         // let q =  'https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762';
         this.$http.get(api).then((data)=>{
           this.data = data.data;
-          this.da = data.data.foods;
-          console.log('----',this.data);
-          console.log(this.da ,"___________________")
+          this.da = data.data.id;
+          console.log( this.data,"000000000000000");
         })
       },
       methods:{

@@ -15,24 +15,24 @@
        <el-carousel :interval="5000" type="" height="2.3rem">
          <el-carousel-item v-for="(ite,index) in 1" :key="index">
            <ol>
-               <li class="li1"  v-for="(ite,index) in swiperData1" :key="index" >
+               <router-link :to="{path:'/Spinner',query:{ite:ite.title,id:ite.id}}" tag="li" class="li1"  v-for="(ite,index) in swiperData1" :key="index" >
                <img :src="'https://fuss10.elemecdn.com'+ite.image_url" alt="" >
                <p>{{ite.title}}</p>
-               </li>
+               </router-link>
            </ol>
          </el-carousel-item>
          <el-carousel-item v-for="(ite,index) in 1" :key="index+1">
            <ol>
-               <li class="li1"  v-for="(ite,index) in swiperData2" :key="index" >
+               <router-link :to="{path:'/Spinner',query:{ite:ite.title,id:ite.id}}" tag="li" class="li1"  v-for="(ite,index) in swiperData2" :key="index" >
                <img :src="'https://fuss10.elemecdn.com'+ite.image_url" alt="" >
                <p>{{ite.title}}</p>
-               </li>
+               </router-link>
            </ol>
          </el-carousel-item>
        </el-carousel>
     </div>
     
-    <div class="connt">
+    <!-- <div class="connt">
         <div class="seller">
             <span class="seller_f"><img src="./img/主页.png" alt=""></span>
             <span class="seller_a">附近商家</span>
@@ -70,25 +70,30 @@
                 </router-link>
             </ul>
         </div>
-    </div>
+    </div> -->
     <Buttom></Buttom>
+     <Lbiao></Lbiao>
+     <Buttom></Buttom>
 </div>
 </template>
 
 <script>
-import Buttom from "./buttom"
-export default {
-    name: "msite",
-    components: {
-        Buttom
-    },
-    data() {
-        return {
-            value5: '',
+  import Lbiao from './leibiao'
+  import Buttom from "./buttom"
+  import Vuex from 'vuex'
+    export default {
+        name: "msite",
+        components:{
+           Buttom,Lbiao
+        },
+        data(){
+          return{
+            value5:'',
+            // data:[],
             data: [],
             swiperData: [],
-            swiperData1: [],
-            swiperData2: [],
+            swiperData1:[],
+            swiperData2:[],
             swiperOption: {
                 navigation: {
                     nextEl: ".swiper-button-next",
@@ -116,6 +121,12 @@ export default {
         this.longitude = arr[0];
         // console.log(this.latitude, this.longitude);
 
+        // let api = "https://elm.cangdu.org/shopping/restaurants?latitude="+this.latitude+"&longitude="+this.longitude;
+        // this.$http.get(api).then((data)=>{
+        //   this.data = data.data;
+        //   this.value5 = data.rating;
+        //   })
+        
         let api = "https://elm.cangdu.org/shopping/restaurants?latitude=" + this.latitude + "&longitude=" + this.longitude;
         this.$http.get(api).then((data) => {
             this.data = data.data;
@@ -128,13 +139,18 @@ export default {
             this.swiperData = data.data;
             this.swiperData1 = this.swiperData.slice(0,8);
             this.swiperData2 = this.swiperData.slice(-8);
-        })
-
+         })
     }
 }
 </script>
 
 <style scoped>
+
+ .seller .seller_f img{
+    width: .25rem;
+    height: .25rem;
+  }
+
 .r .infor_r_B {
     background: #3190e8;
     color: white;
@@ -196,8 +212,15 @@ export default {
 .nav .el-icon-search {
     font-size: .35rem;
     color: white;
+  }
+.nav .nav_t{
+  font-size: .22rem;
+  color: white;
+  position: absolute;
+  top: .2rem;
+  right: .1rem;
 }
-
+ 
 .nav .nav_t {
     font-size: .22rem;
     color: white;
@@ -397,3 +420,9 @@ em,
     font-size: .01rem;
 }
 </style>
+<style>
+.connt{
+margin-top: -5rem
+}
+</style>
+
