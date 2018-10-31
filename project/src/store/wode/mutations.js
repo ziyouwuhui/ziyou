@@ -9,7 +9,7 @@ export default {
   },
   s2(state, n) {
     state.s12 = n;
-    console.log(, state.s12);
+    console.log( state.s12);
   },
   arrs(state, n) {
     state.meNu = n;
