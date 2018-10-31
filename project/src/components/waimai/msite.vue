@@ -419,8 +419,6 @@ em,
 .el-rate__item {
     font-size: .01rem;
 }
-</style>
-<style>
 .connt{
 margin-top: -5rem
 }
