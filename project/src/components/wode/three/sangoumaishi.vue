@@ -12,7 +12,7 @@
                 <span>支付宝</span>
             </p>
             <p>
-                <img class="xuan11" :class="{color1:co}" :src="xuan" @click="xuan1($event)">
+               <i id="ai" class="el-icon-circle-check-outline"></i>
             </p>
         </div>
         <div class="bottom_bottom">
@@ -21,7 +21,7 @@
                 <span>微信</span>
             </p>
             <p>
-                <img class="xuan12" :class="{color2:cd}"  :src="xuan" @click="xuan2($event)">
+                <i id="bi" class="el-icon-circle-check-outline" ></i>
             </p>
         </div>
     </section>
@@ -47,10 +47,7 @@ export default {
     name: "huiyuanzhongxin",
     data() {
         return {
-            co: true,
-            cd: false,
             shijian: null,
-            xuan: require('../../../assets/img/选中对号.png'),
             tishi: require('../../../assets/img/提示.png'),
             zhifutu: require('../../../assets/img/饿了么1.png'),
             tan: true
@@ -86,18 +83,10 @@ export default {
             this.tan = !this.tan;
         },
         xuan1(ev) {
-            ev.target.style.backgroundColor = 'red';
-            this.co = true;
-            this.cd = false;
-            console.log(this.co);
-             console.log(this.cd);
+           
         },
         xuan2(ev) {
-            ev.target.style.backgroundColor = 'red';
-            this.co = false;
-            this.cd = true;
-              console.log(this.co);
-             console.log(this.cd);
+          
         }
     },
     components: {
@@ -108,14 +97,6 @@ export default {
 </script>
 
 <style scoped>
-.co {
-    background-color: red;
-}
-
-.cd {
-    background-color: red;
-}
-
 .zhitu {
     width: 0.5rem;
     height: 0.5rem;

@@ -1,18 +1,20 @@
 <template>
 <div>
     <section class="top">
-        <div class="left">
-            <el-upload class="avatar-uploader" action="https://jsonplaceholder.typicode.com/posts/" :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
-                <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
-            <div class="content">
-                <router-link class="font1" to="/fenglu">{{denglu}}</router-link>
-                <router-link class="font2" to="/phone">{{number}}</router-link>
-            </div>
-        </div>
-
-        <i class="el-icon-arrow-right"></i>
+        <router-link class="top_router" to="/lulu">
+            <div class="left">
+                <div class="left_tu">
+                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                </div>
+                    <div class="wenwen">
+                        <p class="font1">{{denglu}}</p>
+                        <p class="font2">{{number}}</p>
+                    </div>
+                </div>
+                <div class="right">
+                    <i class="el-icon-arrow-right"></i>
+                </div>
+        </router-link>
     </section>
     <section class="bottom">
         <div>
@@ -54,70 +56,43 @@ export default {
             jifen: 0
         };
     },
-    methods: {
-        // 图片地址
-        handleAvatarSuccess(res, file) {
-            this.imageUrl = URL.createObjectURL(file.raw);
-        },
-        // 图片的限制
-        beforeAvatarUpload(file) {
-            const isJPG = file.type === "image/jpeg";
-            const isLt2M = file.size / 1024 / 1024 < 2;
-
-            if (!isJPG) {
-                this.$message.error("上传头像图片只能是 JPG 格式!");
-            }
-            if (!isLt2M) {
-                this.$message.error("上传头像图片大小不能超过 2MB!");
-            }
-            return isJPG && isLt2M;
-        }
-    }
+    methods: {}
 }
 </script>
 
 <style scoped>
-.top {
+.top_router {
+    background-color: #3190e8;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #3190e8;
     padding: 0.3rem 0.1rem;
-}
-
-.font1,
-.font2 {
-    color: white;
-}
-
-.font1 {
-    font-weight: bold;
-    margin-bottom: 0.05rem;
 }
 
 .left {
     display: flex;
-    align-items: center;
+}
+.left_tu{
+    background-color: white;
+    border-radius: 50%;
+}
+.font1,
+.font2,.el-icon-arrow-right {
+    color: white;
 }
 
-.content {
-    display: flex;
-    flex-direction: column;
+.font1 {
+    font-size: 0.2rem;
+    font-weight: bold;
+    margin-bottom: 0.05rem;
+}
+.wenwen{
     margin-left: 0.1rem;
-
 }
 p {
     color: black;
     padding-top: 0.1rem;
-    font-size: 0.1rem; 
-}
-.avatar-uploader {
-    background-color: white;
-    border-radius: 50%;
-}
-
-.el-icon-arrow-right {
-    color: white;
+    font-size: 0.1rem;
 }
 
 /* 设置图片大小 */
@@ -150,8 +125,8 @@ p {
 .span2 {
     color: #3190e8;
 }
-.span4{
-     color: black;
-}
 
+.span4 {
+    color: black;
+}
 </style>
