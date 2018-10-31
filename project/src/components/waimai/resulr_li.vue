@@ -216,12 +216,10 @@ export default {
   .buttom_img img{
     width: 40px;
   }
-<<<<<<< HEAD
 
   .el-rate__icon{
     font-size: .01rem;
   }
-=======
 .right_l_buttom{
     margin-top: .1rem;
     counter-reset: grey;
@@ -353,10 +351,7 @@ export default {
   overflow: hidden;
   margin-left: 4rem;
 }
-</style>
-<style>
 .el-rate__icon {
   font-size: 0.01rem;
 }
->>>>>>> 5e371a4c36a7708d6137c2f8fa0a9f67fb0d8d55
 </style>

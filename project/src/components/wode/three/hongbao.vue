@@ -102,6 +102,7 @@ export default {
     padding: 0.1rem;
     border-radius: 0.2rem;
     border: 0.1rem solid white;
+    
 }
 
 .li_top {

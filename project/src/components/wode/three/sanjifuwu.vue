@@ -23,6 +23,7 @@ export default {
         };
     },
     created() {
+        this.$store.commit("zihe", '服务中心');
         let menu = "https://elm.cangdu.org/v3/profile/explain";
         this.$http.get(menu).then((res) => {
             var obj = res.data;

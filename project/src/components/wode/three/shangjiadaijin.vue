@@ -35,20 +35,8 @@ export default {
 .top {
     display: flex;
     justify-content: space-between;
-<<<<<<< .merge_file_a58756
-    padding: 2rem 1rem;
-    font-size: 0.7rem;
-}
-.top img{
-    width: 1.4rem;
-    height: 1.4rem;
-}
-span {
-    color: rgb(49, 144, 232);
-    padding: 0.2rem 0 0 0.5rem;
-=======
     padding: 0.2rem 0.1rem;
-    font-size: 0.18rem;
+    font-size: 0.1rem;
 }
 .top img{
     width: 0.2rem;
@@ -57,7 +45,6 @@ span {
 span {
     color: rgb(49, 144, 232);
     padding: 0.2rem 0 0 0.1rem;
->>>>>>> .merge_file_a54136
 }
 
 .top>div:nth-child(2) {
@@ -66,55 +53,30 @@ span {
 }
 
 .bottom {
-<<<<<<< .merge_file_a58756
-    padding-top: 8rem;
-=======
-    padding-top: 0.8rem;
->>>>>>> .merge_file_a54136
+    padding-top: 0.4rem;
     flex-direction: column;
     text-align: center;
 }
 
 .bottom>img {
-<<<<<<< .merge_file_a58756
-    width: 10rem;
-    height: 6rem;
-}
-.p1,.p2,.p3{
-    padding: 0.4rem 0;
-}
-.p1{
-     font-size: 0.7rem;
-}
-.p2{
-     font-size: 0.5rem;
-}
-.p3{
-    font-size: 0.65rem;
-    color: white;
-    background-color: #56d176;
-    padding: 1.2rem 1rem;
-    margin: 1rem 10rem;
-=======
     width: 2rem;
-    height: 1rem;
+    height: 1.5rem;
 }
 .p1,.p2,.p3{
     padding: 0.1rem 0;
 }
 .p1{
-     font-size: 0.2rem;
+     font-size: 0.1rem;
 }
 .p2{
      font-size: 0.1rem;
-     color: #9999;
 }
 .p3{
+    font-size: 0.1rem;
     color: white;
     background-color: #56d176;
     padding: 0.2rem 0.1rem;
-    margin: 0.1rem 1rem;
->>>>>>> .merge_file_a54136
+    margin: 0.1rem 0.1rem;
     border-radius: 0.15rem;
 }
 </style>

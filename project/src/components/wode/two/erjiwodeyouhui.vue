@@ -2,7 +2,7 @@
 <article>
     <Header></Header>
     <section class="tiao">
-        <a href="#" @click.prevent="handel($event,'Hongbao')">红包</a>
+        <a href="#" @click.prevent="handel('Hongbao')">红包</a>
         <a href="#" @click.prevent="handel('Shangjiadaijin')">商家代金券</a>
     </section>
     <component :is="cc"></component>
@@ -32,7 +32,7 @@ export default {
         Shangjiadaijin
     },
     methods: {
-            handel(ev,value) {
+            handel(value) {
                 this.cc = value;
             }
     }

@@ -305,9 +305,7 @@
   .button_switch .trans_to_right{
     transform: translateX(.3rem);
   }
-  .img_change_img{
-    /*overflow: hidden;*/
-  }
+
   .img_change_img div{
     float: left;
   }

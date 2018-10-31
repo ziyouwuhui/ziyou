@@ -23,7 +23,7 @@
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
             </li>
-        </ul>0
+        </ul>
     </section>
 </div>
 </template>
@@ -34,10 +34,6 @@ export default {
     name: "erjifuwu",
     components: {
         Header
-    },
-    created() {
-        this.$store.commit("zihe", '服务中心');
-        console.log(this.$store.state.count);
     },
     data() {
         return {
@@ -50,12 +46,12 @@ export default {
     },
     methods: {},
     created() {
+        this.$store.commit("zihe", '服务中心');
         let menu = "https://elm.cangdu.org/v3/profile/explain";
         this.$http.get(menu).then((res) => {
-            this.data = res.data;
-            
+            this.data = res.data;  
+            console.log(this.data);
         });
-        console.log(this.data);
     }
 };
 </script>
