@@ -2,7 +2,7 @@
   <div class="search_page paddingTop">
     <header class="head_top">
       <div class="head_goback">
-          <router-link to="/mstie" class="icon_left">&lt;</router-link>
+          <span @click="change" class="icon_left">&lt;</span>
       </div>
       <div class="title_head ellipsis">
           <span class="title_text">搜索</span>
@@ -32,7 +32,7 @@
           <div class="clear_history" @click="clear" v-if="on">清空搜索历史</div>
         </div>
         <div class="food_guide">
-            <buttom></Buttom>
+            <Buttom></Buttom>
         </div>
   </div>
 </template>
@@ -64,17 +64,23 @@ import Buttom from "../waimai/buttom"
                 method:'get',
                 url:api
               }).then((data)=>{
-                console.log(data);
-                this.restaurants = data.data;
-                this.show = this.restaurants.length == 0 ? false : true;
+                console.log('111111',data.data);
+                if(data.data != null){
+                    this.restaurants = data.data;
+                    this.show = this.restaurants.length == 0 ? false : true;
+                }
+                
               })
             }
           },
           add(index){
+            console.log(this.restaurants[index]);
             this.histroy.push(this.restaurants[index]);
+            localStorage.setItem('foodshistory',JSON.stringify(this.history));
             this.off = false;
             this.on = true;
             this.inputV = '';
+            // console.log(this.history);
           },
           clear(){
             this.histroy = [];
@@ -84,6 +90,14 @@ import Buttom from "../waimai/buttom"
             this.histroy.splice(index,1);
             if(this.histroy.length == 0){
               this.on = false;
+            }
+          },
+          change(e){
+            this.$router.go(-1);
+          },
+          foodshis(){
+            if(this.history != []){
+                this.history=JSON.parse(localStorage.getItem('foodshistory'));
             }
           }
         }

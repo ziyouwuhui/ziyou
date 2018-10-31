@@ -1,7 +1,7 @@
 <template>
     <div class="wrap">
        <div class="top">
-           <router-link to="/result/1" class="top_qiantou">&lt;</router-link>
+           <span @click="change" class="top_qiantou">&lt;</span>
            <span>商家详情</span>
        </div>
        <div class="middle">
@@ -72,6 +72,11 @@
               console.log("1111",this.na.address)
               console.log(this.meNu);
         });
+      },
+      methods:{
+          change(e){
+            this.$router.go(-1);
+          }
       }
     }
 </script>

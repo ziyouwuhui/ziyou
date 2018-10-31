@@ -36,13 +36,8 @@
                         <span>
                           {{child.tips}}
                         </span>
-                <!--<span>好评率76%</span>-->
               </p>
             </div>
-            <!--<section class="right_li_buttom">-->
-            <!--<span class="right_li_but">${{20}}</span>-->
-            <!--<span class="right_li_add">{{"+"}}</span>-->
-            <!--</section>-->
           </div>
         </router-link>
       </ul>
@@ -60,10 +55,11 @@
         }
       },
       created(){
-        let menu = "https://elm.cangdu.org/shopping/v2/menu?restaurant_id="+this.$route.params.id;
+        console.log(this.id);
+        let menu = "https://elm.cangdu.org/shopping/v2/menu?restaurant_id="+this.id;
         this.$http.get(menu).then((data)=>{
           this.meNu = data.data;
-          console.log(data)
+          console.log(data);
         });
       }
     }

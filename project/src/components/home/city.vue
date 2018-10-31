@@ -3,7 +3,7 @@
       <div class="city_container">
         <header class="head_top">
           <div class="head_goback">
-            <router-link to="#/home" class="icon_left">&lt;</router-link>
+            <span @click="change" class="icon_left">&lt;</span>
           </div>
           <div class="title_head ellipsis">
             <span class="title_text">{{name}}</span>
@@ -23,7 +23,7 @@
         <div v-if="off == true">
           <header class="pois_search_history">搜索历史</header>
           <ul class="getpois_ul">
-            <router-link to="/waimai" tag="li" v-for="(i,index) in history" :key="index">
+            <router-link :to="{path:'/mstie',query:{geohash:i.geohash,address:i.address}}" tag="li" v-for="(i,index) in history" :key="index">
               <h4 class="pois_name ellipsis">{{i.name}}</h4>
               <p class="pois_address ellipsis">{{i.address}}</p>
             </router-link>
@@ -32,8 +32,9 @@
         </div>
         <div v-else-if="off == false">
           <!--搜索列表-->
+          <!--  -->
           <ul class="getpois_ul">
-            <router-link :to="{path:'/mstie',query:{geohash:item.geohash}}" tag="li" v-for="(item,index) in names" :key="index" @click.native="add(index)">
+            <router-link  tag="li" :to="{path:'/mstie',query:{geohash:item.geohash,address:item.address}}" v-for="(item,index) in names" :key="index" @click.native="add(index)">
               <h4 class="pois_name ellipsis">{{item.name}}</h4>
               <p class="pois_address ellipsis">{{item.address}}</p>
             </router-link>
@@ -44,6 +45,8 @@
 </template>
 
 <script>
+import {mapState, mapMutations} from 'vuex'
+
     export default {
         name: "city",
         data(){
@@ -63,21 +66,30 @@
               let api1 = "https://elm.cangdu.org/v1/pois?city_id="+this.$route.params.id+"&keyword="+this.value;
               this.$http.get(api1).then((data)=>{
                 this.names = data.data;
-                console.log(this.names);
               });
             },
             add(index){
-              // console.log(index);
+              console.log(index);
                 this.off = true;
-                this.history.push(this.names[index]);
                 this.on = true;
+                this.history.push(this.names[index]);
+                localStorage.setItem('history',JSON.stringify(this.history));
             },
             clear(){
               this.history = [];
               this.on = false;
+            },
+            change(e){
+              this.$router.go(-1);
+            },
+            seahis(){
+              if(this.history != []){
+                this.history=JSON.parse(localStorage.getItem('history'));
+              }
             }
         },
         created(){
+          this.seahis();
           let api = "https://elm.cangdu.org/v1/cities/"+this.$route.params.id;
           this.$http.get(api).then((data)=>{
             this.name = data.data.name;
@@ -93,19 +105,19 @@
 .head_top{
   background-color: #3190e8;
   width: 100%;
-  height: 0.45rem;
+  height: 0.57rem;
   margin-bottom: 0.1rem;
 }
   .head_goback{
     left: 0.16rem;
     width: .6rem;
     height: 0.3rem;
-    line-height: 0.4rem;
+    line-height: 0.53rem;
     margin-left: .1rem;
   }
   .title_head{
     position: absolute;
-    top: .25rem;
+    top: .28rem;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 50%;

@@ -8,10 +8,11 @@ import 'element-ui/lib/theme-chalk/index.css';
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
-Vue.use(VueAxios, axios);
 // require styles
 import 'swiper/dist/css/swiper.css'
+
+Vue.use(VueAxios, axios);
+
 
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 Vue.use(ElementUI);

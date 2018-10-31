@@ -1,7 +1,7 @@
 <template>
  <div class="warp">
       <ul class="top">
-        <router-link to="/" class="top_qiantou">&lt;</router-link>
+        <span @click="change" class="top_qiantou">&lt;</span>
         <router-link to="/business" class="shangjia">></router-link>
            <li class="top_left" v-if="meNu.piecewise_agent_fee">
              <!--//elm.cangdu.org/img/166584c036319076.jpg-->
@@ -76,6 +76,11 @@
       },
       computed:{
           // id:this.$route.params.id
+      },
+      methods:{
+        change(e){
+          this.$router.go(-1);
+        }
       },
       created(){
 

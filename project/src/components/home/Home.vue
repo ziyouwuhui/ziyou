@@ -37,7 +37,7 @@
 
 <script>
     export default {
-        name: "Home",
+      name: "Home",
       data: () => ({
         data:[],
         data1:[],
@@ -53,16 +53,14 @@
       //发请求
       created(){
         let api = "https://elm.cangdu.org/v1/cities?type=guess";
-        this.$http.get(api).then((data)=>{
-          console.log(data.data);
-          this.data = data.data;
-          this.id = data.data.id;
-        });
-        let api1 = "https://elm.cangdu.org/v1/cities?type=hot";
-        this.$http.get(api1).then((data)=>{
-          this.data1 = data.data;
-          // console.log(data.data);
-        });
+          this.$http.get(api).then((data)=>{
+            this.data = data.data;
+            this.id = data.data.id;
+          });
+          let api1 = "https://elm.cangdu.org/v1/cities?type=hot";
+            this.$http.get(api1).then((data)=>{
+              this.data1 = data.data;
+            });
         let api2 = "https://elm.cangdu.org/v1/cities?type=group";
         this.$http.get(api2).then((data)=>{
           let dis = data.data;
@@ -80,10 +78,10 @@
     height: 6.67rem !important;
   }
 .head_top{
-  height: 0.47rem !important;
+  height: 0.57rem !important;
   background-color: #3190e8;
   color: white;
-  line-height: 0.5rem;
+  line-height: 0.57rem;
   position: fixed;
   z-index: 100;
   left: 0;
@@ -96,7 +94,7 @@
   .head_logo{
     position: absolute;
     left: 0.1rem;
-    font-size: .16rem;
+    font-size: .2rem;
   }
   .head_login{
     position: absolute;

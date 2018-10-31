@@ -5,7 +5,7 @@
       <i class="el-icon-search"></i>
     </router-link>
     <router-link to="/home" class="msite_title">
-      <span>xzxz</span>
+      <span>{{this.$route.query.address}}</span>
     </router-link>
     <router-link class="nav_t" to="/login">
       <span>登陆</span>|<span>注册</span>
@@ -13,9 +13,17 @@
   </div>
      <div class="top">
        <el-carousel :interval="5000" type="" height="2.3rem">
-         <el-carousel-item v-for="(ite,index) in 2" :key="index">
+         <el-carousel-item v-for="(ite,index) in 1" :key="index">
            <ol>
-               <li class="li1"  v-for="(ite,index) in swiperData" :key="index" >
+               <li class="li1"  v-for="(ite,index) in swiperData1" :key="index" >
+               <img :src="'https://fuss10.elemecdn.com'+ite.image_url" alt="" >
+               <p>{{ite.title}}</p>
+               </li>
+           </ol>
+         </el-carousel-item>
+         <el-carousel-item v-for="(ite,index) in 1" :key="index+1">
+           <ol>
+               <li class="li1"  v-for="(ite,index) in swiperData2" :key="index" >
                <img :src="'https://fuss10.elemecdn.com'+ite.image_url" alt="" >
                <p>{{ite.title}}</p>
                </li>
@@ -49,7 +57,6 @@
                          </el-rate>
                        </span>
                        <div class="r">
-                         <!--<span class="infor_r_B" v-if="child.id == 9">{{text2}}</span>-->
                          <span class="infor_r_S" v-if="child.id == 9">{{child.name}}</span>
                        </div>
                     </div>
@@ -80,6 +87,8 @@
             value5:'',
             data:[],
             swiperData: [],
+            swiperData1: [],
+            swiperData2: [],
             swiperOption: {
               navigation: {
                 nextEl: ".swiper-button-next",
@@ -94,18 +103,14 @@
           }
         },
       methods:{
-        read(i){
-          console.log(i);
-        }
+        
       },
       created(){
         /*获取路径中的经纬度*/ 
-        console.log(this.$route.query.geohash);
         let str = this.$route.query.geohash;
         let arr = str.split(",");
         this.latitude = arr[1];
         this.longitude = arr[0];
-        console.log(this.latitude,this.longitude);
 
         let api = "https://elm.cangdu.org/shopping/restaurants?latitude="+this.latitude+"&longitude="+this.longitude;
         this.$http.get(api).then((data)=>{
@@ -117,7 +122,11 @@
         let api_1 = "https://elm.cangdu.org/v2/index_entry";
          this.$http.get(api_1).then((data)=>{
             this.swiperData = data.data;
+            this.swiperData1 = this.swiperData.slice(0,8);
+            this.swiperData2 = this.swiperData.slice(-8);
          })
+
+         
 
       }
     }
@@ -155,13 +164,17 @@
   .nav .msite_title{
     position: absolute;
     top: .2rem;
-    left: 35%;
-    text-align: center;
+    left: 25%;
+    width: 50%;
   }
   .nav .msite_title span{
     color: white;
     font-size: .22rem;
-    text-overflow:ellipsis;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .nav .link_search{
     position: absolute;
@@ -173,7 +186,7 @@
     color: white;
   }
 .nav .nav_t{
-  font-size: .22rem;
+  font-size: .18rem;
   color: white;
   position: absolute;
   top: .2rem;
@@ -277,8 +290,8 @@
     float: left;
     font-size: .16rem;
     color: #666;
-    margin: .12rem .2rem;
-    padding-left: 0.15rem;
+    margin: .12rem .18rem;
+    padding-left: 0.14rem;
   }
  .top li img{
     margin-bottom: .22rem;

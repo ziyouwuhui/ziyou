@@ -2,7 +2,7 @@
     <div class="loginContainer">
       <header class="head_top">
         <div class="head_goback">
-          <router-link to="/mstie" class="icon_left">&lt;</router-link>
+          <span @click="change" class="icon_left">&lt;</span>
         </div>
         <div class="title_head ellipsis">
           <span class="title_text">密码登录</span>
@@ -41,6 +41,16 @@
       </p>
       <div class="login_container" @click="login()">登录</div>
       <router-link to="/forget" class="to_forget">重置密码？</router-link>
+      <div class="alet_container" id="alcontainer">
+        <div class="tip_text_container">
+            <div class="tip_icon">
+                <span class="span1"></span>
+                <span class="span2"></span>
+            </div>
+            <p class="tip_text">{{msg}}</p>
+            <div class="confrim" @click="confrim()">确认</div>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -54,7 +64,8 @@
             username: "",
             password: "",
             codeNumer: "",
-            pwdType:'password'
+            pwdType:'password',
+            msg:''
           }
         },
         created(){
@@ -64,7 +75,6 @@
           aclass(){
             let divf = document.getElementById("button_switch");
             let div = document.getElementById("circle_button");
-            // console.log(divf,div);
             if (this.on){
               divf.classList.add("change_to_text");
               div.classList.add("trans_to_right");
@@ -76,24 +86,25 @@
             }
             this.pwdType = this.pwdType === 'password' ? 'text' : 'password';
           },
+          //获取验证码方法
           getCode(){
+            let errshow = document.getElementById('alcontainer');
             let url = "https://elm.cangdu.org/v1/captchas";
             this.$http({
               method:'post',
               url:url,
-              //https://developer.mozilla.org/zh-CN/docs/Web/API/Request/credentials
-              //用于表示用户代理是否应该在跨域请求的情况下从其他域发送cookies。
-              //默认为false
               withCredentials: true
             }).then((data)=>{
-              // console.log(data.data);
               if(data.data.status != 1){
-                alert('验证码无效!');
+                errshow.style.display = "block";
+                this.msg = data.data.message;
               }
               this.code = data.data.code;
             });
           },
+          // 登录方法
           login(){
+            let errshow = document.getElementById('alcontainer');
             let api = "https://elm.cangdu.org/v2/login";
             this.$http({
               method: "post",
@@ -105,33 +116,106 @@
                 captcha_code:this.codeNumer
               }
             }).then((res)=>{
-                // console.log('--->',res);
               if(res.data.status == 0){
-                alert(res.data.message);
+                errshow.style.display = "block";
+                this.msg = res.data.message;
               }
-              // this.$router.push({name:"person",query:res.data});
+              /*存入本地*/ 
+              let user = [{username:this.username,password:this.password}];
+              localStorage.setItem('users',JSON.stringify(user));
             });
+          },
+          change(e){
+            this.$router.go(-1);
+          },
+          confrim(){
+            let errshow = document.getElementById('alcontainer');
+            errshow.style.display = "none";
           }
         }
     }
 </script>
 
 <style scoped>
+  #alcontainer{
+    display:none;
+  }
+    .confrim{
+    font-size: .2rem;
+    color: #fff;
+    font-weight: 700;
+    margin-top: .2rem;
+    background-color: #4cd964;
+    width: 100%;
+    text-align: center;
+    line-height: .5rem;
+    border: 1px;
+    border-bottom-left-radius: .15rem;
+    border-bottom-right-radius: .15rem;
+  }
+  .tip_text{
+    font-size: .2rem;
+    color: #333;
+    line-height: .5rem;
+    text-align: center;
+    margin-top: .2rem;
+    padding: 0 .8rem;
+  }
+  .tip_icon .span2{
+    width: .05rem;
+    height: .05rem;
+    border: 1px;
+    border-radius: 50%;
+    margin-top: .1rem;
+    background-color: #f8cb86;
+  }
+  .tip_icon .span1{
+      width: .03rem;
+      height: .44rem;
+      background-color: #f8cb86;
+  }
+  .tip_text_container .tip_icon {
+    width: .78rem;
+    height: .78rem;
+    border: .045rem solid #f8cb86;
+    border-radius: 50%;
+  }
+  .tip_text_container{
+    position: absolute;
+    top: 30%;
+    left: 15%;
+    background-color: #fff;
+    border: 1px;
+  }
+  .tip_text_container, .tip_text_container .tip_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .alet_container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 200;
+  }
   .head_top{
     background-color: #3190e8;
     width: 100%;
-    height: 0.45rem;
+    height: 0.57rem;
   }
   .head_goback{
     left: 0.16rem;
     width: .6rem;
     height: 0.3rem;
-    line-height: 0.4rem;
+    line-height: 0.57rem;
     margin-left: .1rem;
   }
   .title_head{
     position: absolute;
-    top: .25rem;
+    top: .28rem;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 50%;

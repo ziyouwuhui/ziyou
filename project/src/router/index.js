@@ -13,6 +13,8 @@ import City from '../components/home/city'
 import Login from '../components/home/login'
 import Forget from '../components/home/forget'
 import Sousuo from '../components/home/sousuo'
+import Order from '../components/home/order'
+import Details from '../components/home/orderdetails'
  Vue.use(Router)
 
 export default new Router({
@@ -80,6 +82,18 @@ export default new Router({
       path: '/forget',
       name: 'Forget',
       component: Forget
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order,
+      children:[
+        {
+          path: 'orderdetails',
+          name: 'Details',
+          component: Details
+        }
+      ]
     }
   ]
 })
