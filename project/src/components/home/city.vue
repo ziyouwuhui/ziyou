@@ -34,7 +34,7 @@
           <!--搜索列表-->
           <!--  -->
           <ul class="getpois_ul">
-            <router-link  tag="li" :to="{path:'/mstie',query:{geohash:item.geohash,address:item.address}}" v-for="(item,index) in names" :key="index" @click.native="add(index)">
+            <router-link  tag="li" :to="{path:'/mstie',query:{geohash:item.geohash,address:item.address}}" v-for="(item,index) in names" :key="index" @click.native="addHis(index)">
               <h4 class="pois_name ellipsis">{{item.name}}</h4>
               <p class="pois_address ellipsis">{{item.address}}</p>
             </router-link>
@@ -68,8 +68,7 @@ import {mapState, mapMutations} from 'vuex'
                 this.names = data.data;
               });
             },
-            add(index){
-              console.log(index);
+            addHis(index){
                 this.off = true;
                 this.on = true;
                 this.history.push(this.names[index]);

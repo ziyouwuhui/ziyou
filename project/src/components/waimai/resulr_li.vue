@@ -43,13 +43,13 @@
               </p>
                <div class="right_l_buttom">
                 <span class="right_li_but">${{child.specfoods[0].price}}</span>
-                <span class="right_li_add" @click = "count(data[0].foods[0].specfoods[0]._id)">+</span>
+                <span class="right_li_add" @click = "count(cindex)">+</span>
                 <!-- <span class="item">
                     <i class="con"> <i class="qiu"> </i> </i>
                 </span> -->
                 <span class="right_li_add_1">{{ counter }}</span>
                 <span class="right_li_a" @click = "counter--">-</span>
-        </div>
+             </div>
             </div>
           </div>
         </router-link>
@@ -63,41 +63,38 @@
 
 <script>
 import Vue from 'vue'
-import {mapState} from 'vuex'
+import {mapState,mapMutations} from 'vuex'
 export default {
   name: "resulr_li",
   data() {
     return {
       meNu: null,
       counter: 0,
-      id: this.$route.params.id
+      id: ''
     };
   },
   created() {
     this.$store.commit("s1", this.$route.params.id);
+
+    this.id = this.$store.state.s11;
     let menu =
       "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
       this.id;
       this.$http.get(menu).then(data => {
       this.meNu = data.data;
-      for(let i=0;i<data.data.length;i++){
-               Vue.set(data.data[i].foods[i].specfoods[0],'count',0);
-      }
        this.$store.commit("s2",data.data);
-
-       console.log(data);
+      
     });
   },
  computed:{
-           ...mapState(['s12']),
-           // ...mapGetters({s1:'n'}),
+           ...mapState(['s12'])
         },
   methods: {
       cheng(){
          this.$router.back(-1);
       },
       count(i){
-        console.log(i)
+        console.log(i);
         this.counter++;
         this.$store.commit('arrs', i);
         this.$router.push({path:'/shoping',query:{foodname:this.meNu.foods}})
@@ -116,7 +113,6 @@ export default {
             position: absolute;
             transition: all 0.8s;
         }
-
         .con {
 
             width: 20px;
@@ -128,12 +124,10 @@ export default {
             right:10px;
             transition: all 0.8s;
         }
-
         .item:hover .con {
             transform: translateX(-200px);
             transition-timing-function: linear;
         }
-
         .item:hover .qiu {
             transform: translateY(200px);
             transition-timing-function: cubic-bezier(.58, -0.42, 1, .65 )
@@ -216,12 +210,10 @@ export default {
   .buttom_img img{
     width: 40px;
   }
-<<<<<<< HEAD
 
   .el-rate__icon{
     font-size: .01rem;
   }
-=======
 .right_l_buttom{
     margin-top: .1rem;
     counter-reset: grey;
@@ -353,10 +345,7 @@ export default {
   overflow: hidden;
   margin-left: 4rem;
 }
-</style>
-<style>
 .el-rate__icon {
   font-size: 0.01rem;
 }
->>>>>>> 5e371a4c36a7708d6137c2f8fa0a9f67fb0d8d55
 </style>

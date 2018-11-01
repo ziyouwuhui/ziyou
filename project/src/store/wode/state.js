@@ -5,6 +5,7 @@ export default {
  apis:[],
  s1:'',
  meNu:[],
- inde:''
+ inde:'',
+ entities:null
 
 }

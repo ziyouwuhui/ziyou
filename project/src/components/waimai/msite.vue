@@ -71,7 +71,6 @@
             </ul>
         </div>
     </div> -->
-    <Buttom></Buttom>
      <Lbiao></Lbiao>
      <Buttom></Buttom>
 </div>
@@ -131,7 +130,6 @@
         this.$http.get(api).then((data) => {
             this.data = data.data;
             this.value5 = data.rating;
-            // console.log(this.data,'xxxxx');
         })
 
         let api_1 = "https://elm.cangdu.org/v2/index_entry";

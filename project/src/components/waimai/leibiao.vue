@@ -39,7 +39,7 @@
                 </router-link>
               </ul>
           </div>
-     </div>
+        </div>
    </div>
 </template>
 <script>
@@ -99,86 +99,120 @@ import {mapState} from 'vuex'
 </script>
 
 <style scoped>
-.infor_r_h{
+
+ .seller .seller_f img{
+    width: .25rem;
+    height: .25rem;
+  }
+
+.r .infor_r_B {
+    background: #3190e8;
+    color: white;
+    font-size: .05rem;
+    padding: 0.01rem;
+    border-radius: .028rem;
+    border: .015rem solid #3190e8;
+}
+
+.r .infor_r_S {
+    color: #3190e8;
+    font-size: .05rem;
+    padding: 0.01rem;
+    border: .015rem solid #3190e8;
+}
+
+.infor_r_h {
     float: right;
     color: #3190e8;
-  }
-  .infor_r_peisong .infor_r_l{
+}
+
+.infor_r_peisong .infor_r_l {
     float: right;
     margin-left: 0.3rem;
     color: #999;
-  }
-  .infor_r_peisong .infor_r_s{
+}
+
+.infor_r_peisong .infor_r_s {
     transform: scale(.2);
     font-size: .1rem;
     color: #666;
-  }
-  .infor_r_pinpai .infor_r_b{
+}
+
+.infor_r_pinpai .infor_r_b {
     float: right;
     color: #999;
-  }
-  .infor_r_pinpai .infor_r_x{
-    /*width: 8.5rem;*/
+}
+
+.infor_r_pinpai .infor_r_x {
     color: #333;
     padding-top: .01rem;
-    font: .19rem/.18rem PingFangSC-Regular;
+    font: .15rem PingFangSC-Regular;
     font-weight: 700;
-   padding-right: 1.6rem;
-  }
-  .infor_r_pinpai .infor_r_p{
+    padding-right: 1rem;
+}
+
+.infor_r_pinpai .infor_r_p {
     content: "\54C1\724C";
     display: inline-block;
-    font-size: .1rem;
-    line-height: .2rem;
+    font-size: .06rem;
+    line-height: .16rem;
     color: #333;
     background-color: #ffd930;
     padding: 0 .1rem;
     border-radius: .02rem;
     margin-right: .1rem;
-  }
-  .li_g{
+}
+
+.li_g {
     display: flex;
     border-bottom: .025rem solid #f1f1f1;
     padding: .2rem .1rem;
-  }
-  .guaranteed .infor_l img{
-    width:0.78rem;
+}
+
+.guaranteed .infor_l img {
+    width: 0.78rem;
     float: left;
     /*border: 1px solid red;*/
-  }
-  .guaranteed .infor_r{
+}
+
+.guaranteed .infor_r {
     font-size: .1rem;
     float: right;
     margin-left: .1rem;
-  }
-  .guaranteed .infor_r>div{
+    width: 4rem;
+}
+
+.guaranteed .infor_r>div {
     margin-bottom: .15rem;
-  }
-  .guaranteed{
+}
+
+.guaranteed {
     background-color: #fff;
-  }
- .connt .seller{
-    padding-top:.2rem;
+}
+
+.connt .seller {
+    padding-top: .2rem;
     padding-left: .15rem;
     /*margin-bottom: 0.35rem;*/
-  }
-  .seller .seller_a{
+}
+
+.seller .seller_a {
     color: #999;
     font-size: .18rem;
-    font-family: Microsoft YaHei;;
-  }
-  .seller .seller_f img{
+    font-family: Microsoft YaHei;
+    ;
+}
+
+.seller .seller_f img {
     width: .25rem;
     height: .25rem;
-  }
-  .wrap .connt{
-    margin-top: .6rem;
+}
+
+.wrap .connt {
+    margin-top: .12rem;
     border-top: .012rem solid #e4e4e4;
     background-color: #fff;
-  }
-
-</style>
-<style>
+}
   .el-rate__item{
     font-size: .01rem;
   }
