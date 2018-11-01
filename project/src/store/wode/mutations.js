@@ -18,9 +18,9 @@ export default {
   in(state, n) {
     state.inde = n;
   },
-  cont(state, id) {
-    //  state.
-  }
+  // add(state,id){
+  //       this.state.meNu.filter(num => id )
+  // }
 
   
 }

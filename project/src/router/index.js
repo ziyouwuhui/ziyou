@@ -58,6 +58,7 @@ import Tuijianyoujiang from "../components/wode/three/wodeyouhui/tuijianyoujiang
 // 积分说明
 import Sanjifenshuoming from '../components/wode/three/sanjifenshuoming'
 
+
 Vue.use(Router)
 
 export default new Router({
@@ -250,6 +251,6 @@ export default new Router({
     {
       path: '/xiaxia',
       component: Erjixiazai,
-    },
+    }
   ]
 })

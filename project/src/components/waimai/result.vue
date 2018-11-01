@@ -23,15 +23,17 @@
       </ul>
       <section class="conter">
         <div class="conter_left">
-          <router-link class="conter_left_show" :to="'/result/resulr_li/'+id" tag="span">商品</router-link>
+          <router-link class="conter_left_show" :to="'/result/resulr_li/'+id" tag="span" :childByVaue="childByVaue">商品
+          </router-link>
         </div>
         <div class="conter_right">
           <router-link class="conter_right_ping" :to="'/result/resulr_evaluate/'+id" tag="span" >评价</router-link>
         </div>
       </section>
       <!--<divli></divli>-->
+      <!-- 购物车下 -->
       <div class="buttom">
-          <section class="buttom_img"><img src="./img/购物车.png" alt=""></section>
+          <section @click="bart=!bart" class="buttom_img"><img src="./img/购物车.png" alt=""></section>
           <section class="buttom_two">
             <div class="buttom_two_money">¥ 0.00</div>
             <div class="buttom_two_bigm">配送费¥5</div>
@@ -42,19 +44,23 @@
             </router-link>
           </section>
       </div>
-      <!-- 購物車彈 -->
-      <div class="tankuang">
+        <!-- 購物車彈 -->
+      <div class="tankuang" v-show="bart">
           <div class="tankuang_1">
              <span>购物车</span>
-             <span class="el-icon-delete right">
-               清空
-             </span>
+             <span class="el-icon-delete right"> 清空</span>
           </div>
-          <div v-for="(nam,index) in names" :key="index">
-            <!-- <span>{{nam.name}}</span> -->
-            <span>{{names}}</span>
+          <!-- 显示自己内容 -->
+          <div>
+               <ul>
+                 <li v-for="(item,index) in name" :key="index">
+                   {{
+                     item.name
+                   }}
+                 </li>
+                </ul> 
           </div>
-      </div>
+      </div> 
    <router-view></router-view>
    <transition name="el-fade-in-linear">
        <div v-show="!show">
@@ -80,269 +86,280 @@
 </template>
 
 <script>
-import {mapMutations} from 'vuex'
-    export default {
-        name: "result",
-        data(){
-          return{
-            meNu:{},
-            me:{},
-            id:this.$route.params.id,
-            show:true,
-            names:this.$store.state.meNu
+import { mapMutations } from "vuex";
+export default {
+  name: "result",
+  data() {
+    return {
+      meNu: {},
+      bart: false,
+      me: {},
+      id: this.$route.params.id,
+      show: true,
+      names: this.$store.state.meNu,
+      name:[],
+    };
+  },
+  computed: {
+    // id:this.$route.params.id
+  },
+  created() {
+    // var a1 = this.$store.state.meNu;
+    var a2 = this.$store.state.cc;
+    console.log("hkhfldsf" + a2);
+
+    // console.log('当前id='+this.$route.params.id);
+
+    let api_r =
+      "https://elm.cangdu.org/shopping/restaurant/" + this.$route.params.id;
+    // console.log(api_r);
+
+    // console.log(this.$route.params.id);
+    // console.log(api_r);
+    this.$http.get(api_r).then(data => {
+      this.meNu = data.data;
+      console.log(this.meNu, "=========");
+      this.me = data.data.supports;
+      console.log(this.me, "!!!!!!!!!!!!!!!!!!!!!!!");
+    });
+  },
+  methods: {
+    change(e) {
+      this.$router.go(-1);
+    },
+    checkCount() {
+      let foodlist = [];
+      this.food.forEach(val => {
+        val.detail.forEach(val => {
+          if (val.count) {
+            foodlist.push(val);
           }
-      },
-      computed:{
-          // id:this.$route.params.id
-        
-      },
-      created(){
-      
-      // var a1 = this.$store.state.meNu;
-      var a2 = this.$store.state.cc;
-      console.log('hkhfldsf'+a2)
-
-          // console.log('当前id='+this.$route.params.id);
-
-        let api_r = "https://elm.cangdu.org/shopping/restaurant/"+this.$route.params.id;
-        // console.log(api_r);
-
-        // console.log(this.$route.params.id);
-        // console.log(api_r);
-        this.$http.get(api_r).then((data)=>{
-            this.meNu = data.data;
-            console.log(this.meNu,"=========");
-            this.me = data.data.supports;
-            console.log(this.me,"!!!!!!!!!!!!!!!!!!!!!!!")
         });
-      },  
-      methods:{
-          change(e){
-            this.$router.go(-1);
-            // var target = event.target;
-            // var dataid = e;
-            // $(target);
-          }
-      }
+      });
+      return foodlist;
+    },
+    childByVaue:function(childByVaue){
+      //this.name = childByVaue;
+      console.log('fghjklkjhghjklk')
+      console.log('kjjjjjjjjjjjj',childByVaue)
+      this.$on("childByVaue")
     }
+  }
+};
 </script>
 
 <style scoped>
-.right{
+.right {
   float: right;
 }
-.tankuang_1{
+.tankuang_1 {
   border: 1px solid red;
-  padding: .17rem;
+  padding: 0.17rem;
 }
-.tankuang{
-  position:fixed;
+.tankuang {
+  position: fixed;
   right: 0;
   left: 0;
-  bottom: .7rem;
+  bottom: 0.7rem;
   height: 2rem;
   z-index: 100;
-  background:white;
+  background: white;
 }
-  .none_ul_p3{
-    padding-left: .5rem;
-    font-size: .1rem;
-  }
-  .none_ul_p1{
-    text-align: center;
-    font-size: .3rem;
-    color: #fff;
-    margin: .5rem 0;
-  }
-  .none_ul_p2{
-    text-align: center;
-    width: .8rem;
-    font-size: .1rem;
-    color: #fff;
-    margin: .3rem auto;
-    border: 1px solid gainsboro;
-    padding: .08rem;
-    border-radius: .2rem;
-  }
-  .cha{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    color: gainsboro;
-    border: 1px solid gainsboro;
-    font-size: .3rem;
-    text-align: center;
-    line-height: 50px;
-    position: absolute;
-    bottom: 1rem;
-    left: 45%;
-  }
-  .none_ul{
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:  #262626;;
-    z-index: 200;
-    color: white;
-  }
-  .middle_three{
-    color: white;
-  }
-  .middle_span{
-    font-size: 0.1rem;
-    padding: 0.06rem;
-    border-radius: .1rem;
-    color: white;
-  }
-  .dic{
-    margin-top: .2rem;
-    margin-right: .19rem;
-  }
-  .top_qiantou{
-    color: white;
-    font-size: 0.35rem;
-    position: absolute;
-    top: 0.01rem;
-    left: 0.02rem;
-  }
-  .shangjia{
-    color: white;
-    font-size: 0.35rem;
-    position: absolute;
-    bottom: 0.4rem;
-    right: 0.3rem;
-  }
-  .buttom .buttom_two_money{
-    font-size: .3rem;
-    font-weight: 700;
-    margin-bottom: .1rem;
-  }
-  .buttom .buttom_two_bigm{
-    font-size: .1rem;
-  }
-  .buttom .buttom_two{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 1.2rem;
-  }
-  .buttom .buttom_go{
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: #535356;
-    width: 1.5rem;
-    height: 100%;
-    line-height: .7rem;
-    display: flex;
-    font-size: .2rem;
-  }
-  .buttom_img{
-    /*display: flex;*/
-    background-color: #3d3d3f;
-    position: absolute;
-    padding: .1rem;
-    border: .1rem solid #444;
-    border-radius: 50%;
-    left: .2rem;
-    top: -.25rem;
-  }
-  .buttom_img img{
-    width: 40px;
-  }
-  .conter .conter_left .conter_left_show:hover{
+.none_ul_p3 {
+  padding-left: 0.5rem;
+  font-size: 0.1rem;
+}
+.none_ul_p1 {
+  text-align: center;
+  font-size: 0.3rem;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+.none_ul_p2 {
+  text-align: center;
+  width: 0.8rem;
+  font-size: 0.1rem;
+  color: #fff;
+  margin: 0.3rem auto;
+  border: 1px solid gainsboro;
+  padding: 0.08rem;
+  border-radius: 0.2rem;
+}
+.cha {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: gainsboro;
+  border: 1px solid gainsboro;
+  font-size: 0.3rem;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  bottom: 1rem;
+  left: 45%;
+}
+.none_ul {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #262626;
+  z-index: 200;
+  color: white;
+}
+.middle_three {
+  color: white;
+}
+.middle_span {
+  font-size: 0.1rem;
+  padding: 0.06rem;
+  border-radius: 0.1rem;
+  color: white;
+}
+.dic {
+  margin-top: 0.2rem;
+  margin-right: 0.19rem;
+}
+.top_qiantou {
+  color: white;
+  font-size: 0.35rem;
+  position: absolute;
+  top: 0.01rem;
+  left: 0.02rem;
+}
+.shangjia {
+  color: white;
+  font-size: 0.35rem;
+  position: absolute;
+  bottom: 0.4rem;
+  right: 0.3rem;
+}
+.buttom .buttom_two_money {
+  font-size: 0.3rem;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+.buttom .buttom_two_bigm {
+  font-size: 0.1rem;
+}
+.buttom .buttom_two {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1.2rem;
+}
+.buttom .buttom_go {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #535356;
+  width: 1.5rem;
+  height: 100%;
+  line-height: 0.7rem;
+  display: flex;
+  font-size: 0.2rem;
+}
+.buttom_img {
+  /*display: flex;*/
+  background-color: #3d3d3f;
+  position: absolute;
+  padding: 0.1rem;
+  border: 0.1rem solid #444;
+  border-radius: 50%;
+  left: 0.2rem;
+  top: -0.25rem;
+}
+.buttom_img img {
+  width: 40px;
+}
+.conter .conter_left .conter_left_show:hover {
   border-bottom: 2px solid #4e6cff;
   padding: 0.101rem 0.05rem;
   color: #4e6cff;
 }
-  .conter .conter_right .conter_right_ping:hover{
-    border-bottom: 2px solid #4e6cff;
-    padding: 0.101rem 0.05rem;
-    color: #4e6cff;
-  }
- .conter{
-   display: flex;
-   width: 100%;
-   background-color: #fff;
-   border-bottom: 1px solid #ebebeb;
-   position: fixed;
-   margin-top: 1.59rem;
-   z-index: 5;
-
- }
- .conter div{
-   width: 50%;
-   text-align: center;
-   color:gray;
-   font-weight: 400;
-   font-family: Microsoft Yahei;
-   margin: 0.3rem;
-   top: 0;
-   left: 0;
-   right: 0;
-
- }
-  .warp .top{
-    width: 100%;
-    background: gray;
-    padding: 0.125rem .125rem;
-    overflow: hidden;
-    font-size: 0.15rem;
-    position: fixed;
-    z-index: 100;
-    left: 0;
-    right: 0;
-    top: 0;
-    /*height: 0.566rem;*/
-  }
-.warp .top .top_left{
+.conter .conter_right .conter_right_ping:hover {
+  border-bottom: 2px solid #4e6cff;
+  padding: 0.101rem 0.05rem;
+  color: #4e6cff;
+}
+.conter {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #ebebeb;
+  position: fixed;
+  margin-top: 1.59rem;
+  z-index: 5;
+}
+.conter div {
+  width: 50%;
+  text-align: center;
+  color: gray;
+  font-weight: 400;
+  font-family: Microsoft Yahei;
+  margin: 0.3rem;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.warp .top {
+  width: 100%;
+  background: gray;
+  padding: 0.125rem 0.125rem;
+  overflow: hidden;
+  font-size: 0.15rem;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  top: 0;
+  /*height: 0.566rem;*/
+}
+.warp .top .top_left {
   float: left;
   z-index: 100;
-
 }
-.warp .top .top_right h4{
-  font-size: .25rem;
+.warp .top .top_right h4 {
+  font-size: 0.25rem;
   color: #fff;
   font-weight: 700;
   width: 100%;
 }
-  .warp .top .top_right{
-    float: right;
-    margin-left: .1rem;
-    margin-top: .05rem;
-  }
-  .warp .top .top_right .top_right_s{
-    margin: .18rem 0;
-    font-size: .165rem;
-    color: #fff;
-  }
-.warp .top .top_left img{
-  width:1rem;
-
+.warp .top .top_right {
+  float: right;
+  margin-left: 0.1rem;
+  margin-top: 0.05rem;
 }
-  .warp .top .top_right .top_right_p{
-    font-size: .16rem;
-    color: #fff;
-  }
- ul li{
-   list-style-type:none;
-  }
-  .buttom{
-    position: fixed;
-    z-index: 120;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 0.5rem;
-    width:100%;
-    box-shadow: 0 -0.02667rem 0.05333rem rgba(0,0,0,.1);
-    font-size: .24rem;
-    padding: 10px 0;
-    background-color:#333;
-    color: white;
-  }
+.warp .top .top_right .top_right_s {
+  margin: 0.18rem 0;
+  font-size: 0.165rem;
+  color: #fff;
+}
+.warp .top .top_left img {
+  width: 1rem;
+}
+.warp .top .top_right .top_right_p {
+  font-size: 0.16rem;
+  color: #fff;
+}
+ul li {
+  list-style-type: none;
+}
+.buttom {
+  position: fixed;
+  z-index: 120;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.5rem;
+  width: 100%;
+  box-shadow: 0 -0.02667rem 0.05333rem rgba(0, 0, 0, 0.1);
+  font-size: 0.24rem;
+  padding: 10px 0;
+  background-color: #333;
+  color: white;
+}
 </style>

@@ -20,7 +20,7 @@
         <router-link tag="li" to="" class="li_t">
           <!--src="//elm.cangdu.org/img/1661a8e8aa318572.png">-->
           <!-- 好吃的 -->
-          <div class="right_li_id"  v-for="(child,cindex) in it.foods" :key="cindex">
+          <div class="right_li_id"  v-for="(child,cindex) in foods" :key="cindex">
             <section class="right_li_l">
               <img :src="'//elm.cangdu.org/img/'+child.image_path" alt="" style="width: 0.5rem">
             </section>
@@ -44,12 +44,12 @@
               </p>
                <div class="right_l_buttom">
                 <span class="right_li_but">${{child.specfoods[0].price}}</span>
-                <span class="right_li_add" @click = "count(data[0].foods[0].specfoods[0]._id)">+</span>
+                <span class="right_li_add" @click = "add(cindex)">{{sum*child.specfoods.price}}</span>
                 <!-- <span class="item">
                     <i class="con"> <i class="qiu"> </i> </i>
                 </span> -->
-                <span class="right_li_add_1">{{ counter }}</span>
-                <span class="right_li_a" @click = "counter--">-</span>
+                <span class="right_li_add_1">{{ child.num }}</span>
+                <span class="right_li_a" @click = "counter--"></span>
         </div>
             </div>
           </div>
@@ -58,19 +58,22 @@
       </ul>
     </section>
 
-      
+   
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import {mapState} from 'vuex'
+import Vue from "vue";
+import { mapState } from "vuex";
 export default {
   name: "resulr_li",
   data() {
     return {
       meNu: null,
-      counter: 0,
+      allFoods: [],
+      foods: [],
+      counter: 1,
+      sum: null
       // id: this.$route.params.id
       // m:'<span class="li_s">{{ite.name}}</span>',
     };
@@ -80,159 +83,175 @@ export default {
     let menu =
       "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
       this.$route.params.id;
-      this.$http.get(menu).then(data => {
+    this.$http.get(menu).then(data => {
       this.meNu = data.data;
-      for(let i=0;i<data.data.length;i++){
-               Vue.set(data.data[i].foods[i].specfoods[0],'count',0);
+      for (let i = 0; i < data.data.length; i++) {
+        this.allFoods.push(data.data[i].foods);
       }
-       this.$store.commit("s2",data.data);
+      for (let i = 0; i < this.allFoods[0].length; i++) {
+        this.allFoods[0][i].num = 1;
+        this.foods.push(this.allFoods[0][i]);
+      }
 
-       console.log(data);
+      this.$store.commit("s2", data.data);
+
+      console.log("````" + data);
     });
   },
- computed:{
-           ...mapState(['s12']),
-           // ...mapGetters({s1:'n'}),
-        },
+  computed: {
+    ...mapState(["s12"])
+    // ...mapGetters({s1:'n'}),
+  },
   methods: {
-      cheng(){
-         this.$router.back(-1);
-      },
-      count(i){
-        console.log(i)
-        this.counter++;
-        this.$store.commit('arrs', i);
-        this.$router.push({path:'/shoping',query:{foodname:this.meNu.foods}})
-         console.log(this.$store.state.meNu);
+    cheng() {
+      this.$router.back(-1);
+    },
+    add(i) {
+      this.foods[i].num++;
+      // console.log(i)
+      this.sum = this.counter++;
+      console.log(this.sum, "11111111111111111");
+      this.$store.commit("arrs", i);
+      this.$router.push({
+        path: "/shoping",
+        query: { foodname: this.meNu.foods }
+      });
+      console.log(this.$store.state.meNu);
+      var food = this.meNu.foods;
+      this.$emit("childByVaue", this.foods[i]);
+    }
 
-   
-      }
+    // mounted() {
+    // var _this = this;
+    // this.meNu.foods.map(function(item){
+    //    _this.$set(item,'select',true)
+    // })
+    // },
   }
 };
 </script>
 
 <style scoped>
-  .qiu {
-            width: 20px;
-            height: 20px;
-            background-color: blue;
-            border-radius: 50%;
-            position: absolute;
-            transition: all 0.8s;
-        }
+.qiu {
+  width: 20px;
+  height: 20px;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+  transition: all 0.8s;
+}
 
-        .con {
+.con {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: 10px;
+  transition: all 0.8s;
+}
 
-            width: 20px;
-            height: 20px;
-            background-color: transparent;
-            border-radius: 50%;
-            position: absolute;
-            top: -10px;
-            right:10px;
-            transition: all 0.8s;
-        }
+.item:hover .con {
+  transform: translateX(-200px);
+  transition-timing-function: linear;
+}
 
-        .item:hover .con {
-            transform: translateX(-200px);
-            transition-timing-function: linear;
-        }
-
-        .item:hover .qiu {
-            transform: translateY(200px);
-            transition-timing-function: cubic-bezier(.58, -0.42, 1, .65 )
-        }
-.buttom_t{
-  position:absolute;
-  top: -.05rem;
-  right: -.05rem;
+.item:hover .qiu {
+  transform: translateY(200px);
+  transition-timing-function: cubic-bezier(0.58, -0.42, 1, 0.65);
+}
+.buttom_t {
+  position: absolute;
+  top: -0.05rem;
+  right: -0.05rem;
   background: red;
   color: white;
   border-radius: 50%;
   padding: 0.06rem;
-  font-size: .04rem;
+  font-size: 0.04rem;
 }
-.coudan_shoping_right{
+.coudan_shoping_right {
   float: right;
 }
-.coudan_shoping{
-  font-size: .25rem;
-  margin: .15rem .18rem;
+.coudan_shoping {
+  font-size: 0.25rem;
+  margin: 0.15rem 0.18rem;
 }
-.coudan{
+.coudan {
   border: 1px solid rebeccapurple;
-    left: 0;
-    right: 0;
-    bottom: .7rem;
-    z-index: 119;
-    position:fixed;
-    background: wheat
+  left: 0;
+  right: 0;
+  bottom: 0.7rem;
+  z-index: 119;
+  position: fixed;
+  background: wheat;
 }
-  .buttom{
-    position: fixed;
-    z-index: 120;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 0.5rem;
-    width:100%;
-    box-shadow: 0 -0.02667rem 0.05333rem rgba(0,0,0,.1);
-    font-size: .24rem;
-    padding: 10px 0;
-    background-color:#333;
-    color: white;
-  }
-  .buttom .buttom_two_money{
-    font-size: .3rem;
-    font-weight: 700;
-    margin-bottom: .1rem;
-  }
-  .buttom .buttom_two_bigm{
-    font-size: .1rem;
-  }
-  .buttom .buttom_two{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 1.2rem;
-  }
-  .buttom .buttom_go{
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: #535356;
-    width: 1.5rem;
-    height: 100%;
-    line-height: .7rem;
-    display: flex;
-    font-size: .2rem;
-  }
-  .buttom_img{
-    /*display: flex;*/
-    background-color: #3d3d3f;
-    position: absolute;
-    padding: .1rem;
-    border: .1rem solid #444;
-    border-radius: 50%;
-    left: .2rem;
-    top: -.25rem;
-  }
-  .buttom_img img{
-    width: 40px;
-  }
-.right_l_buttom{
-    margin-top: .1rem;
-    counter-reset: grey;
-   
+.buttom {
+  position: fixed;
+  z-index: 120;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.5rem;
+  width: 100%;
+  box-shadow: 0 -0.02667rem 0.05333rem rgba(0, 0, 0, 0.1);
+  font-size: 0.24rem;
+  padding: 10px 0;
+  background-color: #333;
+  color: white;
+}
+.buttom .buttom_two_money {
+  font-size: 0.3rem;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+.buttom .buttom_two_bigm {
+  font-size: 0.1rem;
+}
+.buttom .buttom_two {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1.2rem;
+}
+.buttom .buttom_go {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #535356;
+  width: 1.5rem;
+  height: 100%;
+  line-height: 0.7rem;
+  display: flex;
+  font-size: 0.2rem;
+}
+.buttom_img {
+  /*display: flex;*/
+  background-color: #3d3d3f;
+  position: absolute;
+  padding: 0.1rem;
+  border: 0.1rem solid #444;
+  border-radius: 50%;
+  left: 0.2rem;
+  top: -0.25rem;
+}
+.buttom_img img {
+  width: 40px;
+}
+.right_l_buttom {
+  margin-top: 0.1rem;
+  counter-reset: grey;
 }
 /* .right_li_add:hover .right_li_add_1{
   display: block;
 } */
-.right_li_a{
-  display: none;
+.right_li_a {
+  /* display: none; */
 }
-.right_li_add,.right_li_a{
-  float:right;
+.right_li_add,
+.right_li_a {
+  float: right;
   width: 15px;
   height: 15px;
   color: white;
@@ -240,10 +259,10 @@ export default {
   line-height: 14px;
   border: 1px solid blue;
   border-radius: 50%;
-  background: blue
+  background: blue;
 }
-.right_li_add_1{
-  float:right;
+.right_li_add_1 {
+  float: right;
   width: 15px;
   height: 15px;
   color: grey;
@@ -307,7 +326,6 @@ export default {
   border: 1px solid red;
   /* position:fixed; */
   /* top: 4rem; */
-
 }
 .right .right_top_D {
   font-size: 0.25rem;
