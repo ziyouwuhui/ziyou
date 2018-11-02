@@ -2,7 +2,7 @@
 <article>
     <section>
         <div class="wrap">
-            <router-link class="router1" to="/order">
+            <router-link class="router1" :to="{name:'Order'}">
                 <div>
                     <img :src="dingdan" alt="">
                     <span>我的订单</span>

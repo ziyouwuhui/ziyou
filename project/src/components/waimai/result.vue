@@ -178,7 +178,7 @@ export default {
         }
       })
        this.$store.commit('updateAllprice',total);
-      return total;
+        return total;
     }
   }
 };

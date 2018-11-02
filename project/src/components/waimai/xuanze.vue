@@ -10,6 +10,19 @@
             <router-link :to="{name:'add'}" class="shangjia">+</router-link>
               <span  class="msite_t">新增加收获地址</span>
         </div>
+
+        <div style="margin-top:.56rem">
+            <ul>
+                <li v-for="(i,index) in arr" :key="index">
+                   <p>{{i.name}}</p>
+                   <p>{{i.param}}</p>
+                   <p>{{i.phone}}</p>
+                   <p>{{i.Aaddress}}</p>
+                   <p>{{i.casual}}</p>
+                </li>
+            </ul>
+            <p>{{address}}</p>
+        </div>
   </div>
 </template>
 <script>
@@ -17,8 +30,18 @@
         name: "xuanze",
         data(){
             return{
-                
+                arr:[],
+
             }
+        },
+        created() {
+          this.arr =  this.$store.state.addAddress;
+            console.log(this.$store.state.addAddress)
+        },
+        computed:{
+           address() {
+                return this.$store.state.address;
+              }
         }
     }
 

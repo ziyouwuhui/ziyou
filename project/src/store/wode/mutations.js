@@ -2,27 +2,33 @@ export default {
   zihe(state, n) {
     state.count = n;
   },
-  s1(state, n) {
-    state.s11 = n;
+  //订单更新 
+updatdallRest(state, newvaluerest) {
+    state.allRest.push(newvaluerest);
+    console.log(111,state.allRest);
     // console.log(11, state.s11);
-  },
-  s2(state, n) {
-    state.s12 = n;
   },
   arrs(state, n) {
     state.meNu = n;
   },
+  //排序 
   in(state, n) {
     state.inde = n;
   },
+  //添加城市地址 
   updateAddress(state, newAddress) {
     state.address = newAddress;
   },
   updateAllprice(state, newAllprice){
     state.allPrice = newAllprice;
   },
-  upallRest(state, newAllRest){
-      state.allRest = newAllRest;
+  allNewaddress(state,a){
+    state.addAddress.push(a)
+  },
+  newResulr_li(state,newAesulr_li){
+    state.resulr_li = newAesulr_li;
+    console.log('lilili222222222222222222222222222222222222222222222222',state.resulr_li)
   }
- 
+  
+  
 }

@@ -44,9 +44,6 @@
                <div class="right_l_buttom">
                 <span class="right_li_but">${{child.specfoods[0].price}}</span>
                 <span class="right_li_add" @click = "add(cindex)">+</span>
-                <!-- <span class="item">
-                    <i class="con"> <i class="qiu"> </i> </i>
-                </span> -->
                 <span class="right_li_add_1">{{ child.num}}</span>
                 <span class="right_li_a" @click = "reduce(cindex)">-</span>
         </div>
@@ -78,11 +75,10 @@ export default {
     };
   },
   created() {
-    this.id = this.$store.state.s11;
     let menu =
       "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
       this.$route.params.id;
-    this.$http.get(menu).then(data => {
+      this.$http.get(menu).then(data => {
       this.meNu = data.data;
       for (let i = 0; i < data.data.length; i++) {
         this.allFoods.push(data.data[i].foods);
@@ -91,12 +87,14 @@ export default {
         // this.allFoods[0][i].num = 1;
         //添加新的属性vue.set 
         Vue.set(this.allFoods[0][i], 'num', 0);
-
-
         this.foods.push(this.allFoods[0][i]);
       
       }
-
+      //vuex  newResulr_li
+      console.log(this.meNu,'222222222222222222222222222222222')
+         this.$store.commit("newResulr_li", data.data);
+         
+      // console.log(data.data+'3333333333333333')
     });
   },
   computed: {
@@ -110,13 +108,17 @@ export default {
       this.$router.back(-1);
     },
     add(i) {
+      //内容num 
       this.foods[i].num++;
+      console.log(this.foods[i])
+      this.$store.commit("arrs", i);
       this.$router.push({
         path: "/shoping",
         query: { foodname: this.meNu.foods }
       });
       var food = this.meNu.foods;
       this.$emit("childByVaue", this.foods[i]);
+      
     },
      reduce(i){
        if( this.foods[i].num!=0){
@@ -124,7 +126,7 @@ export default {
           this.$emit("childByVaue", this.foods[i]);
        }
         
-     }
+     },
   }
 };
 </script>
@@ -368,9 +370,7 @@ export default {
 .right .right_top {
   background: #ededed;
   padding: 0.1rem 0 0.1rem 0.1rem;
-}
-.right ul{
-  position: relative;
+  /* border: 1px solid red; */
 }
 .right .right_top_D {
   font-size: 0.25rem;

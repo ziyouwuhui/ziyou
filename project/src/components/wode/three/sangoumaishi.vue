@@ -3,7 +3,7 @@
     <Header></Header>
     <section class="top">
         <p>支付剩余时间</p>
-        <p>{{shijian}}</p>
+        <p style="font-size:.35rem">{{shijian}}</p>
     </section>
     <section class="bottom">
         <div class="bottom_bottom">
@@ -30,10 +30,13 @@
     </section>
     <div class="tanchuang " v-bind:class="{tanchuang1:tan}">
         <div></div>
-        <div>
+        <div class="dankuabg">
             <img class="img2" :src="tishi" alt="">
             <p class="p4">当前环境无法支付，请打开官方App进行付款</p>
-            <p class="p5" @click="fn()">确认</p>
+            <router-link to="/order">
+              <p class="p5" @click="fn()">确认</p>
+            </router-link>
+     
         </div>
         <div></div>
 
@@ -69,7 +72,7 @@ export default {
                     second = '0' + second;
                 };
                 times--;
-                _this.shijian = minute + ':' + second;
+                _this.shijian = minute + ' : ' + second;
             }, 1000);
             if (times <= 0) {
                 clearInterval(timer);
@@ -80,6 +83,7 @@ export default {
     methods: {
         fn(ev) {
             this.tan = !this.tan;
+
         },
     },
     components: {
@@ -90,6 +94,9 @@ export default {
 </script>
 
 <style scoped>
+.dankuabg{
+    padding: .2rem .1rem;
+}
 .zhitu {
     width: 0.5rem;
     height: 0.5rem;
