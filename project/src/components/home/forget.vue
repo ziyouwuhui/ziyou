@@ -228,9 +228,7 @@
     font-size: .16rem;
     color: #666;
   }
-  .img_change_img{
-    /*overflow: hidden;*/
-  }
+
   .img_change_img div{
     float: left;
   }

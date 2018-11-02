@@ -18,10 +18,8 @@ export default {
     name: "yueshuoming",
     created() {
         this.$store.commit("zihe", '余额说明');
-        console.log(this.$store.state.count);
-
     },
-    components:{
+    components: {
         Header
     }
 }
@@ -36,10 +34,12 @@ div {
     bottom: 0;
     background-color: white;
 }
-section{
+
+section {
     margin: 0.1rem;
 }
-h3{
+
+h3 {
     padding: 0.1rem 0;
 }
 </style>

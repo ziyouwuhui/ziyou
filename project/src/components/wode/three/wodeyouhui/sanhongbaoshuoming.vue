@@ -17,7 +17,10 @@ export default {
     name:"sanjihongbaoshuoming",
     components: {
         Header
-    }
+    },
+    created() {
+         this.$store.commit("zihe", '红包说明');
+    },
 }
 </script>
 <style scoped>

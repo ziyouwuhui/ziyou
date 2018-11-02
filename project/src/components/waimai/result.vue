@@ -15,11 +15,14 @@
                </div>
              <div @click="show = !show">
                 <div class="dic">
-                    <span  class="middle_span":style="'background:#'+ me[0].icon_color" >{{me[0].icon_name}}</span>
+                    <span  class="middle_span" :style="'background:#'+ me[0].icon_color" >{{me[0].icon_name}}</span>
                     <span class="middle_three">{{me[0].description}}</span>
                 </div>
              </div>
            </li>
+           <div class="beijingtu">
+              <img :src="'//elm.cangdu.org/img/'+meNu.image_path" alt="">
+           </div>
       </ul>
       <section class="conter">
         <div class="conter_left">
@@ -63,7 +66,7 @@
              <p class="none_ul_p2">优惠信息</p>
              <div class="none_ul_p3">
                <div v-for="(a,index) in me" :key="index" class="dic">
-                 <span class="middle_span":style="'background:#'+a.icon_color" >{{a.icon_name}}</span>
+                 <span class="middle_span" :style="'background:#'+a.icon_color" >{{a.icon_name}}</span>
                  <span class="middle_three">{{a.description}}</span>
                </div>
              </div>
@@ -133,6 +136,19 @@ import {mapMutations} from 'vuex'
 </script>
 
 <style scoped>
+.beijingtu{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  border: 0.01rem solid yellow;
+  opacity: 0.5;
+}
+.beijingtu>img{
+  width: 100%;
+}
 .right{
   float: right;
 }
@@ -294,6 +310,7 @@ import {mapMutations} from 'vuex'
   .warp .top{
     width: 100%;
     background: gray;
+
     padding: 0.125rem .125rem;
     overflow: hidden;
     font-size: 0.15rem;

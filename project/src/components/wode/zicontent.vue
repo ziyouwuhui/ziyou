@@ -1,7 +1,7 @@
 <template>
 <div>
     <section class="top">
-        <router-link class="top_router" to="/lulu">
+        <router-link class="top_router" :to="link">
             <div class="left">
                 <div class="left_tu">
                     <img v-if="imageUrl" :src="imageUrl" class="avatar">
@@ -9,7 +9,7 @@
                     <div class="wenwen">
                         <p class="font1">{{denglu}}</p>
                         <p class="font2">{{number}}</p>
-                        
+
                     </div>
                 </div>
                 <div class="right">
@@ -49,24 +49,39 @@ export default {
     name: "zicontent",
     data() {
         return {
-            denglu: "",
+            denglu: "登录/注册",
             number: "",
             imageUrl: W1,
             yue: "0.00",
             youhui: 0,
-            jifen: 0
+            jifen: 0,
+            link: "/lulu",
+            ures: [],
         };
     },
     created() {
-        
+
+        if (localStorage.users) {
+            this.link = "/lulu";
+
+        } else {
+            this.link = "/login";
+
+        }
+
         if (this.number == false) {
             this.number = "暂无手机号";
         }
-        if (this.denglu == false) {
+
+        // 取值
+        this.ures = JSON.parse(localStorage.getItem('users'))
+        console.log(this.ures[0].username);
+        if (this.ures[0].username != '') {
+            this.denglu = this.ures[0].username
+        } else {
             this.denglu = "登录/注册";
-        } 
-    },
-    methods: {}
+        }
+    }
 }
 </script>
 

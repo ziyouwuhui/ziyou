@@ -87,13 +87,17 @@ export default {
     },
     created() {
         this.$store.commit("zihe", '账户信息');
-        console.log(this.$store.state.count);
-        this.imageUrl ? this.imageUrl = '12' : this.imageUrl = this.tishi
+        this.imageUrl ? this.imageUrl = '12' : this.imageUrl = this.tishi;
+        this.ures = JSON.parse(localStorage.getItem('users'))
+        if (this.ures[0].username != '') {
+            this.mingzi = this.ures[0].username
+        }
 
     },
     methods: {
         fn() {
             this.tan = !this.tan;
+            localStorage.clear();
         },
         handleAvatarSuccess(res, file) {
             this.imageUrl = URL.createObjectURL(file.raw);

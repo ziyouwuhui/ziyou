@@ -45,7 +45,6 @@ export default {
     },
     created() {
         this.$store.commit("zihe", '我的余额');
-        console.log(this.$store.state.count);
     },
 }
 </script>

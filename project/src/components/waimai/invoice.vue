@@ -1,7 +1,7 @@
 <template>
    <div>
        <div class="nav">
-            <router-link :to="{name:'shoping'}" class="shangjia"><</router-link>
+            <router-link :to="{name:'shoping'}" class="shangjia"></router-link>
             <span class="hear">选择发票抬头</span>
         </div>
         <div class="kaifa">

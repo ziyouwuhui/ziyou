@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="content">
-            <div >
+            <div>
                 <p class="p0">累计收益</p>
                 <p>
                     <span class="wen">{{yuan}}</span>
@@ -38,7 +38,7 @@
         <div class="bottom">
             <p class="p1">-收益明细-</p>
             <p><img class="img02" :src="img02" alt=""></p>
-            <p class="p2">还不赶紧去邀请好友</p>
+                <p class="p2">还不赶紧去邀请好友</p>
         </div>
     </div>
 </template>
@@ -49,15 +49,14 @@ export default {
     name: "tuijianyoujiang",
     data() {
         return {
-            yuan:'0',
-            ren:'0',
+            yuan: '0',
+            ren: '0',
             img01: require('../../../../assets/img/img01.jpg'),
-             img02: require('../../../../assets/img/订单.png')
+            img02: require('../../../../assets/img/订单.png')
         }
     },
-     created() {
-        this.$store.commit("zihe",'推荐有奖');
-      
+    created() {
+        this.$store.commit("zihe", '推荐有奖');
     },
     components: {
         Header
@@ -94,40 +93,50 @@ export default {
     padding-bottom: 0.2rem;
     font-size: 0.1rem;
 }
-.content{
-     display: flex;
+
+.content {
+    display: flex;
     justify-content: space-around;
-      padding: 0.2rem 0;
+    padding: 0.2rem 0;
 }
-.content>div{
+
+.content>div {
     text-align: center;
 }
-.content>div>p{
-     padding: 0.01rem 0;
+
+.content>div>p {
+    padding: 0.01rem 0;
 }
-.wen{
+
+.wen {
     color: red;
     font-weight: bold;
     font-size: 0.25rem;
 }
-.content_border{
+
+.content_border {
     width: 0.01rem;
     background-color: red;
 }
-.img02{
+
+.img02 {
     width: 0.8rem;
 }
-.bottom{
+
+.bottom {
     text-align: center;
 }
-.p0{
-      font-size: 0.1rem;
-}
-.p1{
+
+.p0 {
     font-size: 0.1rem;
 }
-.p2{
-     font-size: 0.1rem;
-     color: rgb(153, 153, 153);
+
+.p1 {
+    font-size: 0.1rem;
+}
+
+.p2 {
+    font-size: 0.1rem;
+    color: rgb(153, 153, 153);
 }
 </style>

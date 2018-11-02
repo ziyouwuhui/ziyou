@@ -8,7 +8,6 @@
                 <p>
                     <img class="img01" :src=" yuetupiantanhao" alt="">
                     <router-link to="/erjifenshuoming" class="routerp">积分说明</router-link>
-
                 </p>
             </div>
             <div class="wrap_content">
@@ -57,9 +56,9 @@ export default {
             tan: true
         }
     },
-     created() {
-        this.$store.commit("zihe",'我的积分');
-      
+    created() {
+        this.$store.commit("zihe", '我的积分');
+
     },
     methods: {
         fn() {

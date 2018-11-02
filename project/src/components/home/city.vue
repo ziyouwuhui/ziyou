@@ -72,6 +72,7 @@ import {mapState, mapMutations} from 'vuex'
               console.log(index);
                 this.off = true;
                 this.on = true;
+                console.log(this)
                 this.history.push(this.names[index]);
                 localStorage.setItem('history',JSON.stringify(this.history));
             },
@@ -84,7 +85,8 @@ import {mapState, mapMutations} from 'vuex'
             },
             seahis(){
               if(this.history != []){
-                this.history=JSON.parse(localStorage.getItem('history'));
+                this.history=JSON.parse(localStorage.getItem('history')) || [];
+                console.log(this.history)
               }
             }
         },
