@@ -4,7 +4,7 @@ export default {
   },
   s1(state, n) {
     state.s11 = n;
-    console.log(11, state.s11);
+    // console.log(11, state.s11);
   },
   s2(state, n) {
     state.s12 = n;

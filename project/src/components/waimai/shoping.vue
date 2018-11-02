@@ -51,7 +51,8 @@
             </div>
             <div class="name_bottom">
                 <div>
-                    <span>{{}} </span>
+                    <!-- 食品名称 -->
+                    <span></span>
                     <span class="two">$20</span>
                 </div>
                 <div>
@@ -138,15 +139,12 @@ import {mapState,mapGetters} from 'vuex'
             }
         },
        computed:{
-           
           ...mapState(['count','s12'])
         },
         created() {
-            console.log(this.$route.query.name);
-            console.log(this.$route.query.src);
+            // console.log(this.$route.query.name);
+            // console.log(this.$route.query.src);
             
-        //   console.log(this.$store.state.s12)
-          console.log(this.arr[index].foods[index].name)
         },
     }
 </script>
