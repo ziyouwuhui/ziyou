@@ -5,7 +5,6 @@
         <div>
             <img :src="img01" alt="">
             <router-link to="/daijinjuanshuoming"> <span>商家代金券说明</span></router-link>
-           
         </div>
 
     </section>
@@ -13,8 +12,9 @@
         <img :src="img02" alt="">
         <p class="p1">无法使用代金券</p>
         <p class="p2">非客户端或客户端版本过低</p>
-       
-        <router-link to="/shengjixiazai"> <p class="p3">下载或升级客户端</p></router-link>
+        <router-link to="/shengjixiazai">
+            <p class="p3">下载或升级客户端</p>
+        </router-link>
     </section>
 </div>
 </template>
@@ -38,10 +38,12 @@ export default {
     padding: 0.2rem 0.1rem;
     font-size: 0.1rem;
 }
-.top img{
+
+.top img {
     width: 0.2rem;
     height: 0.2rem;
 }
+
 span {
     color: rgb(49, 144, 232);
     padding: 0.2rem 0 0 0.1rem;
@@ -62,16 +64,22 @@ span {
     width: 2rem;
     height: 1.5rem;
 }
-.p1,.p2,.p3{
+
+.p1,
+.p2,
+.p3 {
     padding: 0.1rem 0;
 }
-.p1{
-     font-size: 0.1rem;
+
+.p1 {
+    font-size: 0.1rem;
 }
-.p2{
-     font-size: 0.1rem;
+
+.p2 {
+    font-size: 0.1rem;
 }
-.p3{
+
+.p3 {
     font-size: 0.1rem;
     color: white;
     background-color: #56d176;

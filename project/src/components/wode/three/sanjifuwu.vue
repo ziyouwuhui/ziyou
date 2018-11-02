@@ -31,9 +31,7 @@ export default {
                 this.data.push(obj[i]);
             }
             var ddd = this.$route.params.index;
-            this.selectName = this.data[ddd - 1]
-            console.log(this.selectName);
-           
+            this.selectName = this.data[ddd - 1];
         });
     }
 };

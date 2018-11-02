@@ -56,7 +56,6 @@ export default {
     created() {
         this.$store.commit("zihe", '在线支付');
         let _this = this;
-
         function count(times) {
             var timer = null;
             timer = setInterval(function () {
@@ -82,12 +81,6 @@ export default {
         fn(ev) {
             this.tan = !this.tan;
         },
-        xuan1(ev) {
-           
-        },
-        xuan2(ev) {
-          
-        }
     },
     components: {
         Header,
@@ -131,6 +124,7 @@ export default {
     border: 0.01rem solid rgb(245, 245, 245);
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .zhifu {
@@ -152,7 +146,6 @@ export default {
     top: 22%;
     left: 50%;
     transform: translateX(-50%);
-
 }
 
 .p4,
@@ -166,11 +159,5 @@ export default {
 
 .tanchuang1 {
     display: none;
-}
-
-.xuan11,
-.xuan12 {
-    width: 0.3rem;
-    border-radius: 50%;
 }
 </style>

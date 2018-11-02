@@ -1,7 +1,7 @@
 <template>
   <div>
          <div class="nav">
-            <router-link :to="{name:'shoping'}" class="jian"><</router-link>
+            <router-link :to="{name:'shoping'}" class="jian"></router-link>
             <span class="msite_title">添加地址</span>
          </div>
          <div class="dizhi">

@@ -64,7 +64,7 @@ import Buttom from "../waimai/buttom"
                 method:'get',
                 url:api
               }).then((data)=>{
-                console.log('111111',data.data);
+                console.log('111111',data);
                 if(data.data != null){
                     this.restaurants = data.data;
                     this.show = this.restaurants.length == 0 ? false : true;

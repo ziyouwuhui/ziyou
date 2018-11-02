@@ -35,9 +35,9 @@ export default {
             tan: true
         }
     },
-     created() {
-        this.$store.commit("zihe",'下载');
-      
+    created() {
+        this.$store.commit("zihe", '下载');
+
     },
     methods: {
         fn() {
@@ -86,6 +86,7 @@ img {
 .p5 {
     background-color: rgb(76, 217, 100);
 }
+
 .tanchuang {
     text-align: center;
     background-color: white;

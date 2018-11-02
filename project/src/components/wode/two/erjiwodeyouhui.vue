@@ -22,9 +22,9 @@ export default {
             cc: Hongbao
         }
     },
-     created() {
-        this.$store.commit("zihe",'我的优惠');
-      
+    created() {
+        this.$store.commit("zihe", '我的优惠');
+
     },
     components: {
         Header,
@@ -32,9 +32,9 @@ export default {
         Shangjiadaijin
     },
     methods: {
-            handel(value) {
-                this.cc = value;
-            }
+        handel(value) {
+            this.cc = value;
+        }
     }
 }
 </script>
@@ -55,7 +55,8 @@ article {
     padding: 0.2rem 0;
     background-color: white;
 }
-a{
+
+a {
     color: black;
 }
 </style>

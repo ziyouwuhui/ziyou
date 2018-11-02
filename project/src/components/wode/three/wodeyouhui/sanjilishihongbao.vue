@@ -46,19 +46,18 @@ export default {
         Header
     },
     created() {
+        this.$store.commit("zihe", '历史红包');
         let menu = "https://elm.cangdu.org/promotion/v2/users/1/expired_hongbaos?limit=20&offset=0";
         this.$http.get(menu).then((data) => {
             this.datas = data.data;
             let r = this.datas.map((v, i) => {
-                console.log(v.limit_map);
                 this.lmap = v.limit_map;
                 // console.log(lmap.restaurant_flavor_ids);
             });
         }, function () {
             console.log('请求失败处理');
         });
-
-    }
+    },
 }
 </script>
 
@@ -112,8 +111,6 @@ p {
     color: rgb(153, 153, 153);
 }
 
-
-
 img {
     width: 0.8rem;
     position: relative;
@@ -123,9 +120,10 @@ img {
 span {
     color: rgb(153, 153, 153);
 }
-.bottom{
-     font-size: 0.02rem;
+
+.bottom {
+    font-size: 0.02rem;
     color: rgb(153, 153, 153);
-     padding: 0 0rem 0.1rem 0.1rem;
+    padding: 0 0rem 0.1rem 0.1rem;
 }
 </style>

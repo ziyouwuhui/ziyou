@@ -39,7 +39,9 @@
       <p class="login_tips">
         注册过的用户可凭账号密码登录
       </p>
-      <div class="login_container" @click="login()">登录</div>
+      <div class="login_container" @click="login()">
+        <router-link :to="dengtiao">登录</router-link>
+      </div>
       <router-link to="/forget" class="to_forget">重置密码？</router-link>
       <div class="alet_container" id="alcontainer">
         <div class="tip_text_container">
@@ -65,7 +67,8 @@
             password: "",
             codeNumer: "",
             pwdType:'password',
-            msg:''
+            msg:'',
+            dengtiao:'',
           }
         },
         created(){
@@ -124,6 +127,8 @@
               /*存入本地*/ 
               let user = [{username:this.username,password:this.password}];
               localStorage.setItem('users',JSON.stringify(user));
+              //  登录到我的
+                this.dengtiao = "/pro";
             });
           },
           change(e){

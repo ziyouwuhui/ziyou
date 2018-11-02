@@ -144,8 +144,8 @@ import {mapState,mapGetters} from 'vuex'
           }
         },
         created() {
-            console.log(this.$route.query.name);
-            console.log(this.$route.query.src);
+            // console.log(this.$route.query.name);
+            // console.log(this.$route.query.src);
             
         //   console.log(this.$store.state.s12)
         //   console.log(this.arr[index].foods[index].name)

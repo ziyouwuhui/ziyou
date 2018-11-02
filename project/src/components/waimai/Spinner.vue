@@ -22,7 +22,6 @@
                                <img :src="'https://fuss10.elemecdn.com/'+item.image_url+'.png'">
                            </span>
                          <span>{{item.name}}</span> 
-                          <!-- <span>{{item.sub_categories}}</span>  -->
                          <span class="count_if">
                             <span class="if_1"> {{item.count}}</span>
                             &nbsp;&nbsp;>
@@ -141,7 +140,7 @@ export default {
   components: {
     Lbiao,
     cn(){
-       console.love(this.$store.state.s11,"11111111111111111111")
+      //  console.love(this.$store.state.s11,"11111111111111111111")
     }
   },
   created() {
@@ -151,7 +150,6 @@ export default {
     let yang = 'https://elm.cangdu.org/shopping/v1/restaurants/activity_attributes';
     this.$http.get(api).then(data => {
       this.meNuL = data.data;
-      console.log(data.data[1].sub_categories);
     });
     this.$http.get(love).then(data => {
       this.arr = data.data;
@@ -159,45 +157,26 @@ export default {
     });
     this.$http.get(yang).then(data => {
       this.Yang = data.data;
-      // console.log("111111111111",data.data);
     })
    var d = this.$store.state.s11;
-//    var xing =  d.map(function(index,item){
-// //  console.log(,item);
-//     return index.rating  
-//   })
- console.log(d,"11111111111111111");
   },
    methods: {
      text(index) {
         this.arrs = this.meNuL[index].sub_categories;
     },
     range(index){
-        //  return this.products.filter(function(iw){
-        //       return iw.title>=gongli
-        //  })
       show3 = false;
       this.$store.commit('in',index);
-      // this.$router.push({
-      //   name:'leibiao',
-      //   params:{
-      //     key:'index'
-      //   }
-      // })
-
-
-
     }
   },
   computed:{
-          ...mapState(['s11']),
-          // ...mapGetters({s1:'n'}),
-         
-        },
+          ...mapState(['s11'])
+  }
 };
 </script>
 
 <style scoped>
+
 .botton_t1:hover {
   color: blue;
   

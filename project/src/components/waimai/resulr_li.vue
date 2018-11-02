@@ -16,9 +16,7 @@
           <span class="right_top_B">{{it.description}}</span>
           <span class="right_top_dian">...</span>
         </div>
-        <!-- :to="'/classification/'+id" style="padding-bottom: 0.1rem "  -->
         <router-link tag="li" to="" class="li_t">
-          <!--src="//elm.cangdu.org/img/1661a8e8aa318572.png">-->
           <!-- 好吃的 -->
           <div class="right_li_id"  v-for="(child,cindex) in foods" :key="cindex">
             <section class="right_li_l">
@@ -29,7 +27,7 @@
                 {{child.name}}
               </h3>
               <div class="h_x" v-for="(x,cindex) in child.attributes" :key="cindex">
-                        <span class="h_x_if" v-if="x.icon_name==='招牌'">
+                        <span class="h_x_if" v-if="x.icon_name === '招牌'">
                           {{x.icon_name}}
                         </span>
               </div>
@@ -72,13 +70,13 @@ export default {
       allFoods: [],
       foods: [],
       counter: 1,
-      sum: null
-      // id: this.$route.params.id
-      // m:'<span class="li_s">{{ite.name}}</span>',
+      sum: null,
+      id:'',
     };
   },
   created() {
     this.$store.commit("s1", this.$route.params.id);
+    this.id = this.$store.state.s11;
     let menu =
       "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
       this.$route.params.id;
@@ -154,7 +152,6 @@ export default {
   position: absolute;
   transition: all 0.8s;
 }
-
 .con {
   width: 20px;
   height: 20px;
@@ -165,12 +162,10 @@ export default {
   right: 10px;
   transition: all 0.8s;
 }
-
 .item:hover .con {
   transform: translateX(-200px);
   transition-timing-function: linear;
 }
-
 .item:hover .qiu {
   transform: translateY(200px);
   transition-timing-function: cubic-bezier(0.58, -0.42, 1, 0.65);
@@ -257,12 +252,67 @@ export default {
   margin-top: 0.1rem;
   counter-reset: grey;
 }
-/* .right_li_add:hover .right_li_add_1{
-  display: block;
-} */
-/* .right_li_a { */
-  /* display: none; */
-/* } */
+.buttom {
+  position: fixed;
+  z-index: 120;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0.5rem;
+  width: 100%;
+  box-shadow: 0 -0.02667rem 0.05333rem rgba(0, 0, 0, 0.1);
+  font-size: 0.24rem;
+  padding: 10px 0;
+  background-color: #333;
+  color: white;
+}
+.buttom .buttom_two_money {
+  font-size: 0.3rem;
+  font-weight: 700;
+  margin-bottom: 0.1rem;
+}
+.buttom .buttom_two_bigm {
+  font-size: 0.1rem;
+}
+.buttom .buttom_two {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1.2rem;
+}
+.buttom .buttom_go {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #535356;
+  width: 1.5rem;
+  height: 100%;
+  line-height: 0.7rem;
+  display: flex;
+  font-size: 0.2rem;
+}
+.buttom_img {
+  background-color: #3d3d3f;
+  position: absolute;
+  padding: 0.1rem;
+  border: 0.1rem solid #444;
+  border-radius: 50%;
+  left: 0.2rem;
+  top: -0.25rem;
+}
+.buttom_img img {
+  width: 40px;
+}
+.el-rate__icon {
+  font-size: 0.01rem;
+}
+.right_l_buttom {
+  margin-top: 0.1rem;
+  counter-reset: grey;
+}
+.right_li_a {
+  display: none;
+}
 .right_li_add,
 .right_li_a {
   float: right;
@@ -283,7 +333,6 @@ export default {
   text-align: center;
   line-height: 14px;
   border-radius: 50%;
-  /* display: none; */
 }
 .right_li_id {
   background-color: #fff;
@@ -306,7 +355,6 @@ export default {
 }
 .h_x_if {
   color: rgb(240, 115, 115);
-  /*line-height: .005rem;*/
 }
 .right_li_right .right_fen {
   font-size: 0.08rem;
@@ -338,8 +386,6 @@ export default {
   background: #ededed;
   padding: 0.1rem 0 0.1rem 0.1rem;
   border: 1px solid red;
-  /* position:fixed; */
-  /* top: 4rem; */
 }
 .right .right_top_D {
   font-size: 0.25rem;
@@ -358,7 +404,6 @@ export default {
 }
 .left_li {
   padding: 0.3rem 0rem 0.3rem 0.125rem;
-  /*text-align: center;*/
   border: 1px solid gainsboro;
   box-sizing: border-box;
   position: relative;
@@ -372,10 +417,9 @@ export default {
 .left {
   position: fixed;
   left: 0;
-  /*top: 100px;*/
   z-index: 5;
-  /*border: 2px solid red;*/
   margin-top: 2.4rem;
+  width: 1.15rem;
 }
 .right {
   margin-top: 2.4rem;

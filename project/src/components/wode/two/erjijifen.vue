@@ -11,8 +11,7 @@
 <script>
 export default {
     name: "erjifenn",
-    components: {
-    },
+    components: {},
     data() {
         return {
             xia: require('../../../assets/img/下载.jpg')
