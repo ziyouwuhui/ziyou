@@ -191,6 +191,19 @@ export default {
 </script>
 
 <style scoped>
+.beijingtu{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+  border: 0.01rem solid yellow;
+  opacity: 0.5;
+}
+.beijingtu>img{
+  width: 100%;
+}
 .right_li_add{
   float: right;
   width: 15px;
