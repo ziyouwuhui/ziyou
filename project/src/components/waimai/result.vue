@@ -45,7 +45,9 @@
             </router-link>
           </section>
       </div>
-      <!-- 購物車彈 -->
+
+
+      <!-- 购物车弹 -->
       <div class="tankuang">
           <div class="tankuang_1">
              <span>购物车</span>
@@ -76,10 +78,7 @@
          </div>
      </div>
    </transition>
-
-
  </div>
-
 </template>
 
 <script>
@@ -96,40 +95,29 @@ import {mapMutations} from 'vuex'
           }
       },
       computed:{
-          // id:this.$route.params.id
-        
+          
       },
       methods:{
-        change(e){
+        change(){
           this.$router.go(-1);
         }
       },
       created(){
       
-      // var a1 = this.$store.state.meNu;
       var a2 = this.$store.state.cc;
-      console.log('hkhfldsf'+a2)
-
-          // console.log('当前id='+this.$route.params.id);
 
         let api_r = "https://elm.cangdu.org/shopping/restaurant/"+this.$route.params.id;
-        // console.log(api_r);
-
-        // console.log(this.$route.params.id);
-        // console.log(api_r);
+        
         this.$http.get(api_r).then((data)=>{
             this.meNu = data.data;
-            console.log(this.meNu,"=========");
+            // console.log(this.meNu,"=========");
             this.me = data.data.supports;
-            console.log(this.me,"!!!!!!!!!!!!!!!!!!!!!!!")
+            // console.log(this.me,"!!!!!!!!!!!!!!!!!!!!!!!")
         });
       },  
       methods:{
-          change(e){
+          change(){
             this.$router.go(-1);
-            // var target = event.target;
-            // var dataid = e;
-            // $(target);
           }
       }
     }
@@ -149,6 +137,7 @@ import {mapMutations} from 'vuex'
 .beijingtu>img{
   width: 100%;
 }
+
 .right{
   float: right;
 }

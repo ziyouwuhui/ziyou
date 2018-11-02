@@ -38,7 +38,7 @@
              <div class="dizhi_l">
                 <div>
                     <!-- 搜素 -->
-                   <router-link :to="{name:'sousuo'}">
+                   <router-link :to="{name:'City'}">
                        小区/写字楼/学校等
                    </router-link>
                 </div>
