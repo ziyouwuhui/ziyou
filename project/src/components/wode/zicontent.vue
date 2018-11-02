@@ -9,6 +9,7 @@
                     <div class="wenwen">
                         <p class="font1">{{denglu}}</p>
                         <p class="font2">{{number}}</p>
+                        
                     </div>
                 </div>
                 <div class="right">
@@ -48,13 +49,22 @@ export default {
     name: "zicontent",
     data() {
         return {
-            denglu: "登录/注册",
-            number: "暂无绑定手机号",
+            denglu: "",
+            number: "",
             imageUrl: W1,
             yue: "0.00",
             youhui: 0,
             jifen: 0
         };
+    },
+    created() {
+        
+        if (this.number == false) {
+            this.number = "暂无手机号";
+        }
+        if (this.denglu == false) {
+            this.denglu = "登录/注册";
+        } 
     },
     methods: {}
 }
@@ -72,12 +82,15 @@ export default {
 .left {
     display: flex;
 }
-.left_tu{
+
+.left_tu {
     background-color: white;
     border-radius: 50%;
 }
+
 .font1,
-.font2,.el-icon-arrow-right {
+.font2,
+.el-icon-arrow-right {
     color: white;
 }
 
@@ -86,9 +99,11 @@ export default {
     font-weight: bold;
     margin-bottom: 0.05rem;
 }
-.wenwen{
+
+.wenwen {
     margin-left: 0.1rem;
 }
+
 p {
     color: black;
     padding-top: 0.1rem;

@@ -36,7 +36,7 @@ export default {
     display: flex;
     justify-content: space-between;
     padding: 0.2rem 0.1rem;
-    font-size: 0.18rem;
+    font-size: 0.1rem;
 }
 .top img{
     width: 0.2rem;
@@ -53,30 +53,30 @@ span {
 }
 
 .bottom {
-    padding-top: 0.8rem;
+    padding-top: 0.4rem;
     flex-direction: column;
     text-align: center;
 }
 
 .bottom>img {
     width: 2rem;
-    height: 1rem;
+    height: 1.5rem;
 }
 .p1,.p2,.p3{
     padding: 0.1rem 0;
 }
 .p1{
-     font-size: 0.2rem;
+     font-size: 0.1rem;
 }
 .p2{
      font-size: 0.1rem;
-     color: #9999;
 }
 .p3{
+    font-size: 0.1rem;
     color: white;
     background-color: #56d176;
     padding: 0.2rem 0.1rem;
-    margin: 0.1rem 1rem;
+    margin: 0.1rem 0.1rem;
     border-radius: 0.15rem;
 }
 </style>

@@ -135,12 +135,73 @@ export default {
 }
 .coudan {
   border: 1px solid rebeccapurple;
-  left: 0;
-  right: 0;
-  bottom: 0.7rem;
-  z-index: 119;
-  position: fixed;
-  background: wheat;
+    left: 0;
+    right: 0;
+    bottom: .7rem;
+    z-index: 119;
+    position:fixed;
+    background: wheat
+}
+  .buttom{
+    position: fixed;
+    z-index: 120;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0.5rem;
+    width:100%;
+    box-shadow: 0 -0.02667rem 0.05333rem rgba(0,0,0,.1);
+    font-size: .24rem;
+    padding: 10px 0;
+    background-color:#333;
+    color: white;
+  }
+  .buttom .buttom_two_money{
+    font-size: .3rem;
+    font-weight: 700;
+    margin-bottom: .1rem;
+  }
+  .buttom .buttom_two_bigm{
+    font-size: .1rem;
+  }
+  .buttom .buttom_two{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1.2rem;
+  }
+  .buttom .buttom_go{
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #535356;
+    width: 1.5rem;
+    height: 100%;
+    line-height: .7rem;
+    display: flex;
+    font-size: .2rem;
+  }
+  .buttom_img{
+    /*display: flex;*/
+    background-color: #3d3d3f;
+    position: absolute;
+    padding: .1rem;
+    border: .1rem solid #444;
+    border-radius: 50%;
+    left: .2rem;
+    top: -.25rem;
+  }
+  .buttom_img img{
+    width: 40px;
+  }
+
+  .el-rate__icon{
+    font-size: .01rem;
+  }
+.right_l_buttom{
+    margin-top: .1rem;
+    counter-reset: grey;
+   
 }
 .buttom {
   position: fixed;

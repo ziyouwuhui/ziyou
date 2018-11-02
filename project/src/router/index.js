@@ -26,6 +26,8 @@ import invoice from '../components/waimai/invoice'
  Vue.use(Router)
 // 我的
 import Wodes from '../components/wode/wode'
+// 账户信息
+import erzhanghuxinxi from '../components/wode/two/erzhanghuxinxi'
 // 我的余额
 import Erjiyue from '../components/wode/two/erjiyue'
 // 我的优惠
@@ -116,7 +118,6 @@ export default new Router({
     },
     {
       path: '/login',
-      name: 'Login',
       component: Login
     },
     {
@@ -183,6 +184,31 @@ export default new Router({
       path: '/pro',
       component: Wodes
     },
+    // 账户到我的
+    {
+      path: '/tuiwode',
+      component: Wodes
+    },
+    // 账户修改密码
+    {
+      path: '/xiugaimima',
+      component: Forget
+    },
+  //  新增收货地址
+  {
+    path: '/xinzengdizhi',
+    component: Wodes
+  },
+
+    {
+      path: '/dengwode',
+      component: Wodes
+     
+    },
+    {
+      path: '/lulu',
+      component: erzhanghuxinxi
+    },
     // 我的余额
     {
       path: '/wodeyue',
@@ -201,6 +227,11 @@ export default new Router({
         path: '/sanjihongbaoshuoming',
         component: Sanhongbaoshuoming
       }]
+    },
+    {
+      path: '/daijinjuanshuoming',
+      component: Sanjiyue
+     
     },
     // 历史红包
     {

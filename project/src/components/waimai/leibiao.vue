@@ -193,7 +193,7 @@ export default {
   color: #999;
   font-size: 0.18rem;
   font-family: Microsoft YaHei;
-}=
+}
 .seller .seller_f img {
   width: 0.25rem;
   height: 0.25rem;
@@ -207,4 +207,85 @@ export default {
   font-size: 0.1rem;
   display: inline-block;
 }
+.infor_r_h{
+    float: right;
+    color: #3190e8;
+  }
+  .infor_r_peisong .infor_r_l{
+    float: right;
+    margin-left: 0.3rem;
+    color: #999;
+  }
+  .infor_r_peisong .infor_r_s{
+    transform: scale(.2);
+    font-size: .1rem;
+    color: #666;
+  }
+  .infor_r_pinpai .infor_r_b{
+    float: right;
+    color: #999;
+  }
+  .infor_r_pinpai .infor_r_x{
+    /*width: 8.5rem;*/
+    color: #333;
+    padding-top: .01rem;
+    font: .19rem/.18rem PingFangSC-Regular;
+    font-weight: 700;
+   padding-right: 1.6rem;
+  }
+  .infor_r_pinpai .infor_r_p{
+    content: "\54C1\724C";
+    display: inline-block;
+    font-size: .1rem;
+    line-height: .2rem;
+    color: #333;
+    background-color: #ffd930;
+    padding: 0 .1rem;
+    border-radius: .02rem;
+    margin-right: .1rem;
+  }
+  .li_g{
+    display: flex;
+    border-bottom: .025rem solid #f1f1f1;
+    padding: .2rem .1rem;
+  }
+  .guaranteed .infor_l img{
+    width:0.78rem;
+    float: left;
+    /*border: 1px solid red;*/
+  }
+  .guaranteed .infor_r{
+    font-size: .1rem;
+    float: right;
+    margin-left: .1rem;
+  }
+  .guaranteed .infor_r>div{
+    margin-bottom: .15rem;
+  }
+  .guaranteed{
+    background-color: #fff;
+  }
+ .connt .seller{
+    padding-top:.2rem;
+    padding-left: .15rem;
+    /*margin-bottom: 0.35rem;*/
+  }
+  .seller .seller_a{
+    color: #999;
+    font-size: .18rem;
+    font-family: Microsoft YaHei;;
+  }
+  .seller .seller_f img{
+    width: .25rem;
+    height: .25rem;
+  }
+  .wrap .connt{
+    margin-top: .11rem;
+    border-top: .012rem solid #e4e4e4;
+    background-color: #fff;
+  }
+
+  .el-rate__item{
+    font-size: .01rem;
+  }
 </style>
