@@ -1,7 +1,8 @@
 <template>
   <div>
          <div class="nav">
-            <router-link :to="{name:'shoping'}" class="jian"></router-link>
+             
+            <router-link :to="{name:'shoping'}" class="jian"><</router-link>
             <span class="msite_title">添加地址</span>
          </div>
          <div class="dizhi">
@@ -10,11 +11,11 @@
                 </div>
              <div class="dizhi_l">
                    <div>
-                    <input type="text" placeholder="你的名字">
+                    <input type="text" placeholder="你的名字" v-model="name">
                    </div>
                     <div class="sex">
-                    <input type="radio" name="radios" value="1" v-model="param"><label>先生</label>
-                    <input type="radio" name="radios" value="2" v-model="param"><label>女士</label>
+                    <input type="radio" name="radios" value="先生" v-model="param" ><label>先生</label>
+                    <input type="radio" name="radios" value="女士" v-model="param"><label>女士</label>
                     </div>
              </div>
          </div>
@@ -24,7 +25,7 @@
                 </div>
              <div class="dizhi_l">
                 <div>
-                    <input type="text" placeholder="你的手机号">
+                    <input type="text" placeholder="你的手机号" v-model="phone">
                 </div>
                 <div class="sex">
                     <input type="text" placeholder="备选电话">
@@ -39,7 +40,7 @@
                 <div>
                     <!-- 搜素 -->
                    <router-link :to="{name:'cityss'}">
-                       小区/写字楼/学校等
+                      <input type="text" placeholder=" 小区/写字楼/学校等">
                    </router-link>
                 </div>
                 <div class="sex">
@@ -55,105 +56,123 @@
              <div class="dizhi_l">
                 <div>
                     <!-- 搜素 -->
-                   <router-link :to="{}">
-                       无/家/学校/公司
-                   </router-link>
+                  <input type="text" placeholder="无/公司/家庭/学校" v-model="casual">
                 </div>
              </div>
       </div>
-      <div class="buttom">
-          确定
-      </div>
+      <router-link :to="{name:'xuanze'}" >
+         <div class="buttom" @click="dianji()">
+             确定
+         </div>
+      </router-link>
   </div>
 </template>
 <script>
-    export default {
-        name: "add",
-        data(){
-            return{
-                 param: '1' ,//设置默认值为1，即设置第一个单选框为选中状态
-                //  address:'',
-                 dizhi:localStorage.history
-            }
-        },
-        computed:{
-            address(){
-                return this.$store.state.address;
-            }
-        },
-       created() {
-        //    console.log(this.dizhi)
-           let ss =JSON.parse(this.dizhi);
-        //    console.log(ss)
-           if(this.dizhi !=''){
-            //    console.log(this.dizhi)
-           }else{
-               console.log('123');
-           }
-          
-       },
+export default {
+  name: "add",
+  data() {
+    return {
+      param: "1", //设置默认值为1，即设置第一个单选框为选中状态
+      //  address:'',
+      dizhi: localStorage.history,
+      name:'',
+      param:'',
+      phone:'',
+      Aaddress: '',
+      casual: '',
+    };
+  },
+  computed: {
+    address() {
+      return this.$store.state.address;
     }
-
+  },
+  created() {
+    //    console.log(this.dizhi)
+    let ss = JSON.parse(this.dizhi);
+    //    console.log(ss)
+    if (this.dizhi != "") {
+      //    console.log(this.dizhi)
+    } else {
+      console.log("123");
+    }
+  },
+  methods: {
+    dianji() {
+      // allNewaddress
+      this.$store.commit("allNewaddress", {
+        name:this.name,
+        param:this.param,
+        phone:this.phone,
+        address:this.Aaddress,
+        casual:this.casual,
+        // $router.go()
+      });
+      
+    }
+  }
+};
 </script>
 <style scoped>
-.buttom{
-    background: yellowgreen;
-    border: 1px solid yellow;
-    height: .6rem;
-    text-align: center;
-    margin: .1rem .1rem .1rem .1rem;
-    line-height: .6rem;
-    border-radius:.1rem; 
-    font-size: .3rem;
-    color: white;
+.buttom {
+  background: yellowgreen;
+  border: 1px solid yellow;
+  height: 0.6rem;
+  text-align: center;
+  margin: 0.1rem 0.1rem 0.1rem 0.1rem;
+  line-height: 0.6rem;
+  border-radius: 0.1rem;
+  font-size: 0.3rem;
+  color: white;
 }
-.phon{
-   float: left;
-    padding: .1rem 1rem .309rem 0;
+.phon {
+  float: left;
+  padding: 0.1rem 1rem 0.309rem 0;
 }
-.dizhi{
-    overflow: hidden;
+.dizhi {
+  overflow: hidden;
 }
-.dizhi_l div{
-    margin-bottom: .1rem;
+.dizhi_l div {
+  margin-bottom: 0.1rem;
 }
-.dizhi_l{
-    float: left;
-       font-size: .23rem;
-       padding: .1rem .4rem .309rem 0;
+.dizhi_l {
+  float: left;
+  font-size: 0.23rem;
+  padding: 0.1rem 0.4rem 0.309rem 0;
 }
-.dizhi{
-    margin-top:.55rem ;
-    padding: .17rem 0 .3rem .17rem;
-    background: white;
-   }
-.dizhi1,.dizhi2,.dizhi3{
-   padding: .17rem 0 .3rem .17rem;
-    background: white;
-     overflow: hidden;
+.dizhi {
+  margin-top: 0.55rem;
+  padding: 0.17rem 0 0.3rem 0.17rem;
+  background: white;
 }
- .msite_title{
-      text-align: center;
-      color: white;
-      font-size: .25rem;
-  
-  }
-.jian{
-    float: left;
-    color: white;
-    font-size: .4rem;
+.dizhi1,
+.dizhi2,
+.dizhi3 {
+  padding: 0.17rem 0 0.3rem 0.17rem;
+  background: white;
+  overflow: hidden;
 }
-.nav{
-    background: blue;
-    position: fixed;
-    text-align: center;
-    line-height: .5rem;
-    z-index: 100;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 0.566rem;
-    width:100%;
-    box-shadow: 0 -0.02667rem 0.05333rem rgba(0,0,0,.1);
-  }
+.msite_title {
+  text-align: center;
+  color: white;
+  font-size: 0.25rem;
+}
+.jian {
+  float: left;
+  color: white;
+  font-size: 0.4rem;
+}
+.nav {
+  background: blue;
+  position: fixed;
+  text-align: center;
+  line-height: 0.5rem;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0.566rem;
+  width: 100%;
+  box-shadow: 0 -0.02667rem 0.05333rem rgba(0, 0, 0, 0.1);
+}
 </style>

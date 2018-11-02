@@ -158,7 +158,7 @@ export default {
     this.$http.get(yang).then(data => {
       this.Yang = data.data;
     })
-   var d = this.$store.state.s11;
+  //  var d = this.$store.state.allRest;
   },
    methods: {
      text(index) {
@@ -166,11 +166,11 @@ export default {
     },
     range(index){
       show3 = false;
-      this.$store.commit('in',index);
+      // this.$store.commit('in',index);
     }
   },
   computed:{
-          ...mapState(['s11'])
+          // ...mapState(['allRest'])
   }
 };
 </script>

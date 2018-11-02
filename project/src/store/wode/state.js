@@ -1,12 +1,14 @@
 export default {
  count:'',
- s11:'',
- s12:{},
- apis:[],
- s1:'',
+ // 列表订单
+ allRest:[],
  meNu:[],
+//  排序
  inde:'',
  entities:'',
- address:"郑州",
- allPrice:null
+ address:"添加地址",
+ allPrice:null,
+ addAddress:[],
+//  好吃的列表
+ resulr_li:[]
 }

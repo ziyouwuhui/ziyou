@@ -9,10 +9,15 @@
             </router-link>
         </div>
          <div class="dizhi">
-             <router-link :to="{name:'xuanze'}">
-                 <div>
+             <router-link :to="{name:'add'}">
+                 <div >
                      <img style="  width:20px" src="./img/主页.png" alt="">
-                     <span>请添加一个收货地址</span>
+                     <span v-if="address==''"></span>
+                     <!-- <span>{{arrs[0].name}}</span>
+                     <span>{{arrs[0].param}}</span>
+                     <span>{{arrs[0].Aaddress}}</span>
+                     <span>{{arrs[0].casual}}</span> -->
+                     <span v-if="address!=''">{{address}}</span>
                      <span class="rig">></span>
                  </div>
              </router-link>
@@ -50,9 +55,15 @@
             </div>
             <div class="name_bottom">
                 <div>
-                    <span >好吃的</span>
-                    <span style="padding-left:2.5rem;color:red">x3</span>
-                    <span class="two">$20</span>
+                    <ul>
+                        <li v-for="(lie,index) in liebiao" :key="index">
+                            <span>{{lie.foods[nextIndex].name}}</span>
+                          <!-- <span style="padding-left:2.5rem;color:red">x3</span>
+                          <span class="two">$20</span> -->
+                          <!-- {{lie.foods}} -->
+                        </li>
+                    </ul>
+                   
                 </div>
                     <div>
                     <span>dd</span>
@@ -118,7 +129,9 @@
         <p class="coudan_shoping">
           <span class="coudan_shoping_l">待支付</span>
           <span class="coudan_shoping_l">{{allPrice}}</span>
-          <span class="coudan_shoping_right">确认支付</span>
+         <router-link to="/goumaishi">
+              <span class="coudan_shoping_right">确认支付</span>
+         </router-link>
         </p>
       </div>
   </div>
@@ -134,25 +147,31 @@ import {mapState,mapGetters} from 'vuex'
                name:this.$route.query.name,
                url:this.$route.query.src,
                foodname:this.$route.query.foodname,
-               arr:this.$store.state.s12
+               arr:this.$store.state.s12,
+               arrs:[],
+               liebiao:[],
             }
         },
        computed:{
-          ...mapState(['count','s12']),
           allPrice(){
               return this.$store.state.allPrice
+          },
+         address() {
+              return this.$store.state.address;
+          },
+          nextIndex(){
+              return this.$store.state.meNu;
           }
         },
         created() {
-            // console.log(this.$route.query.name);
-            // console.log(this.$route.query.src);
-            
-        //   console.log(this.$store.state.s12)
-        //   console.log(this.arr[index].foods[index].name)
+          this.liebiao = this.$store.state.resulr_li;
+          this.arrs =  this.$store.state.addAddress;
+          console.log(this.$store.state.addAddress)
+          console.log('+++++++++++++',this.liebiao,"+++++++++++++")
         },
         methods:{
             cheng(){
-                this.$router.go(-1);
+                this.$router.back(-1);
             }
         }
     }
