@@ -7,4 +7,6 @@ export default {
  meNu:[],
  inde:'',
  entities:'',
+ address:"郑州",
+ allPrice:null
 }

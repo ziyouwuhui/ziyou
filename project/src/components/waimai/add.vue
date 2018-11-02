@@ -38,13 +38,14 @@
              <div class="dizhi_l">
                 <div>
                     <!-- 搜素 -->
-                   <router-link :to="{name:'sousuo'}">
+                   <router-link :to="{name:'cityss'}">
                        小区/写字楼/学校等
                    </router-link>
                 </div>
                 <div class="sex">
-                    <input type="text" placeholder="详细地址（如门牌号等）">
+                    <input type="text" placeholder="详细地址（如门牌号等）"  :value="address">
                 </div>
+                
              </div>
          </div>
          <div class="dizhi3">
@@ -70,9 +71,27 @@
         name: "add",
         data(){
             return{
-                 param: '1' //设置默认值为1，即设置第一个单选框为选中状态
+                 param: '1' ,//设置默认值为1，即设置第一个单选框为选中状态
+                //  address:'',
+                 dizhi:localStorage.history
             }
-        }
+        },
+        computed:{
+            address(){
+                return this.$store.state.address;
+            }
+        },
+       created() {
+        //    console.log(this.dizhi)
+           let ss =JSON.parse(this.dizhi);
+        //    console.log(ss)
+           if(this.dizhi !=''){
+            //    console.log(this.dizhi)
+           }else{
+               console.log('123');
+           }
+          
+       },
     }
 
 </script>

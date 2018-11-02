@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import HelloWorld from '../components/HelloWorld'
 import Mstie from '../components/waimai/msite'
 import Result from '../components/waimai/result'
 import Resulr_li from '../components/waimai/resulr_li'
@@ -13,6 +12,8 @@ import City from '../components/home/city'
 import Login from '../components/home/login'
 import Forget from '../components/home/forget'
 import Sousuo from '../components/home/sousuo'
+import Order from '../components/home/order'
+import Details from '../components/home/orderdetails'
 import Spinner from '../components/waimai/Spinner'
 import Fen from '../components/waimai/fen'
 import Fenr from '../components/waimai/fenright'
@@ -25,6 +26,8 @@ import invoice from '../components/waimai/invoice'
  Vue.use(Router)
 // 我的
 import Wodes from '../components/wode/wode'
+// 账户信息
+import erzhanghuxinxi from '../components/wode/two/erzhanghuxinxi'
 // 我的余额
 import Erjiyue from '../components/wode/two/erjiyue'
 // 我的优惠
@@ -57,10 +60,11 @@ import Sanduihuanhongbao from '../components/wode/three/wodeyouhui/sanduihuanhon
 import Tuijianyoujiang from "../components/wode/three/wodeyouhui/tuijianyoujiang";
 // 积分说明
 import Sanjifenshuoming from '../components/wode/three/sanjifenshuoming'
+//收货地址
+import  cityss from '../components/waimai/cityss'
 
 
 Vue.use(Router)
-
 export default new Router({
   routes: [{
       path: '/',
@@ -117,14 +121,26 @@ export default new Router({
     },
     {
       path: '/login',
-      name: 'Login',
       component: Login
     },
     {
       path: '/forget',
       name: 'Forget',
       component: Forget
-    },{
+    },
+    {
+      path: '/order',
+      name: 'Order',
+      component: Order,
+      children:[
+        {
+          path: 'orderdetails',
+          name: 'Details',
+          component: Details
+        }
+      ]
+    },
+    {
       path:'/Spinner',
       name:'Spinner',
       component:Spinner,
@@ -154,7 +170,7 @@ export default new Router({
         name:'xuanze',
         component:xuanze
       },{
-        path:'add',
+        path:'/add',
         name:'add',
         component:add
       },{
@@ -170,6 +186,31 @@ export default new Router({
     {
       path: '/pro',
       component: Wodes
+    },
+    // 账户到我的
+    {
+      path: '/tuiwode',
+      component: Wodes
+    },
+    // 账户修改密码
+    {
+      path: '/xiugaimima',
+      component: Forget
+    },
+  //  新增收货地址
+  {
+    path: '/xinzengdizhi',
+    component: Wodes
+  },
+
+    {
+      path: '/dengwode',
+      component: Wodes
+     
+    },
+    {
+      path: '/lulu',
+      component: erzhanghuxinxi
     },
     // 我的余额
     {
@@ -188,7 +229,12 @@ export default new Router({
       children: [{
         path: '/sanjihongbaoshuoming',
         component: Sanhongbaoshuoming
-      }, ]
+      }]
+    },
+    {
+      path: '/daijinjuanshuoming',
+      component: Sanjiyue
+     
     },
     // 历史红包
     {
@@ -251,6 +297,12 @@ export default new Router({
     {
       path: '/xiaxia',
       component: Erjixiazai,
+    },
+    {
+      path:'/cityss',
+      name:'cityss',
+      component:cityss
     }
   ]
+  
 })

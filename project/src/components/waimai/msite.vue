@@ -5,7 +5,7 @@
       <i class="el-icon-search"></i>
     </router-link>
     <router-link to="/home" class="msite_title">
-      <span>xzxz</span>
+      <span>{{this.$route.query.address}}</span>
     </router-link>
     <router-link class="nav_t" to="/login">
       <span>登陆</span>|<span>注册</span>
@@ -31,6 +31,47 @@
          </el-carousel-item>
        </el-carousel>
     </div>
+    
+    <!-- <div class="connt">
+        <div class="seller">
+            <span class="seller_f"><img src="./img/主页.png" alt=""></span>
+            <span class="seller_a">附近商家</span>
+        </div>
+        <div class="guaranteed">
+            <ul>
+                <router-link tag="li" :to="'/result/resulr_li/'+i.id" class="li_g" v-for="(i,index) in data" :key="index">
+                    <div class="infor_l"><img :src="'//elm.cangdu.org/img/'+i.image_path" alt=""></div>
+                        <div class="infor_r">
+                            <div class="infor_r_pinpai">
+                                <span class="infor_r_p">{{i.icon_color}} 品牌</span>
+                                <span class="infor_r_x">{{i.name}}</span>
+                                <div class="infor_r_b"><span v-for="(child,cindex) in i.supports" :key="child.id">{{child.icon_name}}</span></div>
+                            </div>
+                            <div v-for="(child,cindex) in i.supports" :key="child.id">
+                                <span v-if="child.id == 9">
+                         <el-rate
+                           v-model="i.rating"
+                           disabled
+                           show-score
+                           text-color="#ff9900"
+                           score-template="{value}">
+                         </el-rate>
+                       </span>
+                                <div class="r">
+                                    <span class="infor_r_S" v-if="child.id == 9">{{child.name}}</span>
+                                </div>
+                            </div>
+                            <div class="infor_r_peisong">
+                                <span class="infor_r_s">￥{{i.float_minimum_order_amount}}起送 / {{i.piecewise_agent_fee.tips}}</span>
+                                <span class="infor_r_h">/{{i.order_lead_time}}</span>
+                                <span class="infor_r_l">{{i.distance}}</span>
+                            </div>
+                        </div>
+                </router-link>
+            </ul>
+        </div>
+    </div> -->
+    <Buttom></Buttom>
      <Lbiao></Lbiao>
      <Buttom></Buttom>
 </div>
@@ -78,7 +119,7 @@
         let arr = str.split(",");
         this.latitude = arr[1];
         this.longitude = arr[0];
-        console.log(this.latitude, this.longitude);
+        // console.log(this.latitude, this.longitude);
 
         // let api = "https://elm.cangdu.org/shopping/restaurants?latitude="+this.latitude+"&longitude="+this.longitude;
         // this.$http.get(api).then((data)=>{
@@ -90,6 +131,7 @@
         this.$http.get(api).then((data) => {
             this.data = data.data;
             this.value5 = data.rating;
+            // console.log(this.data,'xxxxx');
         })
 
         let api_1 = "https://elm.cangdu.org/v2/index_entry";
@@ -98,8 +140,6 @@
             this.swiperData1 = this.swiperData.slice(0,8);
             this.swiperData2 = this.swiperData.slice(-8);
          })
-        
-
     }
 }
 </script>
@@ -146,14 +186,21 @@
 .nav .msite_title {
     position: absolute;
     top: .2rem;
-    left: 35%;
+    left: 25%;
+    width: 50%;
+    color: #fff;
     text-align: center;
+    margin-left: -.15rem;
 }
 
 .nav .msite_title span {
     color: white;
     font-size: .22rem;
+    text-align: center;
+    display: block;
+    overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .nav .link_search {
@@ -205,19 +252,18 @@
 }
 
 .infor_r_pinpai .infor_r_x {
-    /*width: 8.5rem;*/
     color: #333;
     padding-top: .01rem;
-    font: .19rem/.18rem PingFangSC-Regular;
+    font: .15rem PingFangSC-Regular;
     font-weight: 700;
-    padding-right: 1.6rem;
+    padding-right: 1rem;
 }
 
 .infor_r_pinpai .infor_r_p {
     content: "\54C1\724C";
     display: inline-block;
-    font-size: .1rem;
-    line-height: .2rem;
+    font-size: .06rem;
+    line-height: .16rem;
     color: #333;
     background-color: #ffd930;
     padding: 0 .1rem;
@@ -241,6 +287,7 @@
     font-size: .1rem;
     float: right;
     margin-left: .1rem;
+    width: 4rem;
 }
 
 .guaranteed .infor_r>div {
@@ -299,8 +346,8 @@ em,
     float: left;
     font-size: .16rem;
     color: #666;
-    margin: .12rem .18rem;
-    padding-left: 0.15rem;
+    margin: .12rem .2rem;
+    padding-left: 0.1rem;
 }
 
 .top li img {
@@ -369,12 +416,9 @@ em,
     font-size: 14px !important;
     margin-right: 2px !important;
 }
-</style><style>
 .el-rate__item {
     font-size: .01rem;
 }
-</style>
-<style>
 .connt{
 margin-top: -5rem
 }

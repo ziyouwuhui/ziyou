@@ -1,11 +1,10 @@
 <template>
   <div class="wrap">
         <div class="nav">
-            <router-link :to="{name:'result'}" class="shangjia"><</router-link>
-            <router-link to="##" class="msite_title">
-              <span>确认订单</span>
-            </router-link>
-            <router-link class="nav_t" to="##">
+            <span class="shangjia" @click="cheng"><</span>
+              <span class="msite_title">确认订单</span>
+          
+            <router-link class="nav_t" to="/login">
             <span>登陆</span>|<span>注册</span>
             </router-link>
         </div>
@@ -51,11 +50,17 @@
             </div>
             <div class="name_bottom">
                 <div>
-                    <span>{{}} </span>
+                    <span >好吃的</span>
+                    <span style="padding-left:2.5rem;color:red">x3</span>
+                    <span class="two">$20</span>
+                </div>
+                    <div>
+                    <span>dd</span>
+                    <span style="padding-left:2.8rem;color:red">x2</span>
                     <span class="two">$20</span>
                 </div>
                 <div>
-                    <span>参合</span>
+                    <span>餐盒</span>
                     <span class="two">$2839849</span>
                 </div>
                 <div>
@@ -109,18 +114,13 @@
           </div>
      </div>
 
-
-
-
-
-
-
-      <!-- <div class="coudan">
+      <div class="coudan">
         <p class="coudan_shoping">
-          <span>待支付</span>
+          <span class="coudan_shoping_l">待支付</span>
+          <span class="coudan_shoping_l">{{allPrice}}</span>
           <span class="coudan_shoping_right">确认支付</span>
         </p>
-      </div> -->
+      </div>
   </div>
 </template>
 <script>
@@ -138,16 +138,23 @@ import {mapState,mapGetters} from 'vuex'
             }
         },
        computed:{
-           
-          ...mapState(['count','s12'])
+          ...mapState(['count','s12']),
+          allPrice(){
+              return this.$store.state.allPrice
+          }
         },
         created() {
             console.log(this.$route.query.name);
             console.log(this.$route.query.src);
             
         //   console.log(this.$store.state.s12)
-          console.log(this.arr[index].foods[index].name)
+        //   console.log(this.arr[index].foods[index].name)
         },
+        methods:{
+            cheng(){
+                this.$router.go(-1);
+            }
+        }
     }
 </script>
 <style scoped>
@@ -283,16 +290,21 @@ import {mapState,mapGetters} from 'vuex'
 }
 .coudan_shoping_right{
   float: right;
+  background: yellowgreen;
+  color: white;
+  padding: .2rem;
+}
+.coudan_shoping_l{
+    line-height: .6rem;
 }
 .coudan_shoping{
   font-size: .25rem;
-  margin: .15rem .18rem;
 }
 .coudan{
   /* border: 1px solid rebeccapurple; */
     left: 0;
     right: 0;
-    bottom: .7rem;
+    bottom:0;
     z-index: 119;
     position:fixed;
     background: wheat
@@ -312,6 +324,8 @@ import {mapState,mapGetters} from 'vuex'
     position: absolute;
     top: .2rem;
     left: 35%;
+    color: white;
+    font-size: .25rem;
     text-align: center;
   }
   .nav .msite_title span{

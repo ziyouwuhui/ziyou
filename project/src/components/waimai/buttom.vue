@@ -8,7 +8,7 @@
           <div class="el-icon-goods btn"></div>
           <p>搜索</p>
         </router-link>
-        <router-link to="" tag="div" :span="6" class="col">
+        <router-link to="/order" tag="div" :span="6" class="col">
           <div class="el-icon-goods btn"></div>
           <p>订单</p>
         </router-link>

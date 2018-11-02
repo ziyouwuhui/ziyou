@@ -172,13 +172,11 @@ import {mapState} from 'vuex'
     height: .25rem;
   }
   .wrap .connt{
-    margin-top: .6rem;
+    margin-top: .11rem;
     border-top: .012rem solid #e4e4e4;
     background-color: #fff;
   }
 
-</style>
-<style>
   .el-rate__item{
     font-size: .01rem;
   }

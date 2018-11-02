@@ -19,6 +19,8 @@ Vue.use(VueAxios, axios);
 // require styles
 import 'swiper/dist/css/swiper.css'
 
+
+
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 Vue.use(ElementUI);
 Vue.config.productionTip = false

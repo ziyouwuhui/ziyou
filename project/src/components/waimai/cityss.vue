@@ -6,9 +6,8 @@
             <span @click="change" class="icon_left">&lt;</span>
           </div>
           <div class="title_head ellipsis">
-            <span class="title_text">{{name}}</span>
+            <span class="title_text">收货地址</span>
           </div>
-          <a href="#/home" class="change_city">切换城市</a>
         </header>
         <form class="city_form" target="id_iframe">
           <div>
@@ -23,7 +22,11 @@
         <div v-if="off == true">
           <header class="pois_search_history">搜索历史</header>
           <ul class="getpois_ul">
-            <router-link :to="{path:'/mstie',query:{geohash:i.geohash,address:i.address}}" tag="li" v-for="(i,index) in history" :key="index">
+            <!-- <router-link :to="{path:'/add'}" tag="li" v-for="(i,index) in history" :key="index" @click.native="dizhi(index)">
+              <h4 class="pois_name ellipsis">{{i.name}}</h4>
+              <p class="pois_address ellipsis">{{i.address}}</p>
+            </router-link> -->
+                        <router-link :to="{path:'/add'}" tag="li" v-for="(i,index) in history" :key="index" @click.native="dizhi($event,i)">
               <h4 class="pois_name ellipsis">{{i.name}}</h4>
               <p class="pois_address ellipsis">{{i.address}}</p>
             </router-link>
@@ -34,7 +37,8 @@
           <!--搜索列表-->
           <!--  -->
           <ul class="getpois_ul">
-            <router-link  tag="li" :to="{path:'/mstie',query:{geohash:item.geohash,address:item.address}}" v-for="(item,index) in names" :key="index" @click.native="add(index)">
+            <!-- add -->
+            <router-link  tag="li" :to="{path:'/add'}" v-for="(item,index) in names" :key="index" @click.native="add(index)">
               <h4 class="pois_name ellipsis">{{item.name}}</h4>
               <p class="pois_address ellipsis">{{item.address}}</p>
             </router-link>
@@ -48,7 +52,7 @@
 import {mapState, mapMutations} from 'vuex'
 
     export default {
-        name: "city",
+        name: "cityss",
         data(){
           return{
             name:'',
@@ -69,7 +73,7 @@ import {mapState, mapMutations} from 'vuex'
               });
             },
             add(index){
-              console.log(index);
+              // console.log(index);
                 this.off = true;
                 this.on = true;
                 this.history.push(this.names[index]);
@@ -86,7 +90,26 @@ import {mapState, mapMutations} from 'vuex'
               if(this.history != []){
                 this.history=JSON.parse(localStorage.getItem('history') || []);
               }
-            }
+            },
+            // dizhi(en){
+            //    this.names.forEach(ct => {
+            //       console.log(ct,'111111111111111111111')
+            //       this.Harvest=ct.address
+            //    });
+            //    localStorage.setItem('dizhii',JSON.stringify(this.Harvest));
+            //         console.log(this.Harvest);
+            // },
+            dizhi(ev,address){
+              console.log(address.address)
+
+              this.$store.commit("updateAddress",address.address)
+
+               this.names.forEach(ct => {
+                 let Harvest=[{address: ct.address}];
+               });
+               localStorage.setItem('dizhii',JSON.stringify(this.Harvest));
+            },
+       
         },
         created(){
           this.seahis();

@@ -40,16 +40,15 @@
                         <span>
                           {{child.tips}}
                         </span>
-                <!--<span>好评率76%</span>-->
               </p>
                <div class="right_l_buttom">
                 <span class="right_li_but">${{child.specfoods[0].price}}</span>
-                <span class="right_li_add" @click = "add(cindex)">{{sum*child.specfoods.price}}</span>
+                <span class="right_li_add" @click = "add(cindex)">+</span>
                 <!-- <span class="item">
                     <i class="con"> <i class="qiu"> </i> </i>
                 </span> -->
-                <span class="right_li_add_1">{{ child.num }}</span>
-                <span class="right_li_a" @click = "counter--"></span>
+                <span class="right_li_add_1">{{ child.num}}</span>
+                <span class="right_li_a" @click = "reduce(cindex)">-</span>
         </div>
             </div>
           </div>
@@ -89,13 +88,19 @@ export default {
         this.allFoods.push(data.data[i].foods);
       }
       for (let i = 0; i < this.allFoods[0].length; i++) {
-        this.allFoods[0][i].num = 1;
+        // this.allFoods[0][i].num = 1;
+        //添加新的属性vue.set 
+        Vue.set(this.allFoods[0][i], 'num', 0);
+
+
         this.foods.push(this.allFoods[0][i]);
+        console.log();
+        console.log(this.foods);
       }
 
       this.$store.commit("s2", data.data);
 
-      console.log("````" + data);
+      // console.log("````" + data.data);
     });
   },
   computed: {
@@ -108,9 +113,12 @@ export default {
     },
     add(i) {
       this.foods[i].num++;
+
+      console.log(this.foods[i])
+      // this.allFoods[0][i].num++
       // console.log(i)
-      this.sum = this.counter++;
-      console.log(this.sum, "11111111111111111");
+      // this.sum = this.counter++;
+      // console.log(this.sum, "11111111111111111");
       this.$store.commit("arrs", i);
       this.$router.push({
         path: "/shoping",
@@ -119,8 +127,14 @@ export default {
       console.log(this.$store.state.meNu);
       var food = this.meNu.foods;
       this.$emit("childByVaue", this.foods[i]);
-    }
-
+    },
+     reduce(i){
+       if( this.foods[i].num!=0){
+          this.foods[i].num--;
+          this.$emit("childByVaue", this.foods[i]);
+       }
+        
+     },
     // mounted() {
     // var _this = this;
     // this.meNu.foods.map(function(item){
@@ -246,9 +260,9 @@ export default {
 /* .right_li_add:hover .right_li_add_1{
   display: block;
 } */
-.right_li_a {
+/* .right_li_a { */
   /* display: none; */
-}
+/* } */
 .right_li_add,
 .right_li_a {
   float: right;
@@ -369,8 +383,6 @@ export default {
   overflow: hidden;
   margin-left: 4rem;
 }
-</style>
-<style>
 .el-rate__icon {
   font-size: 0.01rem;
 }

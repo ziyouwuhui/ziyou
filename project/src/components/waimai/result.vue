@@ -1,5 +1,5 @@
 <template>
- <div class="warp">
+ <div class="warp" v-if="meNu">
       <ul class="top">
         <span  @click="change" class="top_qiantou">&lt;</span>
         <router-link to="/business" class="shangjia">></router-link>
@@ -23,7 +23,7 @@
       </ul>
       <section class="conter">
         <div class="conter_left">
-          <router-link class="conter_left_show" :to="'/result/resulr_li/'+id" tag="span" :childByVaue="childByVaue">商品
+          <router-link class="conter_left_show" :to="'/result/resulr_li/'+id" tag="span" >商品
           </router-link>
         </div>
         <div class="conter_right">
@@ -33,14 +33,16 @@
       <!--<divli></divli>-->
       <!-- 购物车下 -->
       <div class="buttom">
-          <section @click="bart=!bart" class="buttom_img"><img src="./img/购物车.png" alt=""></section>
+          <section @click="barts" class="buttom_img"><img src="./img/购物车.png" alt=""></section>
           <section class="buttom_two">
-            <div class="buttom_two_money">¥ 0.00</div>
+            <div class="buttom_two_money">¥ {{mon}}</div>
             <div class="buttom_two_bigm">配送费¥5</div>
           </section>
-          <section class="buttom_go">
+          <section v-if="meNu" class="buttom_go">
              <router-link :to="{name:'shoping',path:'/shoping',query:{src:'//elm.cangdu.org/img/'+meNu.image_path,name:meNu.name}}">
-               <span style="margin: auto">还差20元</span>
+              <span class="ma" style="margin: auto">去结算</span>
+              <!-- <span class="ma"></span> -->
+              
             </router-link>
           </section>
       </div>
@@ -48,20 +50,27 @@
       <div class="tankuang" v-show="bart">
           <div class="tankuang_1">
              <span>购物车</span>
-             <span class="el-icon-delete right"> 清空</span>
+             <span class="el-icon-delete right" @click="clear" > 清空</span>
           </div>
           <!-- 显示自己内容 -->
           <div>
                <ul>
-                 <li v-for="(item,index) in name" :key="index">
-                   {{
-                     item.name
-                   }}
+                 <li v-for="(item,index) in carts" :key="index">
+                  <div class="mo">
+                    <span class="m_l">{{ item.name }}</span>
+                     <div class="r_add">
+                       <span class="right_li_add" @click = "add(index)">+</span>
+                       <span class="right_li_add">{{item.num}}</span>
+                       <span class="right_li_add" @click = "reduce(index)">-</span>
+                     </div>
+                    <span class="m_r">${{price}}</span>
+                  </div>
+                  
                  </li>
                 </ul> 
           </div>
       </div> 
-   <router-view></router-view>
+   <router-view  @childByVaue="childByVaue"></router-view>
    <transition name="el-fade-in-linear">
        <div v-show="!show">
          <div class="none_ul">
@@ -92,40 +101,48 @@ export default {
   data() {
     return {
       meNu: {},
-      bart: false,
       me: {},
+      bart:false,
       id: this.$route.params.id,
       show: true,
       names: this.$store.state.meNu,
-      name:[],
+      carts:[],
+      price:'',
+      money:[],
+      newFoods:[],
+      newFood:{},
+      foodname:'',
+      foodnum:''
     };
   },
-  computed: {
-    // id:this.$route.params.id
-  },
   created() {
-    // var a1 = this.$store.state.meNu;
     var a2 = this.$store.state.cc;
     console.log("hkhfldsf" + a2);
-
-    // console.log('当前id='+this.$route.params.id);
-
     let api_r =
       "https://elm.cangdu.org/shopping/restaurant/" + this.$route.params.id;
-    // console.log(api_r);
-
-    // console.log(this.$route.params.id);
-    // console.log(api_r);
     this.$http.get(api_r).then(data => {
       this.meNu = data.data;
-      console.log(this.meNu, "=========");
       this.me = data.data.supports;
-      console.log(this.me, "!!!!!!!!!!!!!!!!!!!!!!!");
     });
   },
   methods: {
     change(e) {
       this.$router.go(-1);
+    },
+    barts(){
+          this.bart=!this.bart
+    },
+    clear(){
+      this.carts=[];
+      this.bart = false;
+    },
+    add(index){
+        this.carts[index].num++;
+    },
+    reduce(i){
+       if( this.carts[i].num!=0){
+          this.carts[i].num--;
+       }
     },
     checkCount() {
       let foodlist = [];
@@ -139,16 +156,64 @@ export default {
       return foodlist;
     },
     childByVaue:function(childByVaue){
-      //this.name = childByVaue;
-      console.log('fghjklkjhghjklk')
-      console.log('kjjjjjjjjjjjj',childByVaue)
-      this.$on("childByVaue")
+      if(this.carts.indexOf(childByVaue) == -1){
+       this.carts.push(childByVaue);
+      }
+      this.carts.forEach(d => {
+          this.foodname=d.name;
+          this.foodnum=d.num;
+          this.money = d.specfoods;
+      })
+    
+      this.money.forEach(v => {
+        this.price = v.price
+      })
+      this.newFood = {name:this.foodname,num:this.foodnum,price:this.price};
+      this.newFoods.push(this.newFood);
+      console.log(this.newFoods,'price');
+    }
+  },
+  computed:{
+    mon(){
+      let total = 0;
+      this.carts.forEach(val =>{
+        if(!val.num){
+            return
+        }else{
+          total += val.num*this.price
+        }
+      })
+       this.$store.commit('updateAllprice',total);
+      return total;
     }
   }
 };
 </script>
 
 <style scoped>
+.right_li_add{
+  float: right;
+  width: 15px;
+  height: 15px;
+  color: white;
+  text-align: center;
+  line-height: 14px;
+  border: 1px solid blue;
+  border-radius: 50%;
+  background: blue;
+}
+.mo{
+  padding: .15rem 0.1rem ;
+ 
+}
+.r_add{
+  float:right;
+}
+.m_r{
+  float: right;
+  margin-right: 1rem;
+  color:orangered;
+}
 .right {
   float: right;
 }
@@ -251,16 +316,22 @@ export default {
   transform: translateY(-50%);
   left: 1.2rem;
 }
+.buttom .buttom_go .ma {
+  color: white;
+  margin-left: .75rem;
+}
 .buttom .buttom_go {
   position: absolute;
   right: 0;
   top: 0;
-  background-color: #535356;
+  background-color:green;
   width: 1.5rem;
   height: 100%;
+  text-align: center;
   line-height: 0.7rem;
+  color: white;
   display: flex;
-  font-size: 0.2rem;
+  font-size: 0.25rem;
 }
 .buttom_img {
   /*display: flex;*/

@@ -9,7 +9,7 @@ export default {
   },
   s2(state, n) {
     state.s12 = n;
-    console.log( state.s12);
+    console.log(state.s12);
   },
   arrs(state, n) {
     state.meNu = n;
@@ -18,9 +18,13 @@ export default {
   in(state, n) {
     state.inde = n;
   },
-  // add(state,id){
-  //       this.state.meNu.filter(num => id )
-  // }
+  updateAddress(state, newAddress) {
+    state.address = newAddress;
+  },
+  updateAllprice(state, newAllprice){
+    state.allPrice = newAllprice;
+  }
+ 
 
   
 }
