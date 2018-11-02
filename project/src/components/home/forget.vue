@@ -59,16 +59,18 @@
             newpass:'',
             confirmpass:'',
             captchacode:'',
-            msg:''
+            msg:'',
+            errshow:null
           }
         },
         created(){
           this.getCode();
           this.update();
+          this.errshow = document.getElementById('alcontainer');
         },
         methods:{
           getCode(){
-            let errshow = document.getElementById('alcontainer');
+            this.errshow = document.getElementById('alcontainer');
             let url1 = "https://elm.cangdu.org/v1/captchas";
             this.$http({
               method:'post',
@@ -83,7 +85,7 @@
             });
           },
           update(){
-            let errshow = document.getElementById('alcontainer');
+            this.errshow = document.getElementById('alcontainer');
             let apir = "https://elm.cangdu.org/v2/changepassword";
             this.$http({
               method: "post",
@@ -107,7 +109,7 @@
             });
           },
           confirm(){
-            let errshow = document.getElementById('alcontainer');
+            this.errshow = document.getElementById('alcontainer');
             errshow.style.display = "none";
           },
           change(e){

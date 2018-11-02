@@ -43,7 +43,7 @@
    </div>
 </template>
 <script>
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 
 export default {
   name: "leibiao",
@@ -60,7 +60,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["s11"]),
+    // ...mapState(["s11"]),
     ac() {
       return this.$store.getters.in;
     }
@@ -71,25 +71,27 @@ export default {
 
     }
   },
-  beforeMount() {
-    var a = this.$store.getters.in;
-    let api = `https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762&order_by=${this
-      .ac}`;
-    this.$http.get(api).then(data => {
-      this.data = data.data;
-      this.$store.commit("s1", data.data);
-      this.value5 = data.rating;
+  created(){
+      // beforeMount() {
+          var a = this.$store.getters.in;
+          let api = `https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762&order_by=${this
+            .ac}`;
+          
+          this.$http.get(api).then(data => {
+            this.data = data.data;
+            this.value5 = data.rating;
 
-      var dat = this.data;
-      for (var i = 0; i <= dat.length; i++) {
-        let v = dat[i];
-      }
-      
-      this.data.forEach(val =>{
-        this.arr = val.delivery_mode;
-      });
+            var dat = this.data;
+            for (var i = 0; i <= dat.length; i++) {
+              let v = dat[i];
+            }
+            
+            this.data.forEach(val =>{
+              this.arr = val.delivery_mode;
+            });
 
-    });
+          });
+    // }
   }
 };
 </script>

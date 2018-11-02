@@ -5,7 +5,6 @@ let getters = {
     //  state.s1等于vue的data
     this.$http.get(menu).then(data => {
         state.entities = data.data;
-        console.log(state.meNu,'11212121')
       });
    },
    in(state){

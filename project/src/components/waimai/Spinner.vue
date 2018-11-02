@@ -4,6 +4,7 @@
               <router-link to="/" class="top-left"><</router-link>
               <span class="top-conter">{{this.$route.query.ite}}</span>
           </div>  
+          <div class="top_padding"></div>
           <Lbiao></Lbiao>
           <!-- 按钮分类 -->
           <div class="botton">
@@ -176,6 +177,9 @@ export default {
 </script>
 
 <style scoped>
+.top_padding{
+  height: .5rem;
+}
 
 .botton_t1:hover {
   color: blue;

@@ -110,14 +110,12 @@ export default {
       price:'',
       money:[],
       newFoods:[],
-      newFood:{},
-      foodname:'',
-      foodnum:''
+      newFood:[],
+      foodname:''
     };
   },
   created() {
     var a2 = this.$store.state.cc;
-    console.log("hkhfldsf" + a2);
     let api_r =
       "https://elm.cangdu.org/shopping/restaurant/" + this.$route.params.id;
     this.$http.get(api_r).then(data => {
@@ -156,21 +154,17 @@ export default {
       return foodlist;
     },
     childByVaue:function(childByVaue){
-      if(this.carts.indexOf(childByVaue) == -1){
-       this.carts.push(childByVaue);
-      }
-      this.carts.forEach(d => {
-          this.foodname=d.name;
-          this.foodnum=d.num;
-          this.money = d.specfoods;
-      })
-    
-      this.money.forEach(v => {
-        this.price = v.price
-      })
-      this.newFood = {name:this.foodname,num:this.foodnum,price:this.price};
-      this.newFoods.push(this.newFood);
-      console.log(this.newFoods,'price');
+        if(this.carts.indexOf(childByVaue) == -1){
+             this.carts.push(childByVaue);
+        }
+        this.carts.forEach(d => {
+            this.money = d.specfoods;
+            this.foodname = d.name;
+        })
+        this.money.forEach(v => {
+             this.price = v.price
+        })
+
     }
   },
   computed:{

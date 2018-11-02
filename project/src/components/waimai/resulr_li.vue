@@ -2,16 +2,18 @@
   <div>
     <section class="left">
       <ol>
-        <li class="left_li" v-for="(ite,index) in meNu" :key="index">
-          <a :href="'#mmp'+ite.id" style="color:grey">
+        <li class="left_li" v-for="(ite,index) in meNu" :key="index" @click="djshow(ite.id)">
+          <!-- :href="'#mmp'+ite.id" -->
+          <a href="###" style="color:grey">
              <span class="li_s">{{ite.name}}</span>
           </a>
         </li>
       </ol>
     </section>
     <section class="right">
-      <ul v-for="(it,index) in meNu" :key="index">
-        <div class="right_top" :id="'mmp'+it.id">
+      <ul v-for="(it,index) in meNu" :key="index" v-if="foodId == it.id">
+        <!-- :id="'mmp'+it.id" -->
+        <div class="right_top">
           <span class="right_top_D">{{it.name}}</span>
           <span class="right_top_B">{{it.description}}</span>
           <span class="right_top_dian">...</span>
@@ -72,10 +74,10 @@ export default {
       counter: 1,
       sum: null,
       id:'',
+      foodId:2306
     };
   },
   created() {
-    this.$store.commit("s1", this.$route.params.id);
     this.id = this.$store.state.s11;
     let menu =
       "https://elm.cangdu.org/shopping/v2/menu?restaurant_id=" +
@@ -92,37 +94,27 @@ export default {
 
 
         this.foods.push(this.allFoods[0][i]);
-        console.log();
-        console.log(this.foods);
+      
       }
 
-      this.$store.commit("s2", data.data);
-
-      // console.log("````" + data.data);
     });
   },
   computed: {
     ...mapState(["s12"])
-    // ...mapGetters({s1:'n'}),
   },
   methods: {
+    djshow(id){
+        this.foodId = id;
+    },
     cheng() {
       this.$router.back(-1);
     },
     add(i) {
       this.foods[i].num++;
-
-      console.log(this.foods[i])
-      // this.allFoods[0][i].num++
-      // console.log(i)
-      // this.sum = this.counter++;
-      // console.log(this.sum, "11111111111111111");
-      this.$store.commit("arrs", i);
       this.$router.push({
         path: "/shoping",
         query: { foodname: this.meNu.foods }
       });
-      console.log(this.$store.state.meNu);
       var food = this.meNu.foods;
       this.$emit("childByVaue", this.foods[i]);
     },
@@ -132,13 +124,7 @@ export default {
           this.$emit("childByVaue", this.foods[i]);
        }
         
-     },
-    // mounted() {
-    // var _this = this;
-    // this.meNu.foods.map(function(item){
-    //    _this.$set(item,'select',true)
-    // })
-    // },
+     }
   }
 };
 </script>
@@ -310,9 +296,6 @@ export default {
   margin-top: 0.1rem;
   counter-reset: grey;
 }
-.right_li_a {
-  display: none;
-}
 .right_li_add,
 .right_li_a {
   float: right;
@@ -385,7 +368,9 @@ export default {
 .right .right_top {
   background: #ededed;
   padding: 0.1rem 0 0.1rem 0.1rem;
-  border: 1px solid red;
+}
+.right ul{
+  position: relative;
 }
 .right .right_top_D {
   font-size: 0.25rem;

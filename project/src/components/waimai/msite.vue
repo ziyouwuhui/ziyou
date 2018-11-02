@@ -174,14 +174,6 @@ export default {
   right: 0.1rem;
 }
 
-.nav .nav_t {
-  font-size: 0.22rem;
-  color: white;
-  position: absolute;
-  top: 0.2rem;
-  right: 0.1rem;
-}
-
 .infor_r_h {
   float: right;
   color: #3190e8;
@@ -290,8 +282,7 @@ export default {
   left: 166px;
 }
 
-em,
-.li1 {
+em, .li1 {
   text-align: center;
   float: left;
   font-size: 0.16rem;

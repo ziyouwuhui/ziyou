@@ -51,10 +51,12 @@
             <div class="name_bottom">
                 <div>
                     <span >好吃的</span>
-                    <span style="padding-left:2.5rem;color:red">x3</span>
+                    <span style="padding-left:2.5rem;color:red">
+                        x3
+                    </span>
                     <span class="two">$20</span>
                 </div>
-                    <div>
+                <div>
                     <span>dd</span>
                     <span style="padding-left:2.8rem;color:red">x2</span>
                     <span class="two">$20</span>
@@ -124,7 +126,6 @@
   </div>
 </template>
 <script>
-// import Spinner from '../waimai/result'
 import {mapState,mapGetters} from 'vuex'
     export default{
         name:'shoping',
@@ -144,11 +145,7 @@ import {mapState,mapGetters} from 'vuex'
           }
         },
         created() {
-            // console.log(this.$route.query.name);
-            // console.log(this.$route.query.src);
             
-        //   console.log(this.$store.state.s12)
-        //   console.log(this.arr[index].foods[index].name)
         },
         methods:{
             cheng(){

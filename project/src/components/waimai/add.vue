@@ -10,11 +10,11 @@
                 </div>
              <div class="dizhi_l">
                    <div>
-                    <input type="text" placeholder="你的名字">
+                    <input @keyup="listename" type="text" placeholder="你的名字" v-model="name">
                    </div>
                     <div class="sex">
-                    <input type="radio" name="radios" value="1" v-model="param"><label>先生</label>
-                    <input type="radio" name="radios" value="2" v-model="param"><label>女士</label>
+                    <input @keyup="listename" type="radio" name="radios" value="先生" v-model="param"><label>先生</label>
+                    <input @keyup="listename" type="radio" name="radios" value="女士" v-model="param"><label>女士</label>
                     </div>
              </div>
          </div>
@@ -24,10 +24,10 @@
                 </div>
              <div class="dizhi_l">
                 <div>
-                    <input type="text" placeholder="你的手机号">
+                    <input @keyup="listename" type="text" placeholder="你的手机号" v-model="phone">
                 </div>
                 <div class="sex">
-                    <input type="text" placeholder="备选电话">
+                    <input @keyup="listename" type="text" placeholder="备选电话" v-model="altephone">
                 </div>
              </div>
          </div>
@@ -54,10 +54,11 @@
                 </div>
              <div class="dizhi_l">
                 <div>
+                    <input @keyup="listename" type="text" placeholder="无/家/学校/公司" v-model="wlabeldz">
                     <!-- 搜素 -->
-                   <router-link :to="{}">
+                   <!-- <router-link :to="{}">
                        无/家/学校/公司
-                   </router-link>
+                   </router-link> -->
                 </div>
              </div>
       </div>
@@ -71,9 +72,13 @@
         name: "add",
         data(){
             return{
-                 param: '1' ,//设置默认值为1，即设置第一个单选框为选中状态
+                 param: '' ,//设置默认值为1，即设置第一个单选框为选中状态
                 //  address:'',
-                 dizhi:localStorage.history
+                 dizhi:localStorage.history,
+                 name:'',
+                 phone:'',
+                 altephone:'',
+                 wlabeldz:''
             }
         },
         computed:{
@@ -82,6 +87,11 @@
             }
         },
        created() {
+           this.name = localStorage.username
+           this.phone = localStorage.phone
+           this.altephone = localStorage.altephone
+           this.wlabeldz = localStorage.wlabeldz
+           this.param = localStorage.param
         //    console.log(this.dizhi)
            let ss =JSON.parse(this.dizhi);
         //    console.log(ss)
@@ -92,6 +102,15 @@
            }
           
        },
+       methods:{
+           listename(){
+               localStorage.setItem("username",this.name)
+               localStorage.setItem("phone",this.phone)
+               localStorage.setItem("altephone",this.altephone)
+               localStorage.setItem("wlabeldz",this.wlabeldz)
+               localStorage.setItem("param",this.param)
+           }
+       }
     }
 
 </script>

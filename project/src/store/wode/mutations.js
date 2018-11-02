@@ -11,7 +11,6 @@ export default {
   },
   arrs(state, n) {
     state.meNu = n;
-
   },
   in(state, n) {
     state.inde = n;
@@ -21,8 +20,9 @@ export default {
   },
   updateAllprice(state, newAllprice){
     state.allPrice = newAllprice;
+  },
+  upallRest(state, newAllRest){
+      state.allRest = newAllRest;
   }
  
-
-  
 }
