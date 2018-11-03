@@ -43,7 +43,7 @@
               </p>
                <div class="right_l_buttom">
                 <span class="right_li_but">${{child.specfoods[0].price}}</span>
-                <span class="right_li_add" @click = "add(cindex)">+</span>
+                <span class="right_li_add" @click = "add(cindex,child.name)">+</span>
                 <span class="right_li_add_1">{{ child.num}}</span>
                 <span class="right_li_a" @click = "reduce(cindex)">-</span>
         </div>
@@ -107,11 +107,11 @@ export default {
     cheng() {
       this.$router.back(-1);
     },
-    add(i) {
+    add(i,id) {
       //内容num 
       this.foods[i].num++;
-      console.log(this.foods[i])
-      this.$store.commit("arrs", i);
+      console.log(id,'ididididi')
+      this.$store.commit("arrs", id);
       this.$router.push({
         path: "/shoping",
         query: { foodname: this.meNu.foods }

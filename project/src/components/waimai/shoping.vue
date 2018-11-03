@@ -13,10 +13,8 @@
                  <div >
                      <img style="  width:20px" src="./img/主页.png" alt="">
                      <span v-if="address==''"></span>
-                     <!-- <span>{{arrs[0].name}}</span>
-                     <span>{{arrs[0].param}}</span>
-                     <span>{{arrs[0].Aaddress}}</span>
-                     <span>{{arrs[0].casual}}</span> -->
+                     <span>{{raname}}</span>
+                     <span>{{raphone}}</span>
                      <span v-if="address!=''">{{address}}</span>
                      <span class="rig">></span>
                  </div>
@@ -54,21 +52,18 @@
                 </div>
             </div>
             <div class="name_bottom">
-                <div>
-                    <ul>
-                        <li v-for="(lie,index) in liebiao" :key="index">
-                            <span>{{lie.foods[nextIndex].name}}</span>
-                          <!-- <span style="padding-left:2.5rem;color:red">x3</span>
-                          <span class="two">$20</span> -->
-                          <!-- {{lie.foods}} -->
+                <div class="lists">
+                    <ul class="namelist">
+                        <li v-for="(lie,index) in liebiao" :key="index" class="name_list_li">
+                            <span>{{lie}}</span>
+
+                            <span class="pri">
+                                x1  
+                                <span id="kongge"></span>   
+                                 $20
+                            </span>
                         </li>
                     </ul>
-                   
-                </div>
-                <div>
-                    <span>dd</span>
-                    <span style="padding-left:2.8rem;color:red">x2</span>
-                    <span class="two">$20</span>
                 </div>
                 <div>
                     <span>餐盒</span>
@@ -148,7 +143,9 @@ import {mapState,mapGetters} from 'vuex'
                foodname:this.$route.query.foodname,
                arr:this.$store.state.s12,
                arrs:[],
-               liebiao:[],
+               liebiao:'',
+               raname:'',
+               raphone:''
             }
         },
        computed:{
@@ -157,14 +154,18 @@ import {mapState,mapGetters} from 'vuex'
           },
          address() {
               return this.$store.state.address;
-          },
-          nextIndex(){
-              return this.$store.state.meNu;
-          }
+           }
+
+        //   ,
+        //   nextIndex(){
+        //       return this.$store.state.meNu;
+        //   }
         },
         created() {
-          this.liebiao = this.$store.state.resulr_li;
+          this.liebiao = this.$store.state.meNu;
           this.arrs =  this.$store.state.addAddress;
+          this.raname = localStorage.username;
+          this.raphone = localStorage.phone;
           console.log(this.$store.state.addAddress)
           console.log('+++++++++++++',this.liebiao,"+++++++++++++")
         },
@@ -176,6 +177,18 @@ import {mapState,mapGetters} from 'vuex'
     }
 </script>
 <style scoped>
+#kongge{
+    padding: .6rem;
+}
+.name_list_li .pri{
+    float: right;
+}
+.namelist .name_list_li{
+    padding: .2rem 0 .209rem .05rem;
+}
+.lists{
+    padding: 0;
+}
 .two{
     float: right;
 }

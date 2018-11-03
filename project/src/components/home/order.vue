@@ -10,7 +10,7 @@
         </div>
       </header>
       <ul class="orderlist_ul">
-        <li class="orderlist_li" v-for="(i,index) in arrs" :key="index">
+        <li class="orderlist_li" v-for="(i,index) in arrs[0]" :key="index">
            <img :src="'//elm.cangdu.org/img/'+i.image_path" alt="" class="listimg">
           <div class="item_r">
               <div class="item_rtop">
@@ -24,7 +24,7 @@
                 <!-- <div class="top_status">{{subtitle}}</div> -->
               </div>
               <div class="item_basket">
-                <!--食物名123123-默认 -->
+                <!--食物名123123-规格:默认 -->
                 <p class="order_name ellipsis">123123-默认</p>
                 <p class="order_amount">￥26310.00</p>
               </div>
@@ -46,12 +46,12 @@
               </div>
           </div>
         </li>
-        <li>
+        <!-- <li>
          
-         <!-- {{liebiao}} -->
-         <!-- {{arrs}} -->
+         {{liebiao}} 
+         {{arrs}}
          
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
@@ -72,21 +72,12 @@ export default {
     //  城市列表
          address() {
                 return this.$store.state.address;
-           },
+        },
 
      },
   methods: {
     change(e) {
       this.$router.go(-1);
-    },
-    getOrderlist() {
-      // let api = "https://elm.cangdu.org/bos/orders?offset=0&limit=20";
-      // this.$http({
-      //   method: "get",
-      //   url: api
-      // }).then(data => {
-      //   this.orders = data.data;
-      // });
     },
     confirm() {
       let errshow = document.getElementById("alcontainer");
@@ -97,7 +88,7 @@ export default {
     //列表共享 
     this.arrs = this.$store.state.allRest;
     this.liebiao = this.$store.state.resulr_li;
-    this.getOrderlist();
+    console.log(this.arrs,'aaaaaa')
     let _this = this;
     let buyspan = document.getElementById("buy_again");
     function count(times) {
@@ -278,7 +269,7 @@ export default {
 }
 .orderlist_ul {
   background-color: #f1f1f1;
-  padding-top: .56rem;
+  /* padding-top: .56rem; */
 }
 .order_page {
 

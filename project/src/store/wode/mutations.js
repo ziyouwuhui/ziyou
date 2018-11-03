@@ -9,7 +9,7 @@ updatdallRest(state, newvaluerest) {
     // console.log(11, state.s11);
   },
   arrs(state, n) {
-    state.meNu = n;
+    state.meNu.push(n);
   },
   //排序 
   in(state, n) {
