@@ -75,12 +75,12 @@ export default {
 
         // 取值
         this.ures = JSON.parse(localStorage.getItem('users'))
-        // console.log(this.ures[0].username);
-        // if (this.ures[0].username != '') {
-        //     this.denglu = this.ures[0].username
-        // } else {
-        //     this.denglu = "登录/注册";
-        // }
+        console.log(this.ures[0].username);
+        if (this.ures[0].username != '') {
+            this.denglu = this.ures[0].username
+        } else {
+            this.denglu = "登录/注册";
+        }
     }
 }
 </script>
