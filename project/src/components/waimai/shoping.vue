@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
         <div class="nav">
-            <span class="shangjia" @click="cheng"><</span>
+            <span class="shangjia" @click="cheng"></span>
               <span class="msite_title">确认订单</span>
           
             <router-link class="nav_t" to="/login">
@@ -224,10 +224,6 @@ import {mapState,mapGetters} from 'vuex'
 } 
 .name_top{
      padding: .3rem 0 0 .1rem;
-}
-.name{
-    
-    /* border: 1px solid red; */
 }
 .dingdan_r{
     float: right;

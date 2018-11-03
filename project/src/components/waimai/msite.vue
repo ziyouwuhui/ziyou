@@ -1,38 +1,42 @@
 <template>
 <div class="wrap">
-  <div class="nav">
-    <router-link to="/sousuo" class="link_search">
-      <i class="el-icon-search"></i>
-    </router-link>
-    <router-link to="/home" class="msite_title">
-      <span>{{this.$route.query.address}}</span>
-    </router-link>
-    <router-link class="nav_t" to="/login">
-      <span>登陆</span>|<span>注册</span>
-    </router-link>
-  </div>
-     <div class="top">
-       <el-carousel :interval="5000" type="" height="2.3rem">
-         <el-carousel-item v-for="(ite,index) in 1" :key="index">
-           <ol>
-               <router-link :to="{path:'/Spinner',query:{ite:ite.title,id:ite.id}}" tag="li" class="li1"  v-for="(ite,index) in swiperData1" :key="index" >
-               <img :src="'https://fuss10.elemecdn.com'+ite.image_url" alt="" >
-               <p>{{ite.title}}</p>
-               </router-link>
-           </ol>
-         </el-carousel-item>
-         <el-carousel-item v-for="(ite,index) in 1" :key="index+1">
-           <ol>
-               <router-link :to="{path:'/Spinner',query:{ite:ite.title,id:ite.id}}" tag="li" class="li1"  v-for="(ite,index) in swiperData2" :key="index" >
-               <img :src="'https://fuss10.elemecdn.com'+ite.image_url" alt="" >
-               <p>{{ite.title}}</p>
-               </router-link>
-           </ol>
-         </el-carousel-item>
-       </el-carousel>
+    <div class="nav">
+        <div>
+            <router-link to="/sousuo" class="link_search">
+                <i class="el-icon-search"></i>
+            </router-link>
+            <router-link to="/home" class="msite_title">
+                <span>{{this.$route.query.address}}</span>
+            </router-link>
+            <router-link class="nav_t" :to="link">
+                <img v-if="yonghu0" class="yonghu" src="./img/用户.png" alt="">
+                <span v-else>登陆|注册</span>
+            </router-link>
+        </div>
+
     </div>
-     <Lbiao></Lbiao>
-     <Buttom></Buttom>
+    <div class="top">
+        <el-carousel :interval="5000" type="" height="2.3rem">
+            <el-carousel-item v-for="(ite,index) in 1" :key="index">
+                <ol>
+                    <router-link :to="{path:'/Spinner',query:{ite:ite.title,id:ite.id}}" tag="li" class="li1" v-for="(ite,index) in swiperData1" :key="index">
+                        <img :src="'https://fuss10.elemecdn.com'+ite.image_url" alt="" >
+                        <p>{{ite.title}}</p>
+                    </router-link>
+                </ol>
+            </el-carousel-item>
+            <el-carousel-item v-for="(ite,index) in 1" :key="index+1">
+                <ol>
+                    <router-link :to="{path:'/Spinner',query:{ite:ite.title,id:ite.id}}" tag="li" class="li1" v-for="(ite,index) in swiperData2" :key="index">
+                        <img :src="'https://fuss10.elemecdn.com'+ite.image_url" alt="" >
+                        <p>{{ite.title}}</p>
+                    </router-link>
+                </ol>
+            </el-carousel-item>
+        </el-carousel>
+    </div>
+    <Lbiao></Lbiao>
+    <Buttom></Buttom>
 </div>
 </template>
 
