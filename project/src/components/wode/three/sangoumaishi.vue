@@ -8,20 +8,20 @@
     <section class="bottom">
         <div class="bottom_bottom">
             <p>
-                <img class="zhitu" :src="zhifutu" alt="">
+                <img class="zhitu" :src="zhizhi" alt="">
                 <span>支付宝</span>
             </p>
             <p>
-               <i id="ai" class="el-icon-circle-check-outline"></i>
+                <i id="ai" class="el-icon-circle-check-outline"></i>
             </p>
         </div>
         <div class="bottom_bottom">
             <p>
-                <img class="zhitu" :src="zhifutu" alt="">
+                <img class="zhitu" :src="zhiwei" alt="">
                 <span>微信</span>
             </p>
             <p>
-                <i id="bi" class="el-icon-circle-check-outline" ></i>
+                <i id="bi" class="el-icon-circle-check-outline"></i>
             </p>
         </div>
     </section>
@@ -29,14 +29,12 @@
         <p class="p3" @click="fn($event)">确认支付</p>
     </section>
     <div class="tanchuang " v-bind:class="{tanchuang1:tan}">
-        <div></div>
         <div>
             <img class="img2" :src="tishi" alt="">
-            <p class="p4">当前环境无法支付，请打开官方App进行付款</p>
+            <p class="p4">{{chaoshi}}</p>
             <p class="p5" @click="fn()">确认</p>
-        </div>
-        <div></div>
 
+        </div>
     </div>
 </div>
 </template>
@@ -49,13 +47,16 @@ export default {
         return {
             shijian: null,
             tishi: require('../../../assets/img/提示.png'),
-            zhifutu: require('../../../assets/img/饿了么1.png'),
-            tan: true
+            zhizhi: require('../../../assets/img/zfb.png'),
+            zhiwei: require('../../../assets/img/wxzf.png'),
+            tan: true,
+            chaoshi: "当前环境无法支付，请打开官方App进行付款"
         }
     },
     created() {
         this.$store.commit("zihe", '在线支付');
         let _this = this;
+
         function count(times) {
             var timer = null;
             timer = setInterval(function () {
@@ -64,16 +65,17 @@ export default {
                 if (times > 0) {
                     minute = Math.floor(times / 60);
                     second = Math.floor(times) - (minute * 60);
+                } else if (times <= 0) {
+                    clearInterval(timer);
+                    _this.chaoshi = '登录超时';
+                    _this.fn();
+
                 }
-                if (second <= 9) {
-                    second = '0' + second;
-                };
                 times--;
                 _this.shijian = minute + ':' + second;
+
             }, 1000);
-            if (times <= 0) {
-                clearInterval(timer);
-            }
+
         }
         count(900);
     },
@@ -95,13 +97,14 @@ export default {
     height: 0.5rem;
 }
 
-.bottom_bottom>p:nth-child(1) {
+.bottom_bottom>p {
     display: flex;
+
 }
 
-.bottom_bottom>p:nth-child(1)>span {
+.bottom_bottom>p>span {
     padding-top: 0.15rem;
-    padding-left: 0.2rm;
+    margin-left: 0.15rem;
 }
 
 .top {
@@ -146,15 +149,25 @@ export default {
     top: 22%;
     left: 50%;
     transform: translateX(-50%);
+    width: 3.5rem;
+    border-radius: 0.1rem;
 }
 
-.p4,
-.p5 {
+.img2 {
+    width: 2rem;
+    height: 2rem;
+}
+
+.p4 {
     padding: 0.1rem 0;
 }
 
 .p5 {
     background-color: rgb(76, 217, 100);
+    padding: 0.2rem 0;
+    color: white;
+    font-size: 0.3rem;
+    border-radius: 0 0 0.1rem 0.1rem;
 }
 
 .tanchuang1 {

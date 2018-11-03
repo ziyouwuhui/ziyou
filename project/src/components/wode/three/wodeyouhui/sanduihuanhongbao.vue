@@ -80,6 +80,7 @@ export default {
         },
         fn3() {
             this.tan = !this.tan;
+            // fn();
         }
     }
 }
@@ -106,6 +107,7 @@ input {
     background-color: white;
     line-height: 0.6rem;
     width: 48%;
+    overflow: hidden;
 }
 
 .bottom {
