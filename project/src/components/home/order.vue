@@ -261,6 +261,8 @@ export default {
 }
 .orderlist_ul {
   background-color: #f1f1f1;
+  padding-top: .56rem;
+
 }
 .order_page{
   background-color: #f1f1f1;
@@ -270,6 +272,11 @@ export default {
     background-color: #3190e8;
     width: 100%;
     height: 0.57rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
   }
   .head_goback{
     left: 0.16rem;
