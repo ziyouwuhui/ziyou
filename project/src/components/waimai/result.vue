@@ -168,9 +168,6 @@ export default {
       this.money.forEach(v => {
         this.price = v.price
       })
-      this.newFood = {name:this.foodname,num:this.foodnum,price:this.price};
-      this.newFoods.push(this.newFood);
-      console.log(this.newFoods,'price');
     }
   },
   computed:{
@@ -184,7 +181,7 @@ export default {
         }
       })
        this.$store.commit('updateAllprice',total);
-      return total;
+        return total;
     }
   }
 };

@@ -60,7 +60,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["s11"]),
+    // ...mapState(["allRest"]),
     ac() {
       return this.$store.getters.in;
     }
@@ -77,7 +77,8 @@ export default {
       .ac}`;
     this.$http.get(api).then(data => {
       this.data = data.data;
-      this.$store.commit("s1", data.data);
+      // 
+      this.$store.commit("updatdallRest", data.data);
       this.value5 = data.rating;
 
       var dat = this.data;
