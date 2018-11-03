@@ -67,17 +67,19 @@ export default {
         }
     },
     created() {
-        console.log(this.shuliang)
         let menu = "https://elm.cangdu.org/promotion/v2/users/1/hongbaos?limit=20&offset=0";
         this.$http.get(menu).then((data) => {
             this.datas = data.data;
             this.names = this.datas.length;
+            console.log(this.names)
             this.shuliang = this.datas.l;
+             localStorage.setItem("a",this.datas.length)
         }, function () {
             console.log('请求失败处理');
         });
+        
     },
-    computed: {}
+
 }
 </script>
 
@@ -102,7 +104,7 @@ export default {
     padding: 0.1rem;
     border-radius: 0.2rem;
     border: 0.1rem solid white;
-    
+
 }
 
 .li_top {
