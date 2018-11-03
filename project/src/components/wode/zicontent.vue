@@ -53,7 +53,7 @@ export default {
             number: "",
             imageUrl: W1,
             yue: "0.00",
-            youhui: localStorage.a,
+            youhui: localStorage.a?localStorage.a:'0',
             jifen: 0,
             link: "/lulu",
             ures: [],
