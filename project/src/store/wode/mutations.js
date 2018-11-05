@@ -15,6 +15,10 @@ updatdallRest(state, newvaluerest) {
   updateInte(state, productsID) {
     state.inde = productsID;
   },
+  tupian(state,tu){
+    state.tupians.push(tu)
+    console.log(tu);
+  },
   //添加城市地址 
   updateAddress(state, newAddress) {
     state.address = newAddress;

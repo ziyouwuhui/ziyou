@@ -4,6 +4,8 @@ export default {
  allRest:[],
  meNu:[],
 //餐馆排序
+ tupians:[],
+//  排序
  inde:'',
  entities:'',
  address:"添加地址",

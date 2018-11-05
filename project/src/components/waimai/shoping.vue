@@ -44,7 +44,7 @@
 
 
 <!-- 路由船只 -->
-        <div class="name">
+   <div class="name">
             <div class="name_top">
                 <div class="name_top1">
                      <img style="  width:35px" :src="url" alt="">
@@ -79,10 +79,10 @@
                 </div>
                 <div>$12233</div>
             </div>
-        </div>
+   </div>
         <!-- 订单口味 -->
         <div class="dingdan">
-             <div>
+             <div class="dingdan1">
                <span class="dingdan_l">订单备注</span>
                <router-link :to="{name:'kouwei'}">
                    <span class="dingdan_r">口味，编好等></span>
@@ -90,13 +90,13 @@
                
              </div>
              <!-- 发票 -->
-               <div>
+               <div class="dingdan2">
                   <span class="dingdan_lb">发票抬头</span>
                    <router-link :to="{name:'invoice'}">
                        <span class="dingdan_r">不需要开发票></span>
                    </router-link>
-               
              </div>
+             <div style=" margin-top: .5rem;"></div>
         </div>
 
 
@@ -155,11 +155,6 @@ import {mapState,mapGetters} from 'vuex'
          address() {
               return this.$store.state.address;
            }
-
-        //   ,
-        //   nextIndex(){
-        //       return this.$store.state.meNu;
-        //   }
         },
         created() {
           this.liebiao = this.$store.state.meNu;
@@ -177,6 +172,16 @@ import {mapState,mapGetters} from 'vuex'
     }
 </script>
 <style scoped>
+.dingdan2{
+       border: 1px dashed yellow;
+}
+.dingdan1{
+        margin: .1rem 0;
+       border: 1px dashed peru;
+}
+.name{
+     border: 1px dashed green;
+}
 #kongge{
     padding: .6rem;
 }
@@ -188,6 +193,7 @@ import {mapState,mapGetters} from 'vuex'
 }
 .lists{
     padding: 0;
+   
 }
 .two{
     float: right;
@@ -273,29 +279,32 @@ import {mapState,mapGetters} from 'vuex'
     padding: .3rem 0 .309rem 0;
 }
 .app{
-  /* border: 1px solid black;  */
+    margin: 0.1rem 0;
+  border: 1px dashed orangered;
   padding-left:.17rem; 
 }
 .t_r{
     /* border: 1px solid blue; */
       float: right;
-    padding: .3rem .4rem .309rem .45rem;
+    padding: .3rem .2rem .309rem .45rem;
 }
 .t_l{
       /* border: 1px solid blue; */
       float: left;
-      padding: .4rem .8rem .4rem .4rem;
+      padding: .4rem .3rem .4rem .4rem;
 }
 .time{
+    border: 1px dashed blue;
     overflow: hidden;
 }
 .rig{
     float:right;
 }
 .dizhi{
-    margin-top:.55rem ;
+    margin-top:.59rem ;
     padding: .17rem 0 .3rem .17rem;
-    /* border: 1px solid red; */
+    border: 1px dashed goldenrod;
+    margin-bottom:.1rem; 
    }
 .shangjia{
     
