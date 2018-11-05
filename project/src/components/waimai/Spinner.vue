@@ -75,7 +75,6 @@
                                       <span class="span_f">{{s.name}}</span>
                                     </div>
                                 </li>
-                              <!-- <span class="span_c "  v-show="show5"><img style=" width: .2rem;" src='./img/主页.png' alt=""></span> -->
                              </ul>
                             </div>
                        
