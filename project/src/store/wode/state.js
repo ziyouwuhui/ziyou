@@ -3,6 +3,7 @@ export default {
  // 列表订单
  allRest:[],
  meNu:[],
+ tupians:[],
 //  排序
  inde:'',
  entities:'',

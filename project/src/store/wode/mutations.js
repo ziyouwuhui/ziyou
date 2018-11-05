@@ -11,6 +11,10 @@ updatdallRest(state, newvaluerest) {
   arrs(state, n) {
     state.meNu.push(n);
   },
+  tupian(state,tu){
+    state.tupians.push(tu)
+    console.log(tu);
+  },
   //排序 
   in(state, n) {
     state.inde = n;

@@ -36,6 +36,11 @@
         </el-carousel>
     </div>
     <Lbiao></Lbiao>
+    <div class="iiii">
+       <div @click="toTop"> 
+           <img src="./img/flame.png" alt="">
+       </div>
+    </div>
     <Buttom></Buttom>
 </div>
 </template>
@@ -52,6 +57,7 @@ export default {
     },
     data() {
         return {
+            // toTopShow:false,
             value5: "",
             data: [],
             swiperData: [],
@@ -75,7 +81,16 @@ export default {
     methods: {
         read(i) {
             console.log(i);
-        }
+        },
+           toTop(){
+            //    if(this.scrollTop>800){
+            //        this.toTopShow = true
+            //    }else{
+            //        this.toTopShow = false;
+            //    }
+              document.body.scrollTop = 0
+              document.documentElement.scrollTop = 0
+            },
     },
     created() {
         // 判断是否登录
@@ -113,6 +128,15 @@ export default {
 </script>
 
 <style scoped>
+.iiii{
+    background: white;
+    position:fixed;
+    bottom: .5rem;
+    z-index: 2000;
+    right: .2rem;
+    padding: .1rem;
+    border-radius: .2rem;
+}
 .yonghu {
     width: 0.3rem;
     height: 0.3rem;

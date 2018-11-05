@@ -105,7 +105,7 @@ export default new Router({
       component: Business
     },
     {
-      path: '/classification/:id',
+      path: '/classification',
       name: 'classification',
       component: Classification
     },

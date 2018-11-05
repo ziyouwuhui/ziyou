@@ -18,10 +18,10 @@
           <span class="right_top_B">{{it.description}}</span>
           <span class="right_top_dian">...</span>
         </div>
-        <router-link tag="li" to="" class="li_t">
+        <li class="li_t">
           <!-- 好吃的 -->
           <div class="right_li_id"  v-for="(child,cindex) in foods" :key="cindex">
-            <section class="right_li_l">
+            <section class="right_li_l" @click="next(child.image_path,child.name)">
               <img :src="'//elm.cangdu.org/img/'+child.image_path" alt="" style="width: 0.5rem">
             </section>
             <div class="right_li_right">
@@ -49,7 +49,7 @@
         </div>
             </div>
           </div>
-        </router-link>
+        </li>
         
       </ul>
     </section>
@@ -112,10 +112,6 @@ export default {
       this.foods[i].num++;
       console.log(id,'ididididi')
       this.$store.commit("arrs", id);
-      this.$router.push({
-        path: "/shoping",
-        query: { foodname: this.meNu.foods }
-      });
       var food = this.meNu.foods;
       this.$emit("childByVaue", this.foods[i]);
       
@@ -124,9 +120,12 @@ export default {
        if( this.foods[i].num!=0){
           this.foods[i].num--;
           this.$emit("childByVaue", this.foods[i]);
-       }
-        
+       } 
      },
+     next(tu,namesq){
+          this.$store.commit("tupian",tu);
+          this.$router.push({name:'classification',params:{img:tu,names:namesq}});
+     }
   }
 };
 </script>
