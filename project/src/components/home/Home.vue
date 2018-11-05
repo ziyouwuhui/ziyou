@@ -193,7 +193,8 @@
     color: #3190e8;
     border-bottom: 0.001rem solid #e4e4e4;
     border-right: 0.001rem solid #e4e4e4;
-    width: 1rem;
+    /* width: .7rem; */
+    padding: 0 .5rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
