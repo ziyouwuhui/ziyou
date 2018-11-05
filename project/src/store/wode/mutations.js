@@ -11,9 +11,9 @@ updatdallRest(state, newvaluerest) {
   arrs(state, n) {
     state.meNu.push(n);
   },
-  //排序 
-  in(state, n) {
-    state.inde = n;
+  //餐馆排序
+  updateInte(state, productsID) {
+    state.inde = productsID;
   },
   //添加城市地址 
   updateAddress(state, newAddress) {
@@ -28,6 +28,9 @@ updatdallRest(state, newvaluerest) {
   newResulr_li(state,newAesulr_li){
     state.resulr_li = newAesulr_li;
     console.log('lilili222222222222222222222222222222222222222222222222',state.resulr_li)
+  },
+  updateShopid(state,shopid){
+      state.sxShopid = shopid;
   }
   
   

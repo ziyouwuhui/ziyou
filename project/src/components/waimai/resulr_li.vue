@@ -112,10 +112,6 @@ export default {
       this.foods[i].num++;
       console.log(id,'ididididi')
       this.$store.commit("arrs", id);
-      this.$router.push({
-        path: "/shoping",
-        query: { foodname: this.meNu.foods }
-      });
       var food = this.meNu.foods;
       this.$emit("childByVaue", this.foods[i]);
       

@@ -46,19 +46,18 @@
               </div>
           </div>
         </li>
-        <!-- <li>
-         
-         {{liebiao}} 
-         {{arrs}}
-         
-        </li> -->
       </ul>
     </div>
+    <Buttom></Buttom>
   </div>
 </template>
 <script>
+import Buttom from "../waimai/buttom";
 export default {
   name: "order",
+  components:{
+     Buttom
+  },
   data() {
     return {
       orders: [],

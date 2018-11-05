@@ -44,7 +44,6 @@
 </template>
 <script>
 // import { mapState } from "vuex";
-
 export default {
   name: "leibiao",
   data() {
@@ -59,23 +58,19 @@ export default {
       arr: null
     };
   },
-  computed: {
-    // ...mapState(["allRest"]),
-    ac() {
-      return this.$store.getters.in;
-    }
+  computed:{
+      
   },
-
   methods: {
     read(i) {}
   },
-  beforeMount() {
-    var a = this.$store.getters.in;
-    let api = `https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762&order_by=${this
-      .ac}`;
-    this.$http.get(api).then(data => {
+  created() {
+    let order_by = this.$store.state.inde;
+    console.log(order_by,'order_by')
+    //餐馆排序
+    let pxapi = "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762&order_by="+order_by;
+    this.$http.get(pxapi).then(data => {
       this.data = data.data;
-      //
       this.$store.commit("updatdallRest", data.data);
       this.value5 = data.rating;
 
@@ -86,9 +81,15 @@ export default {
 
       this.data.forEach(val => {
         this.arr = val.delivery_mode;
-      });
+      })
     });
-    // }
+     //筛选
+    this.sxcategory_id = this.$store.state.sxShopid;
+    console.log(this.sxcategory_id,'shopID');
+    let sxpai = "https://elm.cangdu.org/shopping/restaurants?latitude=31.22967&longitude=121.4762&restaurant_category_id="+this.sxcategory_id;
+     this.$http.get(sxpai).then(sxdata => {
+       this.data = sxdata.data;
+     }); 
   }
 };
 </script>

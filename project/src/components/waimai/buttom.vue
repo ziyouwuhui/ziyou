@@ -1,6 +1,6 @@
 <template>
   <div class="buttom">
-        <router-link to="/mstie" tag="div" :span="6" class="col">
+        <router-link :to="{name:'mstie'}" tag="div" :span="6" class="col">
           <div class="el-icon-goods btn"></div>
           <p>外卖</p>
         </router-link>

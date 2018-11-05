@@ -1,7 +1,7 @@
 <template>
      <div class="wrap">
           <div class="top">
-              <router-link to="/" class="top-left"><</router-link>
+              <span @click="change()" class="top-left"><</span>
               <span class="top-conter">{{this.$route.query.ite}}</span>
           </div>  
           <div class="top_padding"></div>
@@ -20,7 +20,8 @@
                     <ul id="root1">
                        <li class="lili" v-for="(item,index) in meNuL" :key="index" @click="text(index)">
                            <span class="index_1" v-if="item.id != 260"> 
-                               <img :src="'https://fuss10.elemecdn.com/'+item.image_url+'.png'">
+                               <img :src="'https://fuss10.elemecdn.com/'+item.image_url+'.png'" v-if="item.image_url.substr(-4) != 'jpeg'">
+                               <img :src="'https://fuss10.elemecdn.com/'+item.image_url+'.jpeg'" v-else-if="item.image_url.substr(-4) == 'jpeg'">
                            </span>
                          <span>{{item.name}}</span> 
                          <span class="count_if">
@@ -32,7 +33,7 @@
                </div>
                <div class="right_one">
                     <ul id="root2">
-                       <li class="lili2" v-for="(it,index) in arrs" :key="index" >
+                       <li class="lili2" v-for="(it,index) in arrs" :key="index" @click="sxShop(it.id)">
                          <div class="lili1">
                               <span class="ww">
                                     <span>{{it.name}}</span>
@@ -64,18 +65,17 @@
                          <li v-for="(w,index) in arr" :key="index">
                             <p class="pei">配送方式</p>
                             <p class="bord" :style="'background:#'+w.color">{{w.text}}</p>
-                            <p class="shang">商家属性(可以多县)</p>
+                            <p class="shang">商家属性(可以多选)</p>
                             <div>
-                              <ul>
+                              <ul class="sxlist">
                                 <li v-for="(s,index) in Yang" :key="index">
-                                    <div class="li_w" @click="show5 = !show5">
-                                      <span v-show="!show5" class="span_c" :style="{color: '#'+s.icon_color,border:'1px solid #'+s.icon_color}">{{s.icon_name}}
+                                    <div class="li_w" @click="sxlist(index)">
+                                      <span class="span_c" :style="{color: '#'+s.icon_color,border:'1px solid #'+s.icon_color}">{{s.icon_name}}
                                       </span>
-                                      
                                       <span class="span_f">{{s.name}}</span>
                                     </div>
                                 </li>
-                              <span class="span_c "  v-show="show5"><img style=" width: .2rem;" src='./img/主页.png' alt=""></span>
+                              <!-- <span class="span_c "  v-show="show5"><img style=" width: .2rem;" src='./img/主页.png' alt=""></span> -->
                              </ul>
                             </div>
                        
@@ -90,65 +90,72 @@
 
 <script>
 // console.log(this.$route);
-import img01 from '../waimai/img/排序.png';
-import img02 from '../waimai/img/map.png';
-import img03 from '../waimai/img/flame.png';
-import img04 from '../waimai/img/money.png';
-import img05 from '../waimai/img/clock.png';
-import img06 from '../waimai/img/star.png';
-import Lbiao from './leibiao'
-import {mapState} from 'vuex'
+import img01 from "../waimai/img/排序.png";
+import img02 from "../waimai/img/map.png";
+import img03 from "../waimai/img/flame.png";
+import img04 from "../waimai/img/money.png";
+import img05 from "../waimai/img/clock.png";
+import img06 from "../waimai/img/star.png";
+import Lbiao from "./leibiao";
+import { mapState } from "vuex";
 
 export default {
   name: "Spinner",
   data() {
     return {
       meNuL: {},
+      shopId: this.$route.query.id,
       speciesData: [],
-      arr:{},
-      Yang:{},
-      arrs:{},
-      show:false,
+      arr: {},
+      Yang: {},
+      arrs: {},
+      show: false,
       show3: false,
-      show4:false,
-      show5:true,
-      distance:'',
-      products:[
-                {
-                    'url':img01,
-                    'title':'智能排序',
-                },{
-                    'url':img02,
-                    'title':'距离最近'
-                },{
-                     'url':img03,
-                    'title':'销量最高'
-                },{
-                    'url':img04,
-                    'title':'起送价最低"'
-                },{
-                    'url':img05,
-                    'title':'配送速度最快'
-                },{
-                    'url':img06,
-                    'title':'评分最高'
-                }
-            ]
-    }
-    
+      show4: false,
+      show5: false,
+      distance: "",
+      products: [
+        {
+          url: img01,
+          title: "智能排序"
+        },
+        {
+          url: img02,
+          title: "距离最近"
+        },
+        {
+          url: img03,
+          title: "销量最高"
+        },
+        {
+          url: img04,
+          title: '起送价最低"'
+        },
+        {
+          url: img05,
+          title: "配送速度最快"
+        },
+        {
+          url: img06,
+          title: "评分最高"
+        }
+      ],
+      productsID:''
+    };
   },
 
   components: {
     Lbiao,
-    cn(){
+    cn() {
       //  console.love(this.$store.state.s11,"11111111111111111111")
     }
   },
   created() {
-    //https://elm.cangdu.org/shopping/v2/restaurant/category 
+    //https://elm.cangdu.org/shopping/v2/restaurant/category
     let api = "https://elm.cangdu.org/shopping/v2/restaurant/category";
-    let love = 'https://elm.cangdu.org/shopping/v1/restaurants/delivery_modes';
-    let yang = 'https://elm.cangdu.org/shopping/v1/restaurants/activity_attributes';
+    let love = "https://elm.cangdu.org/shopping/v1/restaurants/delivery_modes";
+    let yang =
+      "https://elm.cangdu.org/shopping/v1/restaurants/activity_attributes";
     this.$http.get(api).then(data => {
       this.meNuL = data.data;
     });
@@ -158,87 +165,115 @@ export default {
     });
     this.$http.get(yang).then(data => {
       this.Yang = data.data;
-    })
-  //  var d = this.$store.state.allRest;
+    });
   },
-   methods: {
-     text(index) {
-        this.arrs = this.meNuL[index].sub_categories;
+  methods: {
+    change(){
+       this.$router.go(-1);
     },
-    range(index){
-      show3 = false;
-      // this.$store.commit('in',index);
+    text(index) {
+      this.arrs = this.meNuL[index].sub_categories;
+    },
+    //智能筛选
+    sxlist(index){
+      let ul = document.getElementsByClassName('sxlist')[0];
+      let lis = ul.getElementsByTagName('li');
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].style.color = 'black';
+      }
+      lis[index].style.color = 'red';
+      this.show4 = false;
+    },
+    //餐馆排序
+    range(index) {
+      this.show3 = false;
+      if(index == 0){
+          this.productsID = 4
+      }else if(index == 1){
+          this.productsID = 5
+      }else if(index == 2){
+          this.productsID = 6
+      }else if(index == 3){
+          this.productsID = 1
+      }else if(index == 4){
+          this.productsID = 2
+      }else {
+          this.productsID = 3
+      }
+      this.$store.commit('updateInte',this.productsID);
+    },
+    //餐馆筛选
+    sxShop(id) {
+      this.$store.commit('updateShopid',id);
+      this.show = !this.show;
     }
   },
-  computed:{
-          // ...mapState(['allRest'])
+  computed: {
+    
   }
 };
 </script>
 
 <style scoped>
-.top_padding{
-  height: .5rem;
+.top_padding {
+  height: 0.5rem;
 }
 
 .botton_t1:hover {
   color: blue;
-  
 }
 
-.shang{
-   padding: 0 0 .2rem 0;
-   font-size: .18rem;
+.shang {
+  padding: 0 0 0.2rem 0;
+  font-size: 0.18rem;
 }
-.pei{
-  margin: .2rem 0;
-  padding-left: .26rem;
+.pei {
+  margin: 0.2rem 0;
+  padding-left: 0.26rem;
 }
-.bord{
+.bord {
   width: 1rem;
   /* height: .1rem; */
-  margin: .3rem ;
+  margin: 0.3rem;
   text-align: center;
-  padding: .05rem;
-  border-radius:.1rem; 
-  font-size: .15rem;
+  padding: 0.05rem;
+  border-radius: 0.1rem;
+  font-size: 0.15rem;
 }
-.show_li{
-    border: 1px solid gainsboro;
-    position: fixed;
-     top: 1.1rem;
-    right: 0;
-    left: 0;
-    background: white;
+.show_li {
+  border: 1px solid gainsboro;
+  position: fixed;
+  top: 1.1rem;
+  right: 0;
+  left: 0;
+  background: white;
 }
-.qingkong{
+.qingkong {
   border: 1px solid gainsboro;
   background: grey;
-
 }
-.span_c{
-  border-radius:.2rem; 
-  font-size: .13rem;
-  padding: .01rem;
+.span_c {
+  border-radius: 0.2rem;
+  font-size: 0.13rem;
+  padding: 0.01rem;
 }
-.li_w span{
-  margin-right: .1rem;
+.li_w span {
+  margin-right: 0.1rem;
 }
-.li_w{
+.li_w {
   width: 1.2rem;
-  height: .3rem;
-  line-height: .3rem;
+  height: 0.3rem;
+  line-height: 0.3rem;
   border: 1px solid gainsboro;
   text-align: center;
   float: left;
-  margin: .1rem 0 .1rem .25rem ;
-
-  
+  margin: 0.1rem 0 0.1rem 0.25rem;
 }
-.span_c,.span_f{
+.span_c,
+.span_f {
   float: left;
 }
-.r_1{
+.r_1 {
   margin-left: 4rem;
 }
 .lili {
@@ -251,10 +286,11 @@ export default {
   height: 20px;
   display: inline-block;
 }
-.show3 li{
-  border-bottom:1px solid gainsboro; 
+.show3 li {
+  border-bottom: 1px solid gainsboro;
 }
-.show3,.show4 {
+.show3,
+.show4 {
   background-color: #fff;
   position: fixed;
   top: 1.13rem;
@@ -325,7 +361,7 @@ export default {
   position: absolute;
   left: 0.3rem;
 }
-.left_one{
+.left_one {
   float: left;
   /* flex: 1; */
 }
@@ -346,11 +382,11 @@ export default {
   margin-right: 0.1rem;
   vertical-align: middle;
 }
-#root1 li:nth-child(1){
-    padding: 0.125rem;
+#root1 li:nth-child(1) {
+  padding: 0.125rem;
 }
 .lili:hover {
-   background: white;
+  background: white;
 }
 .lili {
   border: 1px solid gainsboro;
@@ -369,32 +405,32 @@ export default {
   z-index: 13;
   overflow: hidden;
 }
-.lili2 .ww .count{
-    float: right;
+.lili2 .ww .count {
+  float: right;
 }
-.lili2 .ww{
-    overflow: hidden;
+.lili2 .ww {
+  overflow: hidden;
 }
-.lili2 div{
-    padding: .125rem;
+.lili2 div {
+  padding: 0.125rem;
 }
-#root2{
-    color: gray;
-    font-size: 0.1rem;
+#root2 {
+  color: gray;
+  font-size: 0.1rem;
 }
-.lili1{
-    border: 1px solid gainsboro;
-    padding: 0.1rem;
-    /* background: #f1f1f1; */
-    color: gray;
-    font-size: 0.1rem;
+.lili1 {
+  border: 1px solid gainsboro;
+  padding: 0.1rem;
+  /* background: #f1f1f1; */
+  color: gray;
+  font-size: 0.1rem;
 }
-.right_one{
-    float: right;
-    top:1rem;
-    flex: 1;
+.right_one {
+  float: right;
+  top: 1rem;
+  flex: 1;
 }
-.left_one{
+.left_one {
   float: left;
   flex: 1;
 }
@@ -415,10 +451,10 @@ export default {
   margin-right: 0.1rem;
   vertical-align: middle;
 }
-#root1 li:nth-child(1){
-    padding: 0.125rem;
+#root1 li:nth-child(1) {
+  padding: 0.125rem;
 }
 .lili:hover {
-   background: white;
+  background: white;
 }
 </style>
